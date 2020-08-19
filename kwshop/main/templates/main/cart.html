@@ -5,30 +5,30 @@
     <title>Knitted world</title>
     <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
     
-    <link rel="stylesheet" type="text/css" href="css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">   
+    <link rel="stylesheet" type="text/css" href="/static/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
         
      
 </head>
 <body>
     <header>
         <div class="logo">
-            <img class="logo-img" src="./img/logo.png" alt="logo">
+            <img class="logo-img" src="/static/img/logo.png" alt="logo">
         </div>
         
         <div class="navigation">
             <nav> 
                 <button type="button" class="nav-btn">
-                    <a href="index.html">Главная</a> 
+                    <a href="">Главная</a>
                 </button>
                 <button type="button" class="nav-btn">
-                    <a href="catalog.html">Каталог</a> 
+                    <a href="catalog/">Каталог</a>
                 </button>
                 <button type="button" class="nav-btn">
-                    <a href="cart.html">Корзина</a> 
+                    <a href="cart/">Корзина</a>
                 </button>
                 <button type="button" class="nav-btn">
-                    <a href="contact.html">Контакты</a>
+                    <a href="contact/">Контакты</a>
                 </button>
             </nav>
         </div>
@@ -46,7 +46,7 @@
                 <div class="cart-block invisible">
                     <div class="cart-item cart-item">
                         <div class="product-bio">
-                            <img src="img/IMG_0158_s.jpg" alt="Ням мал">
+                            <img src="/static/img/IMG_0158_s.jpg" alt="Ням мал">
                             <div class="product-desc">
                                 <p class="product-title">Ням голубой</p>
                                 <p class="product-quantity">Количество: 1</p>
@@ -61,7 +61,7 @@
                     </div>
                     <div class="cart-item cart-item">        
                         <div class="product-bio">
-                            <img src="img/IMG_0099_s.jpg" alt="Мишка мал">
+                            <img src="/static/img/IMG_0099_s.jpg" alt="Мишка мал">
                             <div class="product-desc">
                                 <p class="product-title">Мишка</p>
                                 <p class="product-quantity">Количество: 1</p>
@@ -75,7 +75,7 @@
                     </div>
                     <div class="cart-item cart-item">
                         <div class="product-bio">
-                            <img src="img/IMG_0098_s.jpg" alt="Кот с мышкой мал">
+                            <img src="/static/img/IMG_0098_s.jpg" alt="Кот с мышкой мал">
                             <div class="product-desc">
                                 <p class="product-title">Кот с мышкой</p>
                                 <p class="product-quantity">Количество: 1</p>
@@ -110,7 +110,7 @@
                 </table>
                 <table class="cart-table cart-table-body"  align="center">
                     <tr>
-                        <td class="t-img"><img src="img/IMG_0158_s.jpg" alt="Ням мал"> </td>
+                        <td class="t-img"><img src="/static/img/IMG_0158_s.jpg" alt="Ням мал"> </td>
                         <td class="t-pr-name">Ням голубой</td>
                         <td class="t-pr-size">15см</td>
                         <td class="t-price">1000₽</td>
@@ -123,7 +123,7 @@
                         <td class="t-delete" onclick="#"><i class="fas fa-times-circle"></i></td>
                     </tr>
                     <tr>
-                        <td class="t-img"><img src="img/IMG_0099_s.jpg" alt="Мишка мал"> </td>
+                        <td class="t-img"><img src="/static/img/IMG_0099_s.jpg" alt="Мишка мал"> </td>
                         <td class="t-pr-name">Мишка</td>
                         <td class="t-pr-size">35см</td>
                         <td class="t-price"> 3000₽</td>
@@ -136,7 +136,7 @@
                         <td class="t-delete"  onclick="#"><i class="fas fa-times-circle"></i></td>
                     </tr>
                     <tr>
-                        <td class="t-img"><img src="img/IMG_0098_s.jpg" alt="Кот с мышкой мал"> </td>
+                        <td class="t-img"><img src="/static/img/IMG_0098_s.jpg" alt="Кот с мышкой мал"> </td>
                         <td class="t-pr-name">Кот с мышкой</td>
                         <td class="t-pr-size">30см</td>
                         <td class="t-price"> 4000₽</td>
@@ -174,7 +174,7 @@
         <h1 class="products-title">Каталог игрушек</h1>
         <div class="products">
             <div class="product-item">
-                <img src="img/IMG_0099.jpg" class="product-item-img" alt="Some img">
+                <img src="/static/img/IMG_0099.jpg" class="product-item-img" alt="Some img">
                 <div class="desc">
                     <h3>Мишка</h3>
                     <p><strong>Цена: </strong>3000₽</p>
@@ -182,9 +182,9 @@
                     <i class="fas fa-shopping-cart"></i></button>
                 </div>
             </div>
-            
+
             <div class="product-item">
-                <img src="img/IMG_0158.jpg" class="product-item-img" alt="Some img" @click="productAPI.getProductInfo(product.id_product)">
+                <img src="/static/img/IMG_0158.jpg" class="product-item-img" alt="Some img" @click="productAPI.getProductInfo(product.id_product)">
                 <div class="desc">
                     <h3>Ням фиолетовый</h3>
                     <p><strong>Цена: </strong>1000₽</p>
@@ -192,9 +192,9 @@
                     <i class="fas fa-shopping-cart"></i></button>
                 </div>
             </div>
-            
+
             <div class="product-item">
-                <img src="img/IMG_0158.jpg" class="product-item-img" alt="Some img" @click="productAPI.getProductInfo(product.id_product)">
+                <img src="/static/img/IMG_0158.jpg" class="product-item-img" alt="Some img" @click="productAPI.getProductInfo(product.id_product)">
                 <div class="desc">
                     <h3>Ням голубой</h3>
                     <p><strong>Цена: </strong>1000₽</p>
@@ -202,9 +202,9 @@
                     <i class="fas fa-shopping-cart"></i></button>
                 </div>
             </div>
-            
+
             <div class="product-item">
-                <img src="img/IMG_0170.jpg" class="product-item-img" alt="Some img" @click="productAPI.getProductInfo(product.id_product)">
+                <img src="/static/img/IMG_0170.jpg" class="product-item-img" alt="Some img" @click="productAPI.getProductInfo(product.id_product)">
                 <div class="desc">
                     <h3>Футболист</h3>
                     <p><strong>Цена: </strong>2500₽</p>
@@ -212,9 +212,8 @@
                     <i class="fas fa-shopping-cart"></i></button>
                 </div>
             </div>
-            
              <div class="product-item">
-                <img src="img/IMG_0099.jpg" class="product-item-img" alt="Some img" @click="productAPI.getProductInfo(product.id_product)">
+                <img src="/static/img/IMG_0099.jpg" class="product-item-img" alt="Some img" @click="productAPI.getProductInfo(product.id_product)">
                 <div class="desc">
                     <h3>Кот с мышкой</h3>
                     <p><strong>Цена: </strong>4000₽</p>
@@ -222,8 +221,6 @@
                     <i class="fas fa-shopping-cart"></i></button>
                 </div>
             </div>
-            
-            
         </div>
     </main>
     <footer>
