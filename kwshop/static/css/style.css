@@ -148,6 +148,7 @@ img {
     border-radius: 5px;
     transition: all ease-in-out .4s;
     cursor: pointer;
+    box-sizing: border-box;
 }
 
 
