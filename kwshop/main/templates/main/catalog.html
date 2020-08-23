@@ -1,5 +1,8 @@
 {% extends 'main/base.html' %}
 {% block title %} {{block.super}}{{page_title|default:"КАТАЛОГ"|title}} {% endblock %}
+
 {% block main %}
-    {% include 'main/includes/inc__catalog.html' %}
+    <main>
+        {% include 'main/includes/inc__catalog.html' %}
+    </main>
 {% endblock %}

@@ -2,20 +2,22 @@
 {% block title %} {{block.super}}{{page_title|default:"ГЛАВНАЯ"|title}} {% endblock %}
 
 {% block main %}
-    <div class="about">
-        <div class="about-box">
-            <h2 class="welcome">WELCOME TO</h2>
-            <h1 class="knitted">"Knitted World"</h1>
-            <h3 class="toys-header">Авторские вязаные игрушки</h3>
-            <p class="author"><strong>Автор и дизайнер - Скороглядова Дарья</strong></p>
-            <p class="about-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Mauris imperdiet ultricies enim vitae mattis. Integer malesuada purus eget eros malesuada fermentum.
-                Morbi scelerisque metus et quam iaculis condimentum. Quisque at sollicitudin lorem. Vivamus id commodo dui.
-                Vivamus a hendrerit ipsum, eget bibendum magna. Vestibulum mollis leo leo, vitae euismod ante dictum sit amet.
-                Cras purus tellus, convallis eget arcu vel, egestas pulvinar eros. Ut arcu ligula, iaculis sit amet fermentum
-                at, lacinia non nunc. Praesent lobortis lorem nisi, in efficitur dolor auctor in. Proin bibendum pulvinar neque.
-            </p>
+    <main>
+        <div class="about">
+            <div class="about-box">
+                <h2 class="welcome">WELCOME TO</h2>
+                <h1 class="knitted">"Knitted World"</h1>
+                <h3 class="toys-header">Авторские вязаные игрушки</h3>
+                <p class="author"><strong>Автор и дизайнер - Скороглядова Дарья</strong></p>
+                <p class="about-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Mauris imperdiet ultricies enim vitae mattis. Integer malesuada purus eget eros malesuada fermentum.
+                    Morbi scelerisque metus et quam iaculis condimentum. Quisque at sollicitudin lorem. Vivamus id commodo dui.
+                    Vivamus a hendrerit ipsum, eget bibendum magna. Vestibulum mollis leo leo, vitae euismod ante dictum sit amet.
+                    Cras purus tellus, convallis eget arcu vel, egestas pulvinar eros. Ut arcu ligula, iaculis sit amet fermentum
+                    at, lacinia non nunc. Praesent lobortis lorem nisi, in efficitur dolor auctor in. Proin bibendum pulvinar neque.
+                </p>
+            </div>
         </div>
-    </div>
     {% include 'main/includes/inc__catalog.html' %}
+    </main>
 {% endblock %}

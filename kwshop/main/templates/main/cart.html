@@ -2,6 +2,7 @@
 {% load static %}
 {% block title %} {{block.super}}{{page_title|default:"КОРЗИНА"|title}} {% endblock %}
 {% block main %}
+    <main>
         <div class="cart-box-container">    
             <div class="cart-box">
                 <h2>КОРЗИНА</h2>
@@ -57,8 +58,8 @@
                 {% else %}
                     <h3>Корзина пуста</h3>
                 {% endif %}
-
             </div>
         </div>
         {% include 'main/includes/inc__catalog.html' %}
+    </main>
 {% endblock %}

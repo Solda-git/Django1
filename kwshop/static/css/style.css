@@ -14,15 +14,11 @@ html, body {
     min-height: 100%;
 }
 
-.container {
-    min-height: 100%;
-    display: flex;
-    flex-flow: column nowrap;
-    box-sizing: border-box;
-}
 /*************/
 body {
     font-family: 'SF Pro Display', sans-serif;
+    display: flex;  /* для прижатия футера вниз на коротких страницах */
+    flex-flow: column nowrap;  /* для прижатия футера вниз на коротких страницах */
 }
 header {
     display: flex;
@@ -34,7 +30,9 @@ header {
 }
 
 main {
+      background-image: url(../img/background.jpg);
      background-color: #C0BED0;
+     flex-grow: 1;  /* для растягивания блока вниз до футера на коротких страницах */
 }
 
 button:focus{
@@ -262,7 +260,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url(../img/background4.png);
+    background-image: url(../img/background.jpg);
 }
 
 .about-box {
@@ -292,7 +290,7 @@ img {
 .cart-box-container {
     display: flex;
     justify-content: center;
-    background-image: url(../img/background4.png);
+    background-image: url(../img/background.jpg);
 }
 .cart-box {
     width: 80%;
@@ -374,7 +372,7 @@ img {
     background-color: #2f2a2d;
     padding: 20px 0px 20px 0px;
     /* border: 1 solid #fafafa; */
-    background-image: url(../img/background4.png);
+    background-image: url(../img/background.jpg);
 }
 
 .product-info {
@@ -425,7 +423,7 @@ img {
     background-color: #fff;
     padding: 20px 0px 20px 0px;
     border: 1 solid #2f2a2d;
-    background-image: url(../img/background4.png);
+    background-image: url(../img/background.jpg);
 }
 
 .f-head-title{
@@ -501,6 +499,8 @@ footer {
     align-items: center;
     background-image: url(../img/background4.jpg);
     height: 100px;
+    /*margin-top: auto;  для прижатия футера вниз на коротких страницах */
+    flex-shrink: 0
 }
 
 a { 
