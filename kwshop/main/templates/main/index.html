@@ -1,5 +1,5 @@
 {% extends 'main/base.html' %}
-{% block title %} {{block.super}}{{page_title}} {% endblock %}
+{% block title %} {{block.super}}{{page_title|default:"ГЛАВНАЯ"|title}} {% endblock %}
 
 {% block main %}
     <div class="about">

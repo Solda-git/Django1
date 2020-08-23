@@ -1,5 +1,5 @@
 {% extends 'main/base.html' %}
-{% block title %} {{block.super}}{{page_title}} {% endblock %}
+{% block title %} {{block.super}}{{page_title|default:"Обратная связь"|title}} {% endblock %}
 {% block main %}
         <div class="feedback-container">
             <div class="feedback">

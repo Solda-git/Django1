@@ -1,11 +1,12 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %} Knitted world. {% endblock %}</title>
     <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="/static/css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <script>
         function hideCart() {
             el = document.querySelector('.cart-block');
@@ -22,7 +23,7 @@
 <body>
     <header>
         <div class="logo">
-            <a href="/"> <img class="logo-img" src="/static/img/logo.png" alt="logo"> </a>
+            <a href="/"> <img class="logo-img" src="{% static 'img/logo.png' %}" alt="logo"> </a>
         </div>
         {% include 'main/includes/inc__main_nav.html' %}
         {% include 'main/includes/inc__cart.html' %}
