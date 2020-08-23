@@ -35,15 +35,26 @@
             <p>&copy Knitted World, 2020</p>
         </div>
         <div>
+            <p>Сегодня {% now "j F Y, l" %} </p>
+        </div>
+
+        <div>
             <p>Ссылки:
                 <tr>
-                    <td class="td-footer"><a href="/contact"><i class="far fa-envelope"></i> </a>
+                    <td class="td-footer">
+                        <a href="{% url 'contact' %}">
+                            <i class="far fa-envelope"></i>
+                        </a>
                     </td>
-                    <td class="td-footer"><a href="https://www.instagram.com/knitted_world_sd/">
-                        <i class="fab fa-instagram"></i></a>
+                    <td class="td-footer">
+                        <a href="https://www.instagram.com/knitted_world_sd/">
+                            <i class="fab fa-instagram"></i>
+                        </a>
                     </td>
-                     <td class="td-footer"><a href="https://www.instagram.com/knitted_world_sd/">
-                        <i class="fab fa-facebook-f"></i></a>
+                     <td class="td-footer">
+                         <a href="https://www.instagram.com/knitted_world_sd/">
+                            <i class="fab fa-facebook-f"></i>
+                         </a>
                     </td>
                 </tr>
             </p>

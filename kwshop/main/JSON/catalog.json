@@ -1,0 +1,52 @@
+[
+  {
+    "id_product": 1,
+    "id_product_cat": 1,
+    "product_name": "Мишка",
+    "price": 3000,
+    "img": "img/IMG_0099.jpg",
+    "size": "35см",
+    "stuff": "акриловые нитки, холофайбер",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Adipiscing vitae proin sagittis nisl rhoncus. Nibh praesent tristique magna sit amet purus gravida. Nisi scelerisque eu ultrices vitae auctor eu augue ut. Fringilla urna porttitor rhoncus dolor purus non enim praesent. At in tellus integer feugiat. Amet volutpat consequat mauris nunc congue nisi vitae suscipit tellus. Diam vulputate ut pharetra sit. Turpis egestas integer eget aliquet nibh praesent tristique magna sit. Habitant morbi tristique senectus et netus. " 
+  },
+  {
+    "id_product": 2,
+    "id_product_cat": 2,
+    "product_name": "Ням фиолетовый",
+    "price": 1000,
+    "img": "img/IMG_0158.jpg",
+    "size": "15см",
+    "stuff": "акриловые нитки, холофайбер",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Adipiscing vitae proin sagittis nisl rhoncus. Nibh praesent tristique magna sit amet purus gravida. Nisi scelerisque eu ultrices vitae auctor eu augue ut. Fringilla urna porttitor rhoncus dolor purus non enim praesent. At in tellus integer feugiat. Amet volutpat consequat mauris nunc congue nisi vitae suscipit tellus. Diam vulputate ut pharetra sit. Turpis egestas integer eget aliquet nibh praesent tristique magna sit. Habitant morbi tristique senectus et netus. " 
+  },
+  {
+    "id_product": 3,
+    "product_name": "Ням голубой",
+    "id_product_cat": 2,
+    "price": 1000,
+    "img": "img/IMG_0158.jpg",
+    "size": "15см",
+    "stuff": "акриловые нитки, холофайбер",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Adipiscing vitae proin sagittis nisl rhoncus. Nibh praesent tristique magna sit amet purus gravida. Nisi scelerisque eu ultrices vitae auctor eu augue ut. Fringilla urna porttitor rhoncus dolor purus non enim praesent. At in tellus integer feugiat. Amet volutpat consequat mauris nunc congue nisi vitae suscipit tellus. Diam vulputate ut pharetra sit. Turpis egestas integer eget aliquet nibh praesent tristique magna sit. Habitant morbi tristique senectus et netus. "   
+  },
+  {
+    "id_product": 4,
+    "product_name": "Футболист",
+    "id_product_cat": 3,
+    "price": 2500,
+    "img": "img/IMG_0170.jpg",
+    "size": "30см",
+    "stuff": "акриловые нитки, холофайбер",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Adipiscing vitae proin sagittis nisl rhoncus. Nibh praesent tristique magna sit amet purus gravida. Nisi scelerisque eu ultrices vitae auctor eu augue ut. Fringilla urna porttitor rhoncus dolor purus non enim praesent. At in tellus integer feugiat. Amet volutpat consequat mauris nunc congue nisi vitae suscipit tellus. Diam vulputate ut pharetra sit. Turpis egestas integer eget aliquet nibh praesent tristique magna sit. Habitant morbi tristique senectus et netus. "  
+  },
+  {
+    "id_product": 5,
+    "product_name": "Кот с мышкой",
+    "id_product_cat": 1,
+    "price": 4000,
+    "img": "img/IMG_0098.jpg",
+    "size": "30см",
+    "stuff": "акриловые нитки, холофайбер",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Adipiscing vitae proin sagittis nisl rhoncus. Nibh praesent tristique magna sit amet purus gravida. Nisi scelerisque eu ultrices vitae auctor eu augue ut. Fringilla urna porttitor rhoncus dolor purus non enim praesent. At in tellus integer feugiat. Amet volutpat consequat mauris nunc congue nisi vitae suscipit tellus. Diam vulputate ut pharetra sit. Turpis egestas integer eget aliquet nibh praesent tristique magna sit. Habitant morbi tristique senectus et netus. "  
+  }
+]

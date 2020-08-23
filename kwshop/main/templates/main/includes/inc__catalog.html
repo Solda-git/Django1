@@ -1,53 +1,15 @@
 {% load static %}
 <h1 class="products-title">Каталог игрушек</h1>
 <div class="products">
-        <div class="product-item">
-            <img src="{% static 'img/IMG_0099.jpg' %}" class="product-item-img" alt="Some img">
-            <div class="desc">
-                <h3>Мишка</h3>
-                <p><strong>Цена: </strong>3000₽</p>
-                <button class="buy-btn" onclick="#">
-                <i class="fas fa-shopping-cart"></i></button>
+        {% for item in products %}
+            <div class="product-item">
+                <img src={{item.img}} class="product-item-img" alt="Some img">
+                <div class="desc">
+                    <h3>{{item.product_name}}</h3>
+                    <p><strong>Цена: </strong>{{item.price}}₽</p>
+                    <button class="buy-btn" onclick="#">
+                    <i class="fas fa-shopping-cart"></i></button>
+                </div>
             </div>
-        </div>
-
-        <div class="product-item">
-            <img src="{% static 'img/IMG_0158.jpg' %}" class="product-item-img" alt="Some img" @click="productAPI.getProductInfo(product.id_product)">
-            <div class="desc">
-                <h3>Ням фиолетовый</h3>
-                <p><strong>Цена: </strong>1000₽</p>
-                <button class="buy-btn" onclick="#">
-                <i class="fas fa-shopping-cart"></i></button>
-            </div>
-        </div>
-
-        <div class="product-item">
-            <img src="{% static 'img/IMG_0158.jpg' %}" class="product-item-img" alt="Some img" @click="productAPI.getProductInfo(product.id_product)">
-            <div class="desc">
-                <h3>Ням голубой</h3>
-                <p><strong>Цена: </strong>1000₽</p>
-                <button class="buy-btn" onclick="#">
-                <i class="fas fa-shopping-cart"></i></button>
-            </div>
-        </div>
-
-        <div class="product-item">
-            <img src="{% static 'img/IMG_0170.jpg' %}" class="product-item-img" alt="Some img" @click="productAPI.getProductInfo(product.id_product)">
-            <div class="desc">
-                <h3>Футболист</h3>
-                <p><strong>Цена: </strong>2500₽</p>
-                <button class="buy-btn" onclick="#">
-                <i class="fas fa-shopping-cart"></i></button>
-            </div>
-        </div>
-
-         <div class="product-item">
-            <img src="{% static 'img/IMG_0099.jpg' %}" class="product-item-img" alt="Some img" @click="productAPI.getProductInfo(product.id_product)">
-            <div class="desc">
-                <h3>Кот с мышкой</h3>
-                <p><strong>Цена: </strong>4000₽</p>
-                <button class="buy-btn" onclick="#">
-                <i class="fas fa-shopping-cart"></i></button>
-            </div>
-        </div>
-    </div>
+        {% endfor %}
+</div>

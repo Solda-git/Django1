@@ -1,0 +1,32 @@
+[
+  {
+    "quantity": 1,
+    "id_product": 3,
+    "product_name": "Ням голубой",
+    "price": 1000,
+    "total": 1000,  
+    "img": "img/IMG_0158_s.jpg",
+    "size": "15см",
+    "stuff": "акриловые нитки, холофайбер"
+  },
+  {
+    "quantity": 1,
+    "id_product": 1,
+    "product_name": "мишка",
+    "price": 3000,
+    "total": 3000,
+    "img": "img/IMG_0099_s.jpg",
+    "size": "35см",
+    "stuff": "акриловые нитки, холофайбер"
+  },
+  {
+    "quantity": 1,
+    "id_product": 5,
+    "product_name": "Кот с мышкой",
+    "price": 4000,
+    "total": 4000,
+    "img": "img/IMG_0098_s.jpg",
+    "size": "30см",
+    "stuff": "акриловые нитки, холофайбер"
+  }
+]

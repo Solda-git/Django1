@@ -19,9 +19,9 @@ import main.views as main
 
 
 urlpatterns = [
-    path('', main.index),
-    path('catalog/', main.catalog),
-    path('cart/', main.cart),
-    path('contact/', main.contact),
-    path('admin/', admin.site.urls),
+    path('', main.index, name = 'index'),
+    path('catalog/', main.catalog, name = 'catalog'),
+    path('cart/', main.cart, name = 'cart'),
+    path('contact/', main.contact, name = 'contact'),
+    path('admin/', admin.site.urls, name = 'urls'),
 ]
