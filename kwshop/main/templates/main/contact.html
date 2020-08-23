@@ -1,4 +1,5 @@
 {% extends 'main/base.html' %}
+{% block title %} {{block.super}}{{page_title}} {% endblock %}
 {% block main %}
         <div class="feedback-container">
             <div class="feedback">
@@ -28,4 +29,4 @@
                 </h3>
             </div>    
         </div>
-  {% endblock%}
+{% endblock%}
