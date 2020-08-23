@@ -30,7 +30,7 @@ header {
 }
 
 main {
-      background-image: url(../img/background.jpg);
+     background-image: url(../img/background.jpg);
      background-color: #C0BED0;
      flex-grow: 1;  /* для растягивания блока вниз до футера на коротких страницах */
 }
@@ -43,10 +43,12 @@ button:focus{
     text-transform: uppercase;
     font-weight: bold;
     height: 100px;
+    display: flex;
+    align-items: center;
 }
 
 .logo-img {
-    height: 100px;
+    /*height: 100px;*/
 }
 
 .btn-cart{
@@ -149,7 +151,6 @@ img {
     box-sizing: border-box;
 }
 
-
 .buy-btn:hover, .del-btn:hover, .nav-btn:hover{
     background-color: transparent;
     border-color: #2f2a2d;
@@ -251,8 +252,6 @@ img {
     margin-top: 32px;
     font-weight: bold;
     display: inline-block;
-
-
 }
 .about {
     /* border: 1px solid #2f2a2d; */
@@ -297,18 +296,7 @@ img {
     background-color: #C0BED0;
     margin: 30px 80px;
     padding: 30px 30px;
-/*
-    justify-content: center;
-    align-items: center;
-*/
-        
 }
-/*
-
-.cart-table {
-    align: center;
-}
-*/
 
 .cart-table-footer {
     margin-top: 40px;
@@ -364,6 +352,27 @@ img {
 }
 /*************/
 /***Product***/
+
+.catalog-container {
+    display: flex;
+    justify-content: center;
+    background-image: url(../img/background.jpg);
+}
+
+.catalog {
+    width: 96%;
+    background-color: #C0BED0;
+    margin: 30px 80px;
+    padding: 30px 30px;
+}
+
+.nav2 {
+    height: 100px;
+    background-color: #C0BED0;
+    display: flex;
+    justify-content: center;
+    align-items:  center;
+}
 
 .product-info-container {
     display: flex;

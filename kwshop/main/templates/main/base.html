@@ -23,13 +23,15 @@
 <body>
     <header>
         <div class="logo">
-            <a href="/"> <img class="logo-img" src="{% static 'img/logo.png' %}" alt="logo"> </a>
+            <a href="/"> <img class="logo-img" src="{% static 'img/logo2.png' %}" alt="logo"> </a>
         </div>
         {% include 'main/includes/inc__main_nav.html' %}
         {% include 'main/includes/inc__cart.html' %}
     </header>
-    {% block navigation2 %} {% endblock %}
-    {% block main %} {% endblock %}
+
+    {% block main %}
+        {% block navigation2 %} {% endblock %}
+    {% endblock %}
     <footer>
         <div>
             <p>&copy Knitted World, 2020</p>

@@ -1,15 +1,24 @@
 {% load static %}
-<h1 class="products-title">Каталог игрушек</h1>
-<div class="products">
-        {% for item in products %}
-            <div class="product-item">
-                <img src={{item.img}} class="product-item-img" alt="Some img">
-                <div class="desc">
-                    <h3>{{item.product_name}}</h3>
-                    <p><strong>Цена: </strong>{{item.price}}₽</p>
-                    <button class="buy-btn" onclick="#">
-                    <i class="fas fa-shopping-cart"></i></button>
-                </div>
-            </div>
-        {% endfor %}
+
+{% block navigation2 %}
+     {% include 'main/includes/inc__nav2.html' %}
+{% endblock %}
+
+<div class="catalog-container">
+    <div class="catalog">
+        <h1 class="products-title">Каталог игрушек</h1>
+        <div class="products">
+                {% for item in products %}
+                    <div class="product-item">
+                        <img src={{item.img}} class="product-item-img" alt="Some img">
+                        <div class="desc">
+                            <h3>{{item.product_name}}</h3>
+                            <p><strong>Цена: </strong>{{item.price}}₽</p>
+                            <button class="buy-btn" onclick="#">
+                            <i class="fas fa-shopping-cart"></i></button>
+                        </div>
+                    </div>
+                {% endfor %}
+        </div>
+    </div>
 </div>
