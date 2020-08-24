@@ -9,6 +9,10 @@ class ProductCat(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории'
+
 class Product(models.Model):
     category = models.ForeignKey(ProductCat,
                                  on_delete=models.PROTECT,
@@ -20,6 +24,10 @@ class Product(models.Model):
     stuff = models.CharField(max_length=100, verbose_name='Материал', default='акриловые нитки, холофайбер')
     description = models.TextField(verbose_name='Описание', blank=True)
 
-
     def __str__(self):
         return f'{self.name}, категория: {self.category.title}'
+
+    class Meta:
+        verbose_name = 'Товар'
+        verbose_name_plural = 'Товары'
+
