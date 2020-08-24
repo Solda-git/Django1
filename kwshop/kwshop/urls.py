@@ -22,7 +22,7 @@ from kwshop import settings
 
 urlpatterns = [
     path('', include('main.urls', namespace='name')),
-    path('admin/', admin.site.urls, name = 'urls'),
+    path('admin/', admin.site.urls),
 ]
 
 if settings.DEBUG:
