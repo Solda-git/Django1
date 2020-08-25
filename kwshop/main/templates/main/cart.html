@@ -1,6 +1,8 @@
 {% extends 'main/base.html' %}
 {% load static %}
-{% block title %} {{block.super}}{{page_title|default:"КОРЗИНА"|title}} {% endblock %}
+{% block title %}
+    {{block.super}}{{page_title|default:"КОРЗИНА"|title}}
+{% endblock %}
 {% block main %}
     <main>
         <div class="cart-box-container">    

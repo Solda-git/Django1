@@ -38,14 +38,15 @@ def catalog(request):
     return render(request, 'main/catalog.html', context = context)
 
 def cart(request):
-    products = loads(extract("catalog.JSON"))
-    fixIMGURLs(products)
+    products = Product.objects.all()
+    categories = ProductCat.objects.all()
     cart = loads(extract("cart.JSON"))
     fixIMGURLs(cart)
     context = {
         'page_title': 'корзина',
         'cart': cart,
-        'products': products
+        'products': products,
+        'categories': categories,
     }
     return render(request, 'main/cart.html', context = context)
 
