@@ -5,11 +5,16 @@
                 Все категории
             </a>
         </button>
+
+        {% for cat in categories %}
         <button type="button" class="nav-btn">
             <a href="#">
-                Мультяшки
+                {{cat.title}}
             </a>
         </button>
+        {% endfor %}
+
+
         <button type="button" class="nav-btn">
             <a href="#">
                 Куклы

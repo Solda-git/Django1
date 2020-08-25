@@ -88,16 +88,76 @@
     }
 },
 {
+    "model": "main.productcat",
+    "pk": 3,
+    "fields": {
+        "title": "\u0416\u0438\u0432\u043e\u0442\u043d\u044b\u0435",
+        "description": "\u0416\u0438\u0432\u043e\u0442\u043d\u044b\u0435, \u0433\u0435\u0440\u043e\u0438 \u0432\u044f\u0437\u0430\u043d\u043d\u043e\u0433\u043e \u043c\u0438\u0440\u0430."
+    }
+},
+{
     "model": "main.product",
     "pk": 1,
     "fields": {
         "category": 1,
         "name": "\u041d\u044f\u043c \u0444\u0438\u043e\u043b\u0435\u0442\u043e\u0432\u044b\u0439",
         "price": "1000.00",
-        "img": "",
+        "img": "product_imgs/IMG_0159.jpg",
         "size": "15\u0441\u043c",
         "stuff": "\u0430\u043a\u0440\u0438\u043b\u043e\u0432\u044b\u0435 \u043d\u0438\u0442\u043a\u0438, \u0445\u043e\u043b\u043e\u0444\u0430\u0439\u0431\u0435\u0440",
-        "description": ""
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Adipiscing vitae proin sagittis nisl rhoncus. Nibh praesent tristique magna sit amet purus gravida. Nisi scelerisque eu ultrices vitae auctor eu augue ut. Fringilla urna porttitor rhoncus dolor purus non enim praesent. At in tellus integer feugiat. Amet volutpat consequat mauris nunc congue nisi vitae suscipit tellus. Diam vulputate ut pharetra sit. Turpis egestas integer eget aliquet nibh praesent tristique magna sit. Habitant morbi tristique senectus et netus."
+    }
+},
+{
+    "model": "main.product",
+    "pk": 2,
+    "fields": {
+        "category": 1,
+        "name": "\u041d\u044f\u043c \u0433\u043e\u043b\u0443\u0431\u043e\u0439",
+        "price": "1000.00",
+        "img": "product_imgs/IMG_0158.jpg",
+        "size": "15\u0441\u043c",
+        "stuff": "\u0430\u043a\u0440\u0438\u043b\u043e\u0432\u044b\u0435 \u043d\u0438\u0442\u043a\u0438, \u0445\u043e\u043b\u043e\u0444\u0430\u0439\u0431\u0435\u0440",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Adipiscing vitae proin sagittis nisl rhoncus. Nibh praesent tristique magna sit amet purus gravida. Nisi scelerisque eu ultrices vitae auctor eu augue ut. Fringilla urna porttitor rhoncus dolor purus non enim praesent. At in tellus integer feugiat. Amet volutpat consequat mauris nunc congue nisi vitae suscipit tellus. Diam vulputate ut pharetra sit. Turpis egestas integer eget aliquet nibh praesent tristique magna sit. Habitant morbi tristique senectus et netus."
+    }
+},
+{
+    "model": "main.product",
+    "pk": 3,
+    "fields": {
+        "category": 3,
+        "name": "\u041c\u0438\u0448\u043a\u0430",
+        "price": "3000.00",
+        "img": "product_imgs/IMG_0099.jpg",
+        "size": "35\u0441\u043c",
+        "stuff": "\u0430\u043a\u0440\u0438\u043b\u043e\u0432\u044b\u0435 \u043d\u0438\u0442\u043a\u0438, \u0445\u043e\u043b\u043e\u0444\u0430\u0439\u0431\u0435\u0440",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Adipiscing vitae proin sagittis nisl rhoncus. Nibh praesent tristique magna sit amet purus gravida. Nisi scelerisque eu ultrices vitae auctor eu augue ut. Fringilla urna porttitor rhoncus dolor purus non enim praesent. At in tellus integer feugiat. Amet volutpat consequat mauris nunc congue nisi vitae suscipit tellus. Diam vulputate ut pharetra sit. Turpis egestas integer eget aliquet nibh praesent tristique magna sit. Habitant morbi tristique senectus et netus."
+    }
+},
+{
+    "model": "main.product",
+    "pk": 4,
+    "fields": {
+        "category": 3,
+        "name": "\u041a\u043e\u0442 \u0441 \u043c\u044b\u0448\u043a\u043e\u0439",
+        "price": "4000.00",
+        "img": "product_imgs/IMG_0098.jpg",
+        "size": "30\u0441\u043c",
+        "stuff": "\u0430\u043a\u0440\u0438\u043b\u043e\u0432\u044b\u0435 \u043d\u0438\u0442\u043a\u0438, \u0445\u043e\u043b\u043e\u0444\u0430\u0439\u0431\u0435\u0440",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Adipiscing vitae proin sagittis nisl rhoncus. Nibh praesent tristique magna sit amet purus gravida. Nisi scelerisque eu ultrices vitae auctor eu augue ut. Fringilla urna porttitor rhoncus dolor purus non enim praesent. At in tellus integer feugiat. Amet volutpat consequat mauris nunc congue nisi vitae suscipit tellus. Diam vulputate ut pharetra sit. Turpis egestas integer eget aliquet nibh praesent tristique magna sit. Habitant morbi tristique senectus et netus."
+    }
+},
+{
+    "model": "main.product",
+    "pk": 5,
+    "fields": {
+        "category": 2,
+        "name": "\u0424\u0443\u0442\u0431\u043e\u043b\u0438\u0441\u0442",
+        "price": "2500.00",
+        "img": "product_imgs/IMG_0170.jpg",
+        "size": "30\u0441\u043c",
+        "stuff": "\u0430\u043a\u0440\u0438\u043b\u043e\u0432\u044b\u0435 \u043d\u0438\u0442\u043a\u0438, \u0445\u043e\u043b\u043e\u0444\u0430\u0439\u0431\u0435\u0440",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Adipiscing vitae proin sagittis nisl rhoncus. Nibh praesent tristique magna sit amet purus gravida. Nisi scelerisque eu ultrices vitae auctor eu augue ut. Fringilla urna porttitor rhoncus dolor purus non enim praesent. At in tellus integer feugiat. Amet volutpat consequat mauris nunc congue nisi vitae suscipit tellus. Diam vulputate ut pharetra sit. Turpis egestas integer eget aliquet nibh praesent tristique magna sit. Habitant morbi tristique senectus et netus."
     }
 },
 {
@@ -404,6 +464,240 @@
         "date_joined": "2020-08-24T22:26:02.819Z",
         "groups": [],
         "user_permissions": []
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+        "action_time": "2020-08-24T23:12:35.301Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "3",
+        "object_repr": "\u0416\u0438\u0432\u043e\u0442\u043d\u044b\u0435",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+        "action_time": "2020-08-24T23:12:49.196Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "1",
+        "object_repr": "\u041c\u0443\u043b\u044c\u0442\u044f\u0448\u043a\u0438",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+        "action_time": "2020-08-24T23:13:28.975Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "1",
+        "object_repr": "\u041d\u044f\u043c \u0444\u0438\u043e\u043b\u0435\u0442\u043e\u0432\u044b\u0439, \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044f: \u041c\u0443\u043b\u044c\u0442\u044f\u0448\u043a\u0438",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"description\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+        "action_time": "2020-08-24T23:14:16.874Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "2",
+        "object_repr": "\u041d\u044f\u043c \u0433\u043e\u043b\u0443\u0431\u043e\u0439, \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044f: \u041c\u0443\u043b\u044c\u0442\u044f\u0448\u043a\u0438",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+        "action_time": "2020-08-24T23:14:59.477Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "3",
+        "object_repr": "\u041c\u0438\u0448\u043a\u0430, \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044f: \u0416\u0438\u0432\u043e\u0442\u043d\u044b\u0435",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+        "action_time": "2020-08-24T23:15:28.712Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "4",
+        "object_repr": "\u041a\u043e\u0442 \u0441 \u043c\u044b\u0448\u043a\u043e\u0439, \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044f: \u0416\u0438\u0432\u043e\u0442\u043d\u044b\u0435",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+        "action_time": "2020-08-24T23:15:55.146Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "5",
+        "object_repr": "\u0424\u0443\u0442\u0431\u043e\u043b\u0438\u0441\u0442, \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044f: \u041a\u0443\u043a\u043b\u044b",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+        "action_time": "2020-08-24T23:28:53.054Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "5",
+        "object_repr": "\u0424\u0443\u0442\u0431\u043e\u043b\u0438\u0441\u0442, \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044f: \u041a\u0443\u043a\u043b\u044b",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"img\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+        "action_time": "2020-08-24T23:29:02.407Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "4",
+        "object_repr": "\u041a\u043e\u0442 \u0441 \u043c\u044b\u0448\u043a\u043e\u0439, \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044f: \u0416\u0438\u0432\u043e\u0442\u043d\u044b\u0435",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"img\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+        "action_time": "2020-08-24T23:29:10.965Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "3",
+        "object_repr": "\u041c\u0438\u0448\u043a\u0430, \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044f: \u0416\u0438\u0432\u043e\u0442\u043d\u044b\u0435",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"img\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+        "action_time": "2020-08-24T23:29:21.784Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "2",
+        "object_repr": "\u041d\u044f\u043c \u0433\u043e\u043b\u0443\u0431\u043e\u0439, \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044f: \u041c\u0443\u043b\u044c\u0442\u044f\u0448\u043a\u0438",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"img\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+        "action_time": "2020-08-24T23:29:29.194Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "1",
+        "object_repr": "\u041d\u044f\u043c \u0444\u0438\u043e\u043b\u0435\u0442\u043e\u0432\u044b\u0439, \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044f: \u041c\u0443\u043b\u044c\u0442\u044f\u0448\u043a\u0438",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"img\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 13,
+    "fields": {
+        "action_time": "2020-08-24T23:32:12.350Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "1",
+        "object_repr": "\u041d\u044f\u043c \u0444\u0438\u043e\u043b\u0435\u0442\u043e\u0432\u044b\u0439, \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044f: \u041c\u0443\u043b\u044c\u0442\u044f\u0448\u043a\u0438",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"img\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 14,
+    "fields": {
+        "action_time": "2020-08-24T23:32:21.928Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "1",
+        "object_repr": "\u041d\u044f\u043c \u0444\u0438\u043e\u043b\u0435\u0442\u043e\u0432\u044b\u0439, \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044f: \u041c\u0443\u043b\u044c\u0442\u044f\u0448\u043a\u0438",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"img\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 15,
+    "fields": {
+        "action_time": "2020-08-24T23:32:57.276Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "1",
+        "object_repr": "\u041d\u044f\u043c \u0444\u0438\u043e\u043b\u0435\u0442\u043e\u0432\u044b\u0439, \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044f: \u041c\u0443\u043b\u044c\u0442\u044f\u0448\u043a\u0438",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"img\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 16,
+    "fields": {
+        "action_time": "2020-08-24T23:33:14.071Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "1",
+        "object_repr": "\u041d\u044f\u043c \u0444\u0438\u043e\u043b\u0435\u0442\u043e\u0432\u044b\u0439, \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044f: \u041c\u0443\u043b\u044c\u0442\u044f\u0448\u043a\u0438",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"img\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 17,
+    "fields": {
+        "action_time": "2020-08-24T23:34:00.554Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "1",
+        "object_repr": "\u041d\u044f\u043c \u0444\u0438\u043e\u043b\u0435\u0442\u043e\u0432\u044b\u0439, \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044f: \u041c\u0443\u043b\u044c\u0442\u044f\u0448\u043a\u0438",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"img\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 18,
+    "fields": {
+        "action_time": "2020-08-24T23:35:31.349Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "1",
+        "object_repr": "\u041d\u044f\u043c \u0444\u0438\u043e\u043b\u0435\u0442\u043e\u0432\u044b\u0439, \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044f: \u041c\u0443\u043b\u044c\u0442\u044f\u0448\u043a\u0438",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"img\"]}}]"
     }
 }
 ]

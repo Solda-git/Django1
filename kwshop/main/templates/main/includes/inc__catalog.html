@@ -10,7 +10,7 @@
         <div class="products">
                 {% for item in products %}
                     <div class="product-item">
-                        <img src={{item.img}} class="product-item-img" alt="Some img">
+                        <img src="/media/{{item.img}}" class="product-item-img" alt="Some img">
                         <div class="desc">
                             <h3>{{item.product_name}}</h3>
                             <p><strong>Цена: </strong>{{item.price}}₽</p>
