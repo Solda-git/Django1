@@ -7,7 +7,7 @@ class ProductCat(models.Model):
     description = models.TextField(verbose_name='Описание', blank=True)
 
     def __str__(self):
-        return self.title
+        return f'{self.title}({self.description})'
 
     class Meta:
         verbose_name = 'Категория'
