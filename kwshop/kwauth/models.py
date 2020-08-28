@@ -5,4 +5,5 @@ from django.db import models
 
 
 class KWUser (AbstractUser):
-    pass
+    age = models.PositiveIntegerField(verbose_name='возраст', null=True)
+    avatar = models.ImageField(upload_to='users_ava', blank=True)
