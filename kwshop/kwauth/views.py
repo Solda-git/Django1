@@ -1,9 +1,17 @@
+from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render
 
 # Create your views here.
-def login(request):
-    pass
+from kwauth.forms import KWAuthenticationForm
 
+
+def login(request):
+    form = KWAuthenticationForm()
+    context = {
+        'title': 'аутентификация',
+        'form': form
+    }
+    return render(request, 'kwauth/login.html', context)
 
 def logout(request):
     pass

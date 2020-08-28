@@ -542,3 +542,7 @@ nav a {
     cursor: pointer;
 }
 /*************/
+
+.center {
+    text-align: center;
+}

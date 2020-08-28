@@ -1,0 +1,14 @@
+{% extends 'kwauth/base.html' %}
+{% block title %}
+    {{block.super}}{{title|default:"Login"|title}}
+{% endblock %}
+{% block container %}
+
+    <form method="post">
+        {{ form.as_p }}
+        <input class="form-control" type="submit" value="Войти">
+    </form>
+    <a href="{#% url 'kwauth:user_register' %#}" class="buy-btn form-control center">
+        Регистрация
+    </a>
+{% endblock %}
