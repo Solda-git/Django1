@@ -1,0 +1,47 @@
+[
+  {
+    "category": "Животные",
+    "name": "Мишка",
+    "price": 3000,
+    "img": "product_imgs/IMG_0099.jpg",
+    "size": "35см",
+    "stuff": "акриловые нитки, холофайбер",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Adipiscing vitae proin sagittis nisl rhoncus. Nibh praesent tristique magna sit amet purus gravida. Nisi scelerisque eu ultrices vitae auctor eu augue ut. Fringilla urna porttitor rhoncus dolor purus non enim praesent. At in tellus integer feugiat. Amet volutpat consequat mauris nunc congue nisi vitae suscipit tellus. Diam vulputate ut pharetra sit. Turpis egestas integer eget aliquet nibh praesent tristique magna sit. Habitant morbi tristique senectus et netus. " 
+  },
+  {
+    "category": "Мультяшки",
+    "name": "Ням фиолетовый",
+    "price": 1000,
+    "img": "product_imgs/IMG_0158.jpg",
+    "size": "15см",
+    "stuff": "акриловые нитки, холофайбер",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Adipiscing vitae proin sagittis nisl rhoncus. Nibh praesent tristique magna sit amet purus gravida. Nisi scelerisque eu ultrices vitae auctor eu augue ut. Fringilla urna porttitor rhoncus dolor purus non enim praesent. At in tellus integer feugiat. Amet volutpat consequat mauris nunc congue nisi vitae suscipit tellus. Diam vulputate ut pharetra sit. Turpis egestas integer eget aliquet nibh praesent tristique magna sit. Habitant morbi tristique senectus et netus. " 
+  },
+  {
+    "category": "Мультяшки",
+    "name": "Ням голубой",
+    "price": 1000,
+    "img": "product_imgs/IMG_0158.jpg",
+    "size": "15см",
+    "stuff": "акриловые нитки, холофайбер",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Adipiscing vitae proin sagittis nisl rhoncus. Nibh praesent tristique magna sit amet purus gravida. Nisi scelerisque eu ultrices vitae auctor eu augue ut. Fringilla urna porttitor rhoncus dolor purus non enim praesent. At in tellus integer feugiat. Amet volutpat consequat mauris nunc congue nisi vitae suscipit tellus. Diam vulputate ut pharetra sit. Turpis egestas integer eget aliquet nibh praesent tristique magna sit. Habitant morbi tristique senectus et netus. "   
+  },
+  {
+    "category": "Куклы",
+    "name": "Футболист",
+    "price": 2500,
+    "img": "product_imgs/IMG_0170.jpg",
+    "size": "30см",
+    "stuff": "акриловые нитки, холофайбер",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Adipiscing vitae proin sagittis nisl rhoncus. Nibh praesent tristique magna sit amet purus gravida. Nisi scelerisque eu ultrices vitae auctor eu augue ut. Fringilla urna porttitor rhoncus dolor purus non enim praesent. At in tellus integer feugiat. Amet volutpat consequat mauris nunc congue nisi vitae suscipit tellus. Diam vulputate ut pharetra sit. Turpis egestas integer eget aliquet nibh praesent tristique magna sit. Habitant morbi tristique senectus et netus. "  
+  },
+  {
+    "category": "Животные",
+    "name": "Кот с мышкой",  
+    "price": 4000,
+    "img": "product_imgs/IMG_0098.jpg",
+    "size": "30см",
+    "stuff": "акриловые нитки, холофайбер",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Adipiscing vitae proin sagittis nisl rhoncus. Nibh praesent tristique magna sit amet purus gravida. Nisi scelerisque eu ultrices vitae auctor eu augue ut. Fringilla urna porttitor rhoncus dolor purus non enim praesent. At in tellus integer feugiat. Amet volutpat consequat mauris nunc congue nisi vitae suscipit tellus. Diam vulputate ut pharetra sit. Turpis egestas integer eget aliquet nibh praesent tristique magna sit. Habitant morbi tristique senectus et netus. "  
+  }
+]
