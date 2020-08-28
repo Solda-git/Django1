@@ -1,3 +1,4 @@
 from django.contrib import admin
+from kwauth.models import KWUser
 
-# Register your models here.
+admin.site.register(KWUser)

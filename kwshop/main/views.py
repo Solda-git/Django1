@@ -6,21 +6,22 @@ from main.models import ProductCat, Product
 # Create your views here.
 
 def index(request):
-    products = loads(extract("catalog.JSON"))
-    fixIMGURLs(products)
+
+    # products load from DB
+    products = Product.objects.all()
+    categories = ProductCat.objects.all()
+
     cart = loads(extract("cart.JSON"))
     fixIMGURLs(cart)
     context = {
         'page_title': 'главная',
         'products': products,
+        'categories': categories,
         'cart': cart
     }
     return render(request, 'main/index.html', context = context)
 
 def catalog(request):
-    #from Lesson2 - to be deleted in the next branch
-    # products = loads(extract("catalog.JSON"))
-    # fixIMGURLs(products)
 
     # products load from DB
     products = Product.objects.all()
