@@ -1,0 +1,91 @@
+[
+{
+    "model": "main.productcat",
+    "pk": 1,
+    "fields": {
+        "title": "\u041c\u0443\u043b\u044c\u0442\u044f\u0448\u043a\u0438",
+        "description": "\u0413\u0435\u0440\u043e\u0438 \u043c\u0443\u043b\u044c\u0442\u0444\u0438\u043b\u044c\u043c\u043e\u0432, \u0432\u0438\u0434\u0435\u043e\u0438\u0433\u0440"
+    }
+},
+{
+    "model": "main.productcat",
+    "pk": 2,
+    "fields": {
+        "title": "\u041a\u0443\u043a\u043b\u044b",
+        "description": "\u041a\u0443\u043a\u043b\u044b, \u0432\u0435\u0441\u0435\u043b\u044b\u0435 \u0447\u0435\u043b\u043e\u0432\u0435\u0447\u043a\u0438, \u0433\u0435\u0440\u043e\u0438 \u0432\u044f\u0437\u0430\u043d\u043d\u043e\u0433\u043e \u043c\u0438\u0440\u0430."
+    }
+},
+{
+    "model": "main.productcat",
+    "pk": 3,
+    "fields": {
+        "title": "\u0416\u0438\u0432\u043e\u0442\u043d\u044b\u0435",
+        "description": "\u0416\u0438\u0432\u043e\u0442\u043d\u044b\u0435, \u0433\u0435\u0440\u043e\u0438 \u0432\u044f\u0437\u0430\u043d\u043d\u043e\u0433\u043e \u043c\u0438\u0440\u0430."
+    }
+},
+{
+    "model": "main.product",
+    "pk": 1,
+    "fields": {
+        "category": 1,
+        "name": "\u041d\u044f\u043c \u0444\u0438\u043e\u043b\u0435\u0442\u043e\u0432\u044b\u0439",
+        "price": "1000.00",
+        "img": "product_imgs/IMG_0159.jpg",
+        "size": "15\u0441\u043c",
+        "stuff": "\u0430\u043a\u0440\u0438\u043b\u043e\u0432\u044b\u0435 \u043d\u0438\u0442\u043a\u0438, \u0445\u043e\u043b\u043e\u0444\u0430\u0439\u0431\u0435\u0440",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Adipiscing vitae proin sagittis nisl rhoncus. Nibh praesent tristique magna sit amet purus gravida. Nisi scelerisque eu ultrices vitae auctor eu augue ut. Fringilla urna porttitor rhoncus dolor purus non enim praesent. At in tellus integer feugiat. Amet volutpat consequat mauris nunc congue nisi vitae suscipit tellus. Diam vulputate ut pharetra sit. Turpis egestas integer eget aliquet nibh praesent tristique magna sit. Habitant morbi tristique senectus et netus."
+    }
+},
+{
+    "model": "main.product",
+    "pk": 2,
+    "fields": {
+        "category": 1,
+        "name": "\u041d\u044f\u043c \u0433\u043e\u043b\u0443\u0431\u043e\u0439",
+        "price": "1000.00",
+        "img": "product_imgs/IMG_0158.jpg",
+        "size": "15\u0441\u043c",
+        "stuff": "\u0430\u043a\u0440\u0438\u043b\u043e\u0432\u044b\u0435 \u043d\u0438\u0442\u043a\u0438, \u0445\u043e\u043b\u043e\u0444\u0430\u0439\u0431\u0435\u0440",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Adipiscing vitae proin sagittis nisl rhoncus. Nibh praesent tristique magna sit amet purus gravida. Nisi scelerisque eu ultrices vitae auctor eu augue ut. Fringilla urna porttitor rhoncus dolor purus non enim praesent. At in tellus integer feugiat. Amet volutpat consequat mauris nunc congue nisi vitae suscipit tellus. Diam vulputate ut pharetra sit. Turpis egestas integer eget aliquet nibh praesent tristique magna sit. Habitant morbi tristique senectus et netus."
+    }
+},
+{
+    "model": "main.product",
+    "pk": 3,
+    "fields": {
+        "category": 3,
+        "name": "\u041c\u0438\u0448\u043a\u0430",
+        "price": "3000.00",
+        "img": "product_imgs/IMG_0099.jpg",
+        "size": "35\u0441\u043c",
+        "stuff": "\u0430\u043a\u0440\u0438\u043b\u043e\u0432\u044b\u0435 \u043d\u0438\u0442\u043a\u0438, \u0445\u043e\u043b\u043e\u0444\u0430\u0439\u0431\u0435\u0440",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Adipiscing vitae proin sagittis nisl rhoncus. Nibh praesent tristique magna sit amet purus gravida. Nisi scelerisque eu ultrices vitae auctor eu augue ut. Fringilla urna porttitor rhoncus dolor purus non enim praesent. At in tellus integer feugiat. Amet volutpat consequat mauris nunc congue nisi vitae suscipit tellus. Diam vulputate ut pharetra sit. Turpis egestas integer eget aliquet nibh praesent tristique magna sit. Habitant morbi tristique senectus et netus."
+    }
+},
+{
+    "model": "main.product",
+    "pk": 4,
+    "fields": {
+        "category": 3,
+        "name": "\u041a\u043e\u0442 \u0441 \u043c\u044b\u0448\u043a\u043e\u0439",
+        "price": "4000.00",
+        "img": "product_imgs/IMG_0098.jpg",
+        "size": "30\u0441\u043c",
+        "stuff": "\u0430\u043a\u0440\u0438\u043b\u043e\u0432\u044b\u0435 \u043d\u0438\u0442\u043a\u0438, \u0445\u043e\u043b\u043e\u0444\u0430\u0439\u0431\u0435\u0440",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Adipiscing vitae proin sagittis nisl rhoncus. Nibh praesent tristique magna sit amet purus gravida. Nisi scelerisque eu ultrices vitae auctor eu augue ut. Fringilla urna porttitor rhoncus dolor purus non enim praesent. At in tellus integer feugiat. Amet volutpat consequat mauris nunc congue nisi vitae suscipit tellus. Diam vulputate ut pharetra sit. Turpis egestas integer eget aliquet nibh praesent tristique magna sit. Habitant morbi tristique senectus et netus."
+    }
+},
+{
+    "model": "main.product",
+    "pk": 5,
+    "fields": {
+        "category": 2,
+        "name": "\u0424\u0443\u0442\u0431\u043e\u043b\u0438\u0441\u0442",
+        "price": "2500.00",
+        "img": "product_imgs/IMG_0170.jpg",
+        "size": "30\u0441\u043c",
+        "stuff": "\u0430\u043a\u0440\u0438\u043b\u043e\u0432\u044b\u0435 \u043d\u0438\u0442\u043a\u0438, \u0445\u043e\u043b\u043e\u0444\u0430\u0439\u0431\u0435\u0440",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Adipiscing vitae proin sagittis nisl rhoncus. Nibh praesent tristique magna sit amet purus gravida. Nisi scelerisque eu ultrices vitae auctor eu augue ut. Fringilla urna porttitor rhoncus dolor purus non enim praesent. At in tellus integer feugiat. Amet volutpat consequat mauris nunc congue nisi vitae suscipit tellus. Diam vulputate ut pharetra sit. Turpis egestas integer eget aliquet nibh praesent tristique magna sit. Habitant morbi tristique senectus et netus."
+    }
+}
+]

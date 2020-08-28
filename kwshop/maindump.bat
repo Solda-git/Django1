@@ -1,0 +1,1 @@
+..\venv\scripts\activate & python manage.py dumpdata --indent 4 main > main.json
