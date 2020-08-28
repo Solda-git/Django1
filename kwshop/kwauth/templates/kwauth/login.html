@@ -9,7 +9,7 @@
         {{ form.as_p }}
         <input class="form-control" type="submit" value="Войти">
     </form>
-    <a href="{#% url 'kwauth:user_register' %#}" class="buy-btn form-control center">
+    <a href="{% url 'auth:register' %}" class="buy-btn form-control center">
         Регистрация
     </a>
 {% endblock %}

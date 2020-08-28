@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
 from django.urls import reverse
-from kwauth.forms import KWAuthenticationForm
+from kwauth.forms import KWAuthenticationForm, KWProfileForm, KWRegisterForm
 
 
 def login(request):
@@ -26,11 +26,21 @@ def login(request):
         return render(request, 'kwauth/login.html', context)
 
 def logout(request):
-    pass
-
+    auth.logout(request)
+    return HttpResponseRedirect(reverse('main:index'))
 
 def register(request):
-    pass
+    form = KWRegisterForm
+    context = {
+        'title': 'регистрация',
+        'form': form
+    }
+    return render(request, 'kwauth/login.html', context)
 
 def profile(request):
-    pass
+    form = KWProfileForm
+    context = {
+        'title': 'профиль',
+        'form': form
+    }
+    return render(request, 'kwauth/login.html', context)

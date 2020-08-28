@@ -20,5 +20,18 @@
                 Контакты
             </a>
         </button>
+        {% if user.is_authenticated %}
+            <button type="button" class="nav-btn">
+                <a href="{% url 'auth:logout' %}">
+                    Выйти
+                </a>
+            </button>
+        {% else %}
+            <button type="button" class="nav-btn">
+                <a href="{% url 'auth:login' %}">
+                    Войти
+                </a>
+            </button>
+        {% endif%}
     </nav>
 </div>

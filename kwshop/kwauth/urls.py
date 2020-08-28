@@ -12,6 +12,5 @@ urlpatterns = [
     path('logout/', kwauth.logout, name='logout'),
     path('register/', kwauth.register, name='register'),
     path('profile/', kwauth.profile, name='profile'),
-
 ]
 
