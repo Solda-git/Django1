@@ -1,0 +1,12 @@
+{% extends 'kwauth/base.html' %}
+{% block title %}
+{{block.super}}{{title|default:"register"|title}}
+{% endblock %}
+{% block container %}
+
+<form method="post" enctype = "multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input class="buy-btn form-control center" type="submit" value="зарегистрировать">
+</form>
+{% endblock %}

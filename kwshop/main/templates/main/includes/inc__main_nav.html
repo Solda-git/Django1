@@ -22,6 +22,11 @@
         </button>
         {% if user.is_authenticated %}
             <button type="button" class="nav-btn">
+                <a href="{% url 'auth:profile' %}">
+                    Профиль
+                </a>
+            </button>
+            <button type="button" class="nav-btn">
                 <a href="{% url 'auth:logout' %}">
                     Выйти
                 </a>

@@ -1,15 +1,26 @@
 {% extends 'kwauth/base.html' %}
 {% block title %}
-    {{block.super}}{{title|default:"Login"|title}}
+{{block.super}}{{title|default:"Login"|title}}
 {% endblock %}
 {% block container %}
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input class="form-control" type="submit" value="Войти">
-    </form>
-    <a href="{% url 'auth:register' %}" class="buy-btn form-control center">
-        Регистрация
-    </a>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {% if title == 'аутентификация' %}
+        <input class="buy-btn form-control center" type="submit" value="Войти">
+        <a href="{% url 'auth:register' %}" class="buy-btn form-control center">
+            Регистрация
+        </a>
+    {% endif %}
+
+    {% if title == 'регистрация' %}
+        <input class="form-control" type="submit" value="Зарегистрироваться" class="buy-btn form-control center">
+    {% endif %}
+
+    {% if title == 'профиль' %}
+        <input class="form-control" type="submit" value="Сохранить" class="buy-btn form-control center">
+    {% endif %}
+
+</form>
 {% endblock %}

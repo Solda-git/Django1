@@ -15,8 +15,8 @@ def login(request):
             password = request.POST["password"]
             user = auth.authenticate(username=username, password=password)
             if user.is_active:
-                auth.login(request,user)
-                return HttpResponseRedirect(reverse('main:index'))
+                auth.login(request, user)
+                return HttpResponseRedirect(reverse("main:index"))
     elif request.method == 'GET':
         form = KWAuthenticationForm()
         context = {
@@ -27,20 +27,37 @@ def login(request):
 
 def logout(request):
     auth.logout(request)
-    return HttpResponseRedirect(reverse('main:index'))
+    print(request.headers)
+    return HttpResponseRedirect(request.headers["Referer"])
 
 def register(request):
-    form = KWRegisterForm
+
+    if request.method == 'POST':
+        form = KWRegisterForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('auth:login'))
+
+    else:
+        form = KWRegisterForm()
+
     context = {
         'title': 'регистрация',
-        'form': form
+        'form': form,
     }
-    return render(request, 'kwauth/login.html', context)
+    return render(request, 'kwauth/register.html', context)
 
 def profile(request):
-    form = KWProfileForm
+    if request.method == 'POST':
+        form = KWProfileForm(request.POST, request.FILES, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse("main:index"))
+    else:
+        form = KWProfileForm(instance=request.user)
     context = {
         'title': 'профиль',
         'form': form
     }
-    return render(request, 'kwauth/login.html', context)
+    return render(request, 'kwauth/profile.html', context)

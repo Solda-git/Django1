@@ -18,7 +18,7 @@ def load_table(file):
 
 
 class Command(BaseCommand):
-    help = 'Fill DB from catalog JSON'
+    help = 'This command fills application database from JSON catalog stored in "products.json" and "categories.json" files.'
 
     def handle(self, *args, **kwargs):
         Product.objects.all().delete()
