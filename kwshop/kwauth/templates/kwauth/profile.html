@@ -3,7 +3,9 @@
 {{block.super}}{{title|default:"register"|title}}
 {% endblock %}
 {% block container %}
-
+<div class="avatar">
+    <img src="/media/{{ user.avatar }}" class="avatar-img" alt="">
+</div>
 <form method="post" enctype = "multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
@@ -12,4 +14,5 @@
             Отмена
     </a>
 </form>
+
 {% endblock %}

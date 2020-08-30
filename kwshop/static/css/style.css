@@ -546,3 +546,7 @@ nav a {
 .center {
     text-align: center;
 }
+
+.avatar-img {
+    height: 200px;
+}
