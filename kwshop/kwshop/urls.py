@@ -23,6 +23,8 @@ from kwshop import settings
 urlpatterns = [
     path('', include('main.urls', namespace='name')),
     path('auth/', include('kwauth.urls', namespace='auth')),
+    path('cartbox/', include('cart.urls', namespace='cart')),
+
     path('admin/', admin.site.urls)
 ]
 
