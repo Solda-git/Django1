@@ -21,7 +21,7 @@ import main.views as main
 from kwshop import settings
 
 urlpatterns = [
-    path('', include('main.urls', namespace='name')),
+    path('', include('main.urls', namespace='main')),
     path('auth/', include('kwauth.urls', namespace='auth')),
     path('cartbox/', include('cart.urls', namespace='cart')),
 

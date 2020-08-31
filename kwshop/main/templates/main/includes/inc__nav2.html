@@ -1,14 +1,13 @@
 <div class="nav2">
     <nav>
         <button type="button" class="nav-btn">
-            <a href="#">
+            <a href="{% url 'main:category' pk=0 %}"">
                 Все категории
             </a>
         </button>
-
         {% for cat in categories %}
         <button type="button" class="nav-btn">
-            <a href="#">
+            <a href="{% url 'main:category' pk=cat.pk %}">
                 {{cat.title}}
             </a>
         </button>

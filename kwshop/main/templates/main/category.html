@@ -1,0 +1,8 @@
+{% extends 'main/base.html' %}
+{% block title %} {{block.super}}{{page_title|default:"КАТАЛОГ"|title}} {% endblock %}
+
+{% block main %}
+    <main>
+        {% include 'main/includes/inc__category.html' %}
+    </main>
+{% endblock %}
