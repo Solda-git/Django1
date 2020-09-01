@@ -23,16 +23,16 @@
                     <table class="cart-table cart-table-body"  align="center">
                         {% for cartItem in cart %}
                             <tr>
-                                <td class="t-img"><img src={{cartItem.img}} alt="Ням мал"> </td>
-                                <td class="t-pr-name">{{cartItem.product_name}}</td>
-                                <td class="t-pr-size">cartItem.size</td>
-                                <td class="t-price">{{cartItem.price}}₽</td>
+                                <td class="t-img"><img src="/media/{{cartItem.product.img}}" alt="Ням мал"> </td>
+                                <td class="t-pr-name">{{cartItem.product.name}}</td>
+                                <td class="t-pr-size">cartItem.product.size</td>
+                                <td class="t-price">{{cartItem.product.price}}₽</td>
                                 <td class="t-amount">
                                     <button type="button" onclick="#"> <i class="fas fa-chevron-circle-left"></i></button>
-                                    1
+                                    {{ cartItem.quantity }}
                                     <button type="button" onclick="#"> <i class="fas fa-chevron-circle-right"></i></button>
                                 </td>
-                                <td class="t-total">{{cartItem.total}}₽</td>
+                                <td class="t-total"> xxx ₽</td>
                                 <td class="t-delete" onclick="#"><i class="fas fa-times-circle"></i></td>
                             </tr>
                          {% endfor %}

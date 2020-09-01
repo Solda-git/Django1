@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from json import loads
+
+from cart.views import load_cart
 from kwshop import settings
 from main.models import ProductCat, Product
 
@@ -56,15 +58,17 @@ def category(request, pk):
 
 def cart(request):
     products = Product.objects.all()
-    cart = loads(extract("cart.JSON"))
-    fixIMGURLs(cart)
+    #cart = loads(extract("cart.JSON"))
+    cart = load_cart(request.user)
+    print(cart.product)
+    #fixIMGURLs(cart)
     context = {
         'page_title': 'корзина',
         'cart': cart,
         'products': products,
         'categories': get_menu2(),
     }
-    return render(request, 'main/cart.html', context = context)
+    return render(request, 'main/cart.html', context=context)
 
 def contact(request):
     cart = loads(extract("cart.JSON"))

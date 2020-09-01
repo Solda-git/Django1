@@ -8,6 +8,10 @@ from main.models import Product
 def index(request):
     pass
 
+
+def load_cart(user):
+    return CartItem.objects.select_related().filter(user=user)
+
 def add_item(request, pk):
     product = get_object_or_404(Product, pk=pk)
     cart = CartItem.objects.filter(user=request.user, product=product).first()
@@ -16,3 +20,4 @@ def add_item(request, pk):
     cart.quantity += 1
     cart.save()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
