@@ -555,3 +555,11 @@ nav a {
     width: 80%
     background-image: url(../img/background4.jpg);
 }
+
+.catalog-btn {
+    margin-top: 20px;
+    display: flex;
+    width: 60px;
+    align-items: center;
+    justify-content: center;
+}

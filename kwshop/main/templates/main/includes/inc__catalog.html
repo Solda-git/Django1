@@ -14,8 +14,9 @@
                         <div class="desc">
                             <h3>{{item.product_name}}</h3>
                             <p><strong>Цена: </strong>{{item.price}}₽</p>
-                            <button class="buy-btn" onclick="#">
-                            <i class="fas fa-shopping-cart"></i></button>
+                            <a href="{% url 'cart:add_item' item.pk %}" class="buy-btn catalog-btn">
+                                <i class="fas fa-shopping-cart"></i>
+                            </a>
                         </div>
                     </div>
                 {% endfor %}
