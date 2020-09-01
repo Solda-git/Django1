@@ -563,3 +563,7 @@ nav a {
     align-items: center;
     justify-content: center;
 }
+
+.cart-icon {
+    width: 50px;
+}

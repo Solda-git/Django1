@@ -15,8 +15,7 @@
                         {% for cartItem in cart %}
                             <div class="cart-item cart-item">
                                 <div class="product-bio">
-<!--                                    <img src="/media/{{cartItem.product.img}}" alt="Ням мал">-->
-                                        <img src="#">
+                                    <img src="/media/{{cartItem.product.img}}" class="cart-icon" alt="Ням мал">
                                     <div class="product-desc">
                                         <p class="product-title">{{cartItem.product.name|capfirst}}</p>
                                         <p class="product-quantity">Количество: {{cartItem.quantity}}</p>
