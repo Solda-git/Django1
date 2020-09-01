@@ -12,16 +12,14 @@ def get_menu2():
 
 def index(request):
 
-    # products load from DB
     products = Product.objects.all()
+    cartItems = load_cart(request.user)
 
-    cart = loads(extract("cart.JSON"))
-    fixIMGURLs(cart)
     context = {
         'page_title': 'главная',
         'products': products,
         'categories': get_menu2(),
-        'cart': cart
+        'cart': cartItems,
     }
     return render(request, 'main/index.html', context=context)
 
@@ -29,13 +27,11 @@ def catalog(request):
 
     products = Product.objects.all()
 
-    # cart loads from JSON - to be refactored
-    cart = loads(extract("cart.JSON"))
-    fixIMGURLs(cart)
+    cartItems = load_cart(request.user)
     context = {
         'page_title': 'каталог',
         'products': products,
-        'cart': cart,
+        'cart': cartItems,
         'categories': get_menu2(),
     }
     return render(request, 'main/catalog.html', context=context)
@@ -58,47 +54,46 @@ def category(request, pk):
 
 def cart(request):
     products = Product.objects.all()
-    #cart = loads(extract("cart.JSON"))
-    cart = load_cart(request.user)
-    print(cart.product)
-    #fixIMGURLs(cart)
+    cartItems = load_cart(request.user)
     context = {
         'page_title': 'корзина',
-        'cart': cart,
+        'cart': cartItems,
         'products': products,
         'categories': get_menu2(),
     }
     return render(request, 'main/cart.html', context=context)
 
 def contact(request):
-    cart = loads(extract("cart.JSON"))
-    fixIMGURLs(cart)
+    # cartItems = loads(extract("cart.JSON"))
+    # fixIMGURLs(cartItems)
+
+    cartItems = load_cart(request.user)
     context = {
         'page_title': 'обратная связь',
-        'cart': cart
+        'cart': cartItems
     }
-    return render(request, 'main/contact.html', context = context)
+    return render(request, 'main/contact.html', context=context)
 
 #####################################################################
-def extract(filename):
-    """
-    temporary function for working with JSON files while database access is not applied
-    :param filename: name of JSON file placed in 'BASE_DIR\main\JSON' directory
-    :return: JSON string to be parsed
-    """
-    handle = open(settings.BASE_DIR + "\main\JSON\\" + filename, "r", encoding="utf-8")
-    JSONbuffer = ''
-    for string in handle:
-        JSONbuffer += string
-    handle.close
-    return JSONbuffer
-
-def fixIMGURLs(obj):
-    """
-    adding dynamic behavior in static ursl from JSON
-    'obj' dictionary has to contain key item "img"
-    :param obj: JSON-generated object to be fixed
-    :return:
-    """
-    for item in obj:
-        item["img"] = settings.STATIC_URL + item["img"]
+# def extract(filename):
+#     """
+#     temporary function for working with JSON files while database access is not applied
+#     :param filename: name of JSON file placed in 'BASE_DIR\main\JSON' directory
+#     :return: JSON string to be parsed
+#     """
+#     handle = open(settings.BASE_DIR + "\main\JSON\\" + filename, "r", encoding="utf-8")
+#     JSONbuffer = ''
+#     for string in handle:
+#         JSONbuffer += string
+#     handle.close
+#     return JSONbuffer
+#
+# def fixIMGURLs(obj):
+#     """
+#     adding dynamic behavior in static ursl from JSON
+#     'obj' dictionary has to contain key item "img"
+#     :param obj: JSON-generated object to be fixed
+#     :return:
+#     """
+#     for item in obj:
+#         item["img"] = settings.STATIC_URL + item["img"]

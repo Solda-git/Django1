@@ -10,7 +10,8 @@ def index(request):
 
 
 def load_cart(user):
-    return CartItem.objects.select_related().filter(user=user)
+    cart = CartItem.objects.select_related().filter(user=user)
+    return cart
 
 def add_item(request, pk):
     product = get_object_or_404(Product, pk=pk)

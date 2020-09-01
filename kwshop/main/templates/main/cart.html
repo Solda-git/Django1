@@ -24,9 +24,9 @@
                         {% for cartItem in cart %}
                             <tr>
                                 <td class="t-img"><img src="/media/{{cartItem.product.img}}" alt="Ням мал"> </td>
-                                <td class="t-pr-name">{{cartItem.product.name}}</td>
-                                <td class="t-pr-size">cartItem.product.size</td>
-                                <td class="t-price">{{cartItem.product.price}}₽</td>
+                                <td class="t-pr-name">{{ cartItem.product.name }}</td>
+                                <td class="t-pr-size">{{ cartItem.product.size }}</td>
+                                <td class="t-price">{{ cartItem.product.price }}₽</td>
                                 <td class="t-amount">
                                     <button type="button" onclick="#"> <i class="fas fa-chevron-circle-left"></i></button>
                                     {{ cartItem.quantity }}
