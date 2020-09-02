@@ -11,9 +11,20 @@ def index(request):
 
 
 def load_cart(user):
-    return CartItem.objects.select_related().filter(user=user).annotate(
+    cartItems = CartItem.objects.select_related().filter(user=user).annotate(
         cost=ExpressionWrapper(F('quantity')*F('product__price'), output_field=DecimalField())
     )
+    amount = cost = 0
+    for item in cartItems:
+        amount += item.quantity
+        cost += item.cost
+    cart = {
+        'cartItems': cartItems,
+        'cartItemsAmount': amount,
+        'cartCost': cost,
+    }
+    return cart
+
 
 def add_item(request, pk):
     product = get_object_or_404(Product, pk=pk)
@@ -23,4 +34,3 @@ def add_item(request, pk):
     cart.quantity += 1
     cart.save()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-

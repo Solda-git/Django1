@@ -13,7 +13,7 @@ def get_menu2():
 def index(request):
 
     products = Product.objects.all()
-    cartItems = load_cart(request.user)
+    cartItems = load_cart(request.user)["cartItems"]
 
     context = {
         'page_title': 'главная',
@@ -27,7 +27,7 @@ def catalog(request):
 
     products = Product.objects.all()
 
-    cartItems = load_cart(request.user)
+    cartItems = load_cart(request.user)["cartItems"]
     context = {
         'page_title': 'каталог',
         'products': products,
@@ -43,21 +43,27 @@ def category(request, pk):
     else:
         cat = get_object_or_404(ProductCat, pk=pk)
         products = Product.objects.filter(category=cat)
-
+    cartItems = load_cart (request.user)["cartItems"]
     context = {
         'page_title': 'каталог',
         'categories': get_menu2(),
         'category': cat,
         'products': products,
+        'cart': cartItems,
     }
     return render(request, 'main/catalog.html', context=context)
 
 def cart(request):
     products = Product.objects.all()
-    cartItems = load_cart(request.user)
+    cart_items = load_cart(request.user)["cartItems"]
+    cart_amount = load_cart(request.user)["cartItemsAmount"]
+    cart_cost = load_cart(request.user)["cartCost"]
+
     context = {
         'page_title': 'корзина',
-        'cart': cartItems,
+        'cart': cart_items,
+        'cost': cart_amount,
+        'amount': cart_cost,
         'products': products,
         'categories': get_menu2(),
     }
@@ -67,33 +73,9 @@ def contact(request):
     # cartItems = loads(extract("cart.JSON"))
     # fixIMGURLs(cartItems)
 
-    cartItems = load_cart(request.user)
+    cart_items = load_cart(request.user)["cartItems"]
     context = {
         'page_title': 'обратная связь',
-        'cart': cartItems
+        'cart': cart_items,
     }
     return render(request, 'main/contact.html', context=context)
-
-#####################################################################
-# def extract(filename):
-#     """
-#     temporary function for working with JSON files while database access is not applied
-#     :param filename: name of JSON file placed in 'BASE_DIR\main\JSON' directory
-#     :return: JSON string to be parsed
-#     """
-#     handle = open(settings.BASE_DIR + "\main\JSON\\" + filename, "r", encoding="utf-8")
-#     JSONbuffer = ''
-#     for string in handle:
-#         JSONbuffer += string
-#     handle.close
-#     return JSONbuffer
-#
-# def fixIMGURLs(obj):
-#     """
-#     adding dynamic behavior in static ursl from JSON
-#     'obj' dictionary has to contain key item "img"
-#     :param obj: JSON-generated object to be fixed
-#     :return:
-#     """
-#     for item in obj:
-#         item["img"] = settings.STATIC_URL + item["img"]

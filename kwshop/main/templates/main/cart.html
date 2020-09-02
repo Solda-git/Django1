@@ -30,7 +30,10 @@
                                 <td class="t-amount">
                                     <button type="button" onclick="#"> <i class="fas fa-chevron-circle-left"></i></button>
                                     {{ cartItem.quantity }}
-                                    <button type="button" onclick="#"> <i class="fas fa-chevron-circle-right"></i></button>
+<!--                                    <button type="button" onclick="#"> <i class="fas fa-chevron-circle-right"></i></button>-->
+                                    <a href="{% url 'cart:add_item' cartItem.product.pk %}">
+                                        <i class="fas fa-chevron-circle-right"></i>
+                                    </a>
                                 </td>
                                 <td class="t-total"> {{ cartItem.cost|floatformat:2 }} ₽</td>
                                 <td class="t-delete" onclick="#"><i class="fas fa-times-circle"></i></td>
@@ -52,8 +55,8 @@
                         <td class="t-t-pr-name t-footer"></td>
                         <td class="t-pr-size t-footer"></td>
                         <td class="t-price t-footer"></td>
-                        <td class="t-amount t-footer">3</td>
-                        <td class="t-total t-footer">8000₽</td>
+                        <td class="t-amount t-footer">{{ cost }}</td>
+                        <td class="t-total t-footer">{{ amount|floatformat:2 }}₽</td>
                         <td class="t-delete t-footer"><button type="button" class="buy-btn">Оформить</button></td>
                     </tr>
                </table>
