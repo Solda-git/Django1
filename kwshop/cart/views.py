@@ -1,3 +1,4 @@
+from django.db.models import ExpressionWrapper, F, DecimalField
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 
@@ -10,8 +11,9 @@ def index(request):
 
 
 def load_cart(user):
-    cart = CartItem.objects.select_related().filter(user=user)
-    return cart
+    return CartItem.objects.select_related().filter(user=user).annotate(
+        cost=ExpressionWrapper(F('quantity')*F('product__price'), output_field=DecimalField())
+    )
 
 def add_item(request, pk):
     product = get_object_or_404(Product, pk=pk)

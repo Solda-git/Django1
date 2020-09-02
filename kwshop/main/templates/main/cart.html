@@ -32,7 +32,7 @@
                                     {{ cartItem.quantity }}
                                     <button type="button" onclick="#"> <i class="fas fa-chevron-circle-right"></i></button>
                                 </td>
-                                <td class="t-total"> xxx ₽</td>
+                                <td class="t-total"> {{ cartItem.cost|floatformat:2 }} ₽</td>
                                 <td class="t-delete" onclick="#"><i class="fas fa-times-circle"></i></td>
                             </tr>
                          {% endfor %}
