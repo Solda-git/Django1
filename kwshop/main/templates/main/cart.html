@@ -30,7 +30,6 @@
                                 <td class="t-amount">
                                     <button type="button" onclick="#"> <i class="fas fa-chevron-circle-left"></i></button>
                                     {{ cartItem.quantity }}
-<!--                                    <button type="button" onclick="#"> <i class="fas fa-chevron-circle-right"></i></button>-->
                                     <a href="{% url 'cart:add_item' cartItem.product.pk %}">
                                         <i class="fas fa-chevron-circle-right"></i>
                                     </a>
