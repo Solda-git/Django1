@@ -15,8 +15,11 @@ def get_menu2():
 
 
 def get_hot_product():
-    products = Product.objects.all()
-    return random.choice(products)
+    products_id = Product.objects.values_list(flat=True)
+    hot_product_id = random.choice(products_id)
+    return Product.objects.get(pk=hot_product_id)
+
+
 
 def index(request):
 
