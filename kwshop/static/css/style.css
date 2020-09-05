@@ -52,7 +52,7 @@ button:focus{
 }
 
 .btn-cart{
-    background-color: #4a4568;;
+    background-color: #4a4568;
     padding: 10px 20px;
     border: 1px solid transparent;
     color: #fafafa;
@@ -570,4 +570,9 @@ nav a {
 
 a.del-btn {
   padding-top: 0px;
+}
+
+.cartSum > h2 {
+    color: #4a4568;
+    margin-left: 10px;
 }

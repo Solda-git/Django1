@@ -16,7 +16,7 @@ def index(request):
     cartItems = None
     products = Product.objects.all()
     if request.user.is_authenticated:
-        cartItems = load_cart(request.user)["cartItems"]
+        cartItems = load_cart(request.user)#["cartItems"]
 
     context = {
         'page_title': 'главная',
@@ -31,7 +31,7 @@ def catalog(request):
     cartItems = None
     products = Product.objects.all()
     if request.user.is_authenticated:
-        cartItems = load_cart(request.user)["cartItems"]
+        cartItems = load_cart(request.user)#["cartItems"]
     context = {
         'page_title': 'каталог',
         'products': products,
@@ -50,7 +50,7 @@ def category(request, pk):
         cat = get_object_or_404(ProductCat, pk=pk)
         products = Product.objects.filter(category=cat)
     if request.user.is_authenticated:
-        cartItems = load_cart(request.user)["cartItems"]
+        cartItems = load_cart(request.user)#["cartItems"]
     context = {
         'page_title': 'каталог',
         'categories': get_menu2(),
@@ -64,15 +64,11 @@ def category(request, pk):
 @login_required
 def cart(request):
     products = Product.objects.all()
-    cart_items = load_cart(request.user)["cartItems"]
-    cart_amount = load_cart(request.user)["cartItemsAmount"]
-    cart_cost = load_cart(request.user)["cartCost"]
+    cart_items = load_cart(request.user) #["cartItems"]
 
     context = {
         'page_title': 'корзина',
         'cart': cart_items,
-        'cost': cart_amount,
-        'amount': cart_cost,
         'products': products,
         'categories': get_menu2(),
     }
@@ -82,7 +78,7 @@ def cart(request):
 def contact(request):
     cart_items = None
     if request.user.is_authenticated:
-        cart_items = load_cart(request.user)["cartItems"]
+        cart_items = load_cart(request.user) #["cartItems"]
     context = {
         'page_title': 'обратная связь',
         'cart': cart_items,

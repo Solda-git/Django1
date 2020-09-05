@@ -7,7 +7,7 @@
         </button>
     </form>
     {% if user.is_authenticated %}
-        <div>
+    <div>
         <button class="btn-cart" type="button" onclick="hideCart()">
             <i class="fas fa-shopping-cart"></i>
         </button>
@@ -25,10 +25,10 @@
                 </div>
                 <div class="right-block">
                     <p class="product-price">{{ cartItem.cost|floatformat:2 }}₽</p>
-<!--                    <button class="del-btn">&times;</button>-->
-                     <a href="{% url 'cart:del_items' cartItem.pk %} " class="del-btn">
-                         x
-                     </a>
+                    <!--                    <button class="del-btn">&times;</button>-->
+                    <a href="{% url 'cart:del_items' cartItem.pk %} " class="del-btn">
+                        x
+                    </a>
                 </div>
             </div>
             {% endfor %}
@@ -36,6 +36,12 @@
             <p>Корзина пуста</p>
             {% endif %}
         </div>
+
     </div>
+    <div class="cartSum">
+        <h2>{{ user.cartCost|floatformat:"0" }}&nbsp₽</h2>
+    </div>
+
     {% endif%}
 </div>
+
