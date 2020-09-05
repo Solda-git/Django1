@@ -11,9 +11,13 @@ def index(request):
     pass
 
 def load_cart(user):
-    cartItems = CartItem.objects.select_related().filter(user=user).annotate(
-        cost=ExpressionWrapper(F('quantity')*F('product__price'), output_field=DecimalField())
+    # cartItems = CartItem.objects.select_related().filter(user=user).annotate(
+    #     cost=ExpressionWrapper(F('quantity')*F('product__price'), output_field=DecimalField())
+    # )
+    cartItems = user.cartitem_set.all().annotate(
+        cost=ExpressionWrapper(F('quantity') * F('product__price'), output_field=DecimalField())
     )
+
     amount = cost = 0
     for item in cartItems:
         amount += item.quantity
