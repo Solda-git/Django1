@@ -25,7 +25,10 @@
                 </div>
                 <div class="right-block">
                     <p class="product-price">{{ cartItem.cost|floatformat:2 }}₽</p>
-                    <button class="del-btn">&times;</button>
+<!--                    <button class="del-btn">&times;</button>-->
+                     <a href="{% url 'cart:del_items' cartItem.pk %} " class="del-btn">
+                         x
+                     </a>
                 </div>
             </div>
             {% endfor %}

@@ -1,69 +1,75 @@
 {% extends 'main/base.html' %}
 {% load static %}
 {% block title %}
-    {block.super}}{{page_title|default:"КОРЗИНА"|title}}{{block.super}}{{page_title|default:"КОРЗИНА"|title}}
+{block.super}}{{page_title|default:"КОРЗИНА"|title}}{{block.super}}{{page_title|default:"КОРЗИНА"|title}}
 {% endblock %}
 {% block main %}
-    <main>
-        <div class="cart-box-container">    
-            <div class="cart-box">
-                <h2>КОРЗИНА</h2>
-                {% if cart %}
-                    <table class="cart-table cart-table-header" align="center">
-                        <tr>
-                            <td class="t-img t-header">Товар</td>
-                            <td class="t-pr-name"></td>
-                            <td class="t-pr-size t-header">Размер</td>
-                            <td class="t-price t-header">Цена</td>
-                            <td class="t-amount t-header">Количество</td>
-                            <td class="t-total t-header">Стоимость</td>
-                            <td class="t-delete">Удалить</td>
-                        </tr>
-                    </table>
-                    <table class="cart-table cart-table-body"  align="center">
-                        {% for cartItem in cart %}
-                            <tr>
-                                <td class="t-img"><img src="/media/{{cartItem.product.img}}" alt="Ням мал"> </td>
-                                <td class="t-pr-name">{{ cartItem.product.name }}</td>
-                                <td class="t-pr-size">{{ cartItem.product.size }}</td>
-                                <td class="t-price">{{ cartItem.product.price }}₽</td>
-                                <td class="t-amount">
-                                    <button type="button" onclick="#"> <i class="fas fa-chevron-circle-left"></i></button>
-                                    {{ cartItem.quantity }}
-                                    <a href="{% url 'cart:add_item' cartItem.product.pk %}">
-                                        <i class="fas fa-chevron-circle-right"></i>
-                                    </a>
-                                </td>
-                                <td class="t-total"> {{ cartItem.cost|floatformat:2 }} ₽</td>
-                                <td class="t-delete" onclick="#"><i class="fas fa-times-circle"></i></td>
-                            </tr>
-                         {% endfor %}
-                    </table>
-                    <table class="cart-table cart-table-footer"   align="center">
-                    <tr>
-                        <td class="t-img t-footer-h"></td>
-                        <td class="t-pr-name t-footer-h"></td>
-                        <td class="t-pr-size t-footer-h"></td>
-                        <td class="t-price t-footer-h"></td>
-                        <td class="t-amount t-footer-h">Всего покупок:</td>
-                        <td class="t-total t-footer-h">На сумму:</td>
-                        <td class="t-delete t-footer-h"></td>
-                    </tr>  
-                    <tr>
-                        <td class="t-img t-footer"></td>
-                        <td class="t-t-pr-name t-footer"></td>
-                        <td class="t-pr-size t-footer"></td>
-                        <td class="t-price t-footer"></td>
-                        <td class="t-amount t-footer">{{ cost }}</td>
-                        <td class="t-total t-footer">{{ amount|floatformat:2 }}₽</td>
-                        <td class="t-delete t-footer"><button type="button" class="buy-btn">Оформить</button></td>
-                    </tr>
-               </table>
-                {% else %}
-                    <h3>Корзина пуста</h3>
-                {% endif %}
-            </div>
+<main>
+    <div class="cart-box-container">
+        <div class="cart-box">
+            <h2>КОРЗИНА</h2>
+            {% if cart %}
+            <table class="cart-table cart-table-header" align="center">
+                <tr>
+                    <td class="t-img t-header">Товар</td>
+                    <td class="t-pr-name"></td>
+                    <td class="t-pr-size t-header">Размер</td>
+                    <td class="t-price t-header">Цена</td>
+                    <td class="t-amount t-header">Количество</td>
+                    <td class="t-total t-header">Стоимость</td>
+                    <td class="t-delete">Удалить</td>
+                </tr>
+            </table>
+            <table class="cart-table cart-table-body" align="center">
+                {% for cartItem in cart %}
+                <tr>
+                    <td class="t-img"><img src="/media/{{cartItem.product.img}}" alt="Ням мал"></td>
+                    <td class="t-pr-name">{{ cartItem.product.name }}</td>
+                    <td class="t-pr-size">{{ cartItem.product.size }}</td>
+                    <td class="t-price">{{ cartItem.product.price }}₽</td>
+                    <td class="t-amount">
+                        <button type="button" onclick="#"><i class="fas fa-chevron-circle-left"></i></button>
+                        {{ cartItem.quantity }}
+                        <a href="{% url 'cart:add_item' cartItem.product.pk %}">
+                            <i class="fas fa-chevron-circle-right"></i>
+                        </a>
+                    </td>
+                    <td class="t-total"> {{ cartItem.cost|floatformat:2 }} ₽</td>
+                    <td class="t-delete">
+                        <a href="{% url 'cart:del_items' cartItem.pk %} ">
+                            <i class="fas fa-times-circle"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+            <table class="cart-table cart-table-footer" align="center">
+                <tr>
+                    <td class="t-img t-footer-h"></td>
+                    <td class="t-pr-name t-footer-h"></td>
+                    <td class="t-pr-size t-footer-h"></td>
+                    <td class="t-price t-footer-h"></td>
+                    <td class="t-amount t-footer-h">Всего покупок:</td>
+                    <td class="t-total t-footer-h">На сумму:</td>
+                    <td class="t-delete t-footer-h"></td>
+                </tr>
+                <tr>
+                    <td class="t-img t-footer"></td>
+                    <td class="t-t-pr-name t-footer"></td>
+                    <td class="t-pr-size t-footer"></td>
+                    <td class="t-price t-footer"></td>
+                    <td class="t-amount t-footer">{{ cost }}</td>
+                    <td class="t-total t-footer">{{ amount|floatformat:2 }}₽</td>
+                    <td class="t-delete t-footer">
+                        <button type="button" class="buy-btn">Оформить</button>
+                    </td>
+                </tr>
+            </table>
+            {% else %}
+            <h3>Корзина пуста</h3>
+            {% endif %}
         </div>
-        {% include 'main/includes/inc__catalog.html' %}
-    </main>
+    </div>
+    {% include 'main/includes/inc__catalog.html' %}
+</main>
 {% endblock %}
