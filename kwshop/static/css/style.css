@@ -353,7 +353,7 @@ img {
 /*************/
 /***Product***/
 
-.catalog-container {
+.catalog-container, hot-product-container {
     display: flex;
     justify-content: center;
     background-image: url(../img/background.jpg);
@@ -376,10 +376,11 @@ img {
 
 .product-info-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: #2f2a2d;
-    padding: 20px 0px 20px 0px;
+    padding: 40px 0px 40px 0px;
     /* border: 1 solid #fafafa; */
     background-image: url(../img/background.jpg);
 }
@@ -575,4 +576,31 @@ a.del-btn {
 .cartSum > h2 {
     color: #4a4568;
     margin-left: 10px;
+}
+
+.cat-link {
+    width: 180px;
+    margin-top: 40px;
+    box-sizing: border-box;
+}
+
+/*.hot-product-container  {*/
+/*    width: 50%;*/
+/*    justify-self: center;.*/
+/*    justify-content: center;*/
+/*    flex-direction: column;*/
+/*}*/
+
+
+.hot-product {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #C0BED0;
+    margin: 30px 80px;
+}
+
+.hot-title {
+    color: red;
 }

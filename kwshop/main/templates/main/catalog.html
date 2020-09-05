@@ -2,7 +2,26 @@
 {% block title %} {{block.super}}{{page_title|default:"КАТАЛОГ"|title}} {% endblock %}
 
 {% block main %}
-    <main>
-        {% include 'main/includes/inc__catalog.html' %}
-    </main>
+<main>
+    {% if  category is None %}
+    <div class="hot-product-container">
+        <div class="hot-product">
+        <h1 class="hot-title"> Горячее предложение </h1>
+            <div class="product-item">
+                <a href="{% url 'main:product' hot_product.pk %}" class="">
+                    <img src="/media/{{ hot_product.img }}" class="product-item-img" alt="Some img">
+                </a>
+                <div class="desc">
+                    <h3>{{ hot_product.name }}</h3>
+                    <p><strong>Цена: </strong>{{hot_product.price}}₽</p>
+                    <a href="{% url 'cart:add_item' hot_product.pk %}" class="buy-btn catalog-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% include 'main/includes/inc__catalog.html' %}
+</main>
 {% endblock %}

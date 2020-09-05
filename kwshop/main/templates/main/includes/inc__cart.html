@@ -39,7 +39,7 @@
 
     </div>
     <div class="cartSum">
-        <h2>{{ user.cartCost|floatformat:"0" }}&nbsp₽</h2>
+        <h2>{{ user.cartCost|floatformat:"0" }} ₽ ( {{user.cartItemsAmount}} шт.)</h2>
     </div>
 
     {% endif%}
