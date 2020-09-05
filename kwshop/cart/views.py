@@ -14,7 +14,7 @@ def load_cart(user):
     # cartItems = CartItem.objects.select_related().filter(user=user).annotate(
     #     cost=ExpressionWrapper(F('quantity')*F('product__price'), output_field=DecimalField())
     # )
-    cartItems = user.cartitem_set.all().annotate(
+    cartItems = user.cart.all().annotate(
         cost=ExpressionWrapper(F('quantity') * F('product__price'), output_field=DecimalField())
     )
 
