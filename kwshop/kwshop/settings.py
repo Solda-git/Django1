@@ -132,3 +132,5 @@ AUTH_USER_MODEL = 'kwauth.KWUser'
 
 JSON_PATH = 'main/JSON'
 
+LOGIN_URL = '/auth/login/'
+

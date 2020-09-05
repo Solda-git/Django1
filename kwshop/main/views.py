@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
 from json import loads
 
@@ -12,8 +13,10 @@ def get_menu2():
 
 def index(request):
 
+    cartItems = None
     products = Product.objects.all()
-    cartItems = load_cart(request.user)["cartItems"]
+    if request.user.is_authenticated:
+        cartItems = load_cart(request.user)["cartItems"]
 
     context = {
         'page_title': 'главная',
@@ -23,11 +26,12 @@ def index(request):
     }
     return render(request, 'main/index.html', context=context)
 
+
 def catalog(request):
-
+    cartItems = None
     products = Product.objects.all()
-
-    cartItems = load_cart(request.user)["cartItems"]
+    if request.user.is_authenticated:
+        cartItems = load_cart(request.user)["cartItems"]
     context = {
         'page_title': 'каталог',
         'products': products,
@@ -36,14 +40,17 @@ def catalog(request):
     }
     return render(request, 'main/catalog.html', context=context)
 
+
 def category(request, pk):
+    cartItems = None
     if pk == 0:
         products = Product.objects.all()
         cat = 0
     else:
         cat = get_object_or_404(ProductCat, pk=pk)
         products = Product.objects.filter(category=cat)
-    cartItems = load_cart (request.user)["cartItems"]
+    if request.user.is_authenticated:
+        cartItems = load_cart(request.user)["cartItems"]
     context = {
         'page_title': 'каталог',
         'categories': get_menu2(),
@@ -53,6 +60,8 @@ def category(request, pk):
     }
     return render(request, 'main/catalog.html', context=context)
 
+
+@login_required
 def cart(request):
     products = Product.objects.all()
     cart_items = load_cart(request.user)["cartItems"]
@@ -69,11 +78,11 @@ def cart(request):
     }
     return render(request, 'main/cart.html', context=context)
 
-def contact(request):
-    # cartItems = loads(extract("cart.JSON"))
-    # fixIMGURLs(cartItems)
 
-    cart_items = load_cart(request.user)["cartItems"]
+def contact(request):
+    cart_items = None
+    if request.user.is_authenticated:
+        cart_items = load_cart(request.user)["cartItems"]
     context = {
         'page_title': 'обратная связь',
         'cart': cart_items,

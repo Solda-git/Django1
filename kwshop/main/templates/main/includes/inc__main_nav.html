@@ -10,11 +10,13 @@
                 Каталог
             </a>
         </button>
-        <button type="button" class="nav-btn">
-            <a href="{% url 'main:cart' %}">
-                Корзина
-            </a>
-        </button>
+         {% if user.is_authenticated %}
+            <button type="button" class="nav-btn">
+                <a href="{% url 'main:cart' %}">
+                    Корзина
+                </a>
+            </button>
+        {% endif %}
         <button type="button" class="nav-btn">
             <a href="{% url 'main:contact' %}">
                 Контакты

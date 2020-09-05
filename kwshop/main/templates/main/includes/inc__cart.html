@@ -1,36 +1,38 @@
 {% load static %}
 <div class="cart">
-            <form action="#" class="search-form">
-                <input type="text" class="search-field">
-                <button class="btn-search" type="submit">
-                    <i class="fas fa-search"></i>
-                </button>
-            </form>
-            <div>
-                <button class="btn-cart" type="button" onclick="hideCart()">
-                    <i class="fas fa-shopping-cart"></i>
-                </button>
-                <div class="cart-block invisible">
-                    {% if cart%}
-                        {% for cartItem in cart %}
-                            <div class="cart-item cart-item">
-                                <div class="product-bio">
-                                    <img src="/media/{{cartItem.product.img}}" class="cart-icon" alt="Ням мал">
-                                    <div class="product-desc">
-                                        <p class="product-title">{{cartItem.product.name|capfirst}}</p>
-                                        <p class="product-quantity">Количество: {{cartItem.quantity}}</p>
-                                        <p class="product-single-price">{{cartItem.product.price}}₽ за единицу</p>
-                                    </div>
-                                </div>
-                                <div class="right-block">
-                                    <p class="product-price">{{ cartItem.cost|floatformat:2 }}₽</p>
-                                    <button class="del-btn">&times;</button>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    {% else %}
-                        <p>Корзина пуста</p>
-                    {% endif %}
+    <form action="#" class="search-form">
+        <input type="text" class="search-field">
+        <button class="btn-search" type="submit">
+            <i class="fas fa-search"></i>
+        </button>
+    </form>
+    {% if user.is_authenticated %}
+        <div>
+        <button class="btn-cart" type="button" onclick="hideCart()">
+            <i class="fas fa-shopping-cart"></i>
+        </button>
+        <div class="cart-block invisible">
+            {% if cart%}
+            {% for cartItem in cart %}
+            <div class="cart-item cart-item">
+                <div class="product-bio">
+                    <img src="/media/{{cartItem.product.img}}" class="cart-icon" alt="Ням мал">
+                    <div class="product-desc">
+                        <p class="product-title">{{cartItem.product.name|capfirst}}</p>
+                        <p class="product-quantity">Количество: {{cartItem.quantity}}</p>
+                        <p class="product-single-price">{{cartItem.product.price}}₽ за единицу</p>
+                    </div>
+                </div>
+                <div class="right-block">
+                    <p class="product-price">{{ cartItem.cost|floatformat:2 }}₽</p>
+                    <button class="del-btn">&times;</button>
                 </div>
             </div>
+            {% endfor %}
+            {% else %}
+            <p>Корзина пуста</p>
+            {% endif %}
         </div>
+    </div>
+    {% endif%}
+</div>
