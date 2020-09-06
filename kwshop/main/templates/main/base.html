@@ -7,8 +7,7 @@
     <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    <script defer scr="{% static 'js/cart.js' %}"></script>
-
+    <script src="{% static 'js/cart.js' %}"></script>
 </head>
 <body>
     <header>
@@ -54,8 +53,8 @@
         <div>
             <p>Авторские работы Дарьи Скороглядовой</p>
         </div>
-        {% static 'js/cart.js' %}
-        {% static 'css/style.css' %}
+
+        {{ STATICFILES_DIRS }}
     </footer>
 </body>
 </html>

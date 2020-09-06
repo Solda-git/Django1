@@ -7,7 +7,7 @@ window.onload = () => {
 }
 
 function hideCart() {
-    el = document.querySelector('.cart-block');
+    let el = document.querySelector('.cart-block');
     if (el.classList.contains("invisible")) {
         el.classList.remove("invisible")
     }
