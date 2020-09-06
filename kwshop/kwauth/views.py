@@ -25,28 +25,27 @@ def login(request):
         }
         return render(request, 'kwauth/login.html', context)
 
+
 def logout(request):
     auth.logout(request)
     print(request.headers)
     return HttpResponseRedirect(request.headers["Referer"])
 
-def register(request):
 
+def register(request):
     if request.method == 'POST':
         form = KWRegisterForm(request.POST, request.FILES)
-
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse('auth:login'))
-
     else:
         form = KWRegisterForm()
-
     context = {
         'title': 'регистрация',
         'form': form,
     }
     return render(request, 'kwauth/register.html', context)
+
 
 def profile(request):
     if request.method == 'POST':

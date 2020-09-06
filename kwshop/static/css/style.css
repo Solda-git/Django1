@@ -151,6 +151,12 @@ img {
     box-sizing: border-box;
 }
 
+.active {
+   background-color: #C0BED0;
+   color: #474747;
+   outline: 1px
+}
+
 .buy-btn:hover, .del-btn:hover, .nav-btn:hover{
     background-color: transparent;
     border-color: #2f2a2d;
@@ -583,14 +589,6 @@ a.del-btn {
     margin-top: 40px;
     box-sizing: border-box;
 }
-
-/*.hot-product-container  {*/
-/*    width: 50%;*/
-/*    justify-self: center;.*/
-/*    justify-content: center;*/
-/*    flex-direction: column;*/
-/*}*/
-
 
 .hot-product {
     display: flex;

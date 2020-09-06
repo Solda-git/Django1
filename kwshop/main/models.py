@@ -1,6 +1,5 @@
 from django.db import models
 
-# Create your models here.
 
 class ProductCat(models.Model):
     title = models.CharField(max_length=100, verbose_name='Категория')
@@ -12,6 +11,7 @@ class ProductCat(models.Model):
     class Meta:
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
+
 
 class Product(models.Model):
     category = models.ForeignKey(ProductCat,

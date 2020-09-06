@@ -58,8 +58,8 @@
                     <td class="t-t-pr-name t-footer"></td>
                     <td class="t-pr-size t-footer"></td>
                     <td class="t-price t-footer"></td>
-                    <td class="t-amount t-footer">{{ user.cartCost }}</td>
-                    <td class="t-total t-footer">{{ user.cartItemsAmount|floatformat:2 }}₽</td>
+                    <td class="t-amount t-footer">{{ user.cartItemsAmount }}</td>
+                    <td class="t-total t-footer">{{ user.cartCost|floatformat:2 }} ₽</td>
                     <td class="t-delete t-footer">
                         <button type="button" class="buy-btn">Оформить</button>
                     </td>

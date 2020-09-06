@@ -1,44 +1,48 @@
 <div class="navigation">
     <nav>
         <button type="button" class="nav-btn">
-            <a href="{% url 'main:index' %}">
+            <a href="{% url 'main:index' %}"
+               class="{% if request.resolver_match.url_name == 'index' %} active {% endif %}">
                 Главная
             </a>
         </button>
         <button type="button" class="nav-btn">
-            <a href="{% url 'main:catalog' %}">
+            <a href="{% url 'main:catalog' %}"
+               class="{% if request.resolver_match.url_name == 'catalog' %} active {% endif %}">
                 Каталог
             </a>
         </button>
-         {% if user.is_authenticated %}
-            <button type="button" class="nav-btn">
-                <a href="{% url 'main:cart' %}">
-                    Корзина
-                </a>
-            </button>
+        {% if user.is_authenticated %}
+        <button type="button" class="nav-btn">
+            <a href="{% url 'main:cart' %}"
+               class="{% if request.resolver_match.url_name == 'cart' %} active {% endif %}">
+                Корзина
+            </a>
+        </button>
         {% endif %}
         <button type="button" class="nav-btn">
-            <a href="{% url 'main:contact' %}">
+            <a href="{% url 'main:contact' %}"
+               class="{% if request.resolver_match.url_name == 'contact' %} active {% endif %}">
                 Контакты
             </a>
         </button>
         {% if user.is_authenticated %}
-            <button type="button" class="nav-btn">
-                <a href="{% url 'auth:profile' %}">
-                    Профиль
-                </a>
-            </button>
-            <button type="button" class="nav-btn">
-                <a href="{% url 'auth:logout' %}">
-                    Выйти
-                </a>
-            </button>
+        <button type="button" class="nav-btn">
+            <a href="{% url 'auth:profile' %}">
+                Профиль
+            </a>
+        </button>
+        <button type="button" class="nav-btn">
+            <a href="{% url 'auth:logout' %}">
+                Выйти
+            </a>
+        </button>
         {% else %}
-            <button type="button" class="nav-btn">
-                <a href="{% url 'auth:login' %}">
-                    Войти
-                </a>
-            </button>
+        <button type="button" class="nav-btn">
+            <a href="{% url 'auth:login' %}">
+                Войти
+            </a>
+        </button>
         {% endif%}
     </nav>
 </div>

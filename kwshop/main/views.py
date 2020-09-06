@@ -8,7 +8,6 @@ from cart.views import load_cart
 from kwshop import settings
 from main.models import ProductCat, Product
 
-# Create your views here.
 
 def get_menu2():
     return ProductCat.objects.all()
@@ -20,14 +19,11 @@ def get_hot_product():
     return Product.objects.get(pk=hot_product_id)
 
 
-
 def index(request):
-
     cartItems = None
     products = Product.objects.all()
     if request.user.is_authenticated:
         cartItems = load_cart(request.user)
-
     context = {
         'page_title': 'главная',
         'products': products,
@@ -77,7 +73,6 @@ def category(request, pk):
 def cart(request):
     products = Product.objects.all()
     cart_items = load_cart(request.user)
-
     context = {
         'page_title': 'корзина',
         'cart': cart_items,
@@ -108,5 +103,5 @@ def product (request, pk):
         'cart': cart_items,
         'product': productItem,
     }
-
     return render(request, 'main/product.html', context=context)
+

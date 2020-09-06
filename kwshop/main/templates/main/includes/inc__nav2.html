@@ -1,14 +1,16 @@
 <div class="nav2">
     <nav>
         <button type="button" class="nav-btn">
-            <a href="{% url 'main:category' pk=0 %}">
+            <a href="{% url 'main:category' pk=0 %}"
+               class="{% if request.resolver_match.kwargs.pk == 0 %} active {% endif %}">
                 Все категории
             </a>
         </button>
         {% for cat in categories %}
         <button type="button" class="nav-btn">
-            <a href="{% url 'main:category' pk=cat.pk %}">
-                {{cat.title}}
+            <a href="{% url 'main:category' pk=cat.pk %}"
+                class="{% if request.resolver_match.kwargs.pk == cat.pk %} active {% endif %}">
+                 {{cat.title}}
             </a>
         </button>
         {% endfor %}
