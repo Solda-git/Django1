@@ -8,7 +8,7 @@
         </button>
         <button type="button" class="nav-btn">
             <a href="{% url 'main:catalog' %}"
-               class="{% if request.resolver_match.url_name == 'catalog' %} active {% endif %}">
+               class="{% if request.resolver_match.url_name == 'catalog'  or request.resolver_match.url_name == 'category' %} active {% endif %}">
                 Каталог
             </a>
         </button>
