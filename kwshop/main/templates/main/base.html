@@ -7,17 +7,7 @@
     <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    <script>
-        function hideCart() {
-            el = document.querySelector('.cart-block');
-            if (el.classList.contains("invisible")) {
-                el.classList.remove("invisible")
-            }
-            else {
-                el.classList.add("invisible");
-            }
-        }
-    </script>
+    <script defer scr="{% static 'js/cart.js' %}"></script>
 
 </head>
 <body>
@@ -64,6 +54,8 @@
         <div>
             <p>Авторские работы Дарьи Скороглядовой</p>
         </div>
+        {% static 'js/cart.js' %}
+        {% static 'css/style.css' %}
     </footer>
 </body>
 </html>

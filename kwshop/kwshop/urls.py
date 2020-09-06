@@ -24,7 +24,6 @@ urlpatterns = [
     path('', include('main.urls', namespace='main')),
     path('auth/', include('kwauth.urls', namespace='auth')),
     path('cartbox/', include('cart.urls', namespace='cart')),
-
     path('admin/', admin.site.urls)
 ]
 
