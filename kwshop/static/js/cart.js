@@ -5,9 +5,12 @@ window.onload = () => {
     document.querySelectorAll('.minus')
         .forEach(item => {
             item.addEventListener("click", event => {
-                console.log(event.target);
-
-
+                const request = new XMLHttpRequest();
+                const url = `/cart/change/${event.currentTarget.getAttribute('item')}/quantity/${parseInt(event.currentTarget.getAttribute('quantity'))-1}/`;
+                console.log(url);
+                fetch(url)
+                    .then(result => (console.log(result)))
+                    .catch(error => (console.log(error)));
             });
         });
 }
