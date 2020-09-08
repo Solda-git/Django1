@@ -1,7 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.db.models import ExpressionWrapper, F, DecimalField
-from django.http import HttpResponseRedirect, JsonResponse
+from django.http import HttpResponseRedirect, JsonResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404
+from django.template.loader import render_to_string
 from django.urls import reverse
 
 from cart.models import CartItem
@@ -53,14 +54,16 @@ def edit_items(request, pk, quantity):
             item.quantity = quantity
             item.save()
 
-        cart = load_cart()
+        cart = load_cart(request.user)
 
-        data = {
+        context = {
             'cart': cart,
-            'cart_cost': request.user.cartItemsAmounts(),
+            'cart_cost': request.user.cartItemsAmount(),
             'cart_quantity': request.user.cartCost(),
         }
-        return JsonResponse (data)
+        data = render_to_string('main/includes/inc__cart_body.html', context)
+        return HttpResponse(data)
+
 
 
 

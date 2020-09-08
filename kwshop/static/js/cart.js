@@ -6,9 +6,13 @@ window.onload = () => {
         .forEach(item => {
             item.addEventListener("click", event => {
                 const request = new XMLHttpRequest();
-                const url = `/cart/change/${event.currentTarget.getAttribute('item')}/quantity/${parseInt(event.currentTarget.getAttribute('quantity'))-1}/`;
+                const url = `/cartbox/change/${event.currentTarget.getAttribute('item')}/quantity/${parseInt(event.currentTarget.getAttribute('quantity'))-1}/`;
                 console.log(url);
-                fetch(url)
+                fetch(url,{
+                    headers: {
+                        "X-Requested-With": "XMLHttpRequest"
+                    },
+                })
                     .then(result => (console.log(result)))
                     .catch(error => (console.log(error)));
             });
