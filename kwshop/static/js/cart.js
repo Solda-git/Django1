@@ -2,6 +2,14 @@
 
 window.onload = () => {
     console.log("DOM loaded");
+    document.querySelectorAll('.minus')
+        .forEach(item => {
+            item.addEventListener("click", event => {
+                console.log(event.target);
+
+
+            });
+        });
 }
 
 function hideCart() {

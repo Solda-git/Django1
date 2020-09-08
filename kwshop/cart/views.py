@@ -27,7 +27,6 @@ def add_item(request, pk):
                 kwargs={'pk': pk}
             )
         )
-
     product = get_object_or_404 (Product, pk=pk)
     cart = CartItem.objects.filter (user=request.user, product=product).first ()
     if not cart:

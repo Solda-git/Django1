@@ -28,7 +28,7 @@
                     <td class="t-pr-size">{{ cartItem.product.size }}</td>
                     <td class="t-price">{{ cartItem.product.price }}₽</td>
                     <td class="t-amount">
-                        <button type="button" onclick="#"><i class="fas fa-chevron-circle-left"></i></button>
+                        <button class="minus {{cartItem.id}}" type="button"><i class="fas fa-chevron-circle-left"></i></button>
                         {{ cartItem.quantity }}
                         <a href="{% url 'cart:add_item' cartItem.product.pk %}">
                             <i class="fas fa-chevron-circle-right"></i>
