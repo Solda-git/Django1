@@ -2,8 +2,6 @@
 
 window.onload = () => {
     console.log("DOM loaded");
-    alert('From script');
-
 }
 
 function hideCart() {
