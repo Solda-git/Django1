@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import ExpressionWrapper, F, DecimalField
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
+from django.urls import reverse
 
 from cart.models import CartItem
 from main.models import Product
@@ -18,6 +19,15 @@ def load_cart(user):
 
 @login_required
 def add_item(request, pk):
+
+    if 'login' in request.META.get('HTTP_REFERER'):
+        return HttpResponseRedirect (
+            reverse (
+                'main:product',
+                kwargs={'pk': pk}
+            )
+        )
+
     product = get_object_or_404 (Product, pk=pk)
     cart = CartItem.objects.filter (user=request.user, product=product).first ()
     if not cart:

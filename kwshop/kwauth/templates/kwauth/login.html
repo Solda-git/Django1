@@ -6,6 +6,9 @@
 
 <form method="post">
     {% csrf_token %}
+    {% if next %}
+        <input type="hidden" name="next_url" value="{{ next }}">
+    {% endif %}
     {{ form.as_p }}
     {% if title == 'аутентификация' %}
         <input class="buy-btn form-control center" type="submit" value="Войти">
