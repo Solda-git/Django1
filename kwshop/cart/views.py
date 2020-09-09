@@ -63,6 +63,7 @@ def edit_items(request, pk, quantity):
         }
         data = render_to_string('main/includes/inc__cart_body.html', context)
         return HttpResponse(data)
+        # return JsonResponse('result': data)
 
 
 
