@@ -23,7 +23,7 @@
         });
 }*/
 
-
+666
 window.onload = () => {
     console.log("DOM loaded");
     document.querySelectorAll('.minus')
