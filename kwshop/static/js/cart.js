@@ -33,9 +33,18 @@ window.onload = () => {
 }
 
 function eventHandler(event) {
+    let newQuantity = 0
+    if (event.currentTarget.className == 'minus') {
+        newQuantity = parseInt(event.currentTarget.getAttribute('quantity')) - 1
+    }
+    if (event.currentTarget.className == 'plus') {
+        newQuantity = parseInt(event.currentTarget.getAttribute('quantity')) + 1
+    }
+
     const request = new XMLHttpRequest();
-    const url = `/cartbox/change/${event.currentTarget.getAttribute('item')}/quantity/${parseInt(event.currentTarget.getAttribute('quantity'))-1}/`;
+    const url = `/cartbox/change/${event.currentTarget.getAttribute('item')}/quantity/${newQuantity}/`;
     console.log(url);
+    console.log(event.currentTarget.className);
     fetch(url,{
         headers: {
             "X-Requested-With": "XMLHttpRequest",
@@ -46,6 +55,8 @@ function eventHandler(event) {
         .then(data => {
             document.getElementById("cart-box").innerHTML = data;
             document.querySelectorAll('.minus').forEach(item =>
+                item.addEventListener("click", eventHandler));
+            document.querySelectorAll('.plus').forEach(item =>
                 item.addEventListener("click", eventHandler));
             }
         )

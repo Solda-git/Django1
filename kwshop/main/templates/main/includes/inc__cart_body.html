@@ -22,9 +22,11 @@
             <button class="minus" item="{{cartItem.id}}" quantity="{{cartItem.quantity}}" type="button"><i
                     class="fas fa-chevron-circle-left"></i></button>
             {{ cartItem.quantity }}
-            <a href="{% url 'cart:add_item' cartItem.product.pk %}">
-                <i class="fas fa-chevron-circle-right"></i>
-            </a>
+            <!--            <a href="{% url 'cart:add_item' cartItem.product.pk %}">-->
+            <!--                <i class="fas fa-chevron-circle-right"></i>-->
+            <!--            </a>-->
+            <button class="plus" item="{{cartItem.id}}" quantity="{{cartItem.quantity}}" type="button"><i
+                    class="fas fa-chevron-circle-right"></i></button>
         </td>
         <td class="t-total"> {{ cartItem.cost|floatformat:2 }} ₽</td>
         <td class="t-delete">
