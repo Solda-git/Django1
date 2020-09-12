@@ -32,6 +32,13 @@
                 Профиль
             </a>
         </button>
+        {% if user.is_superuser %}
+        <button type="button" class="nav-btn">
+            <a href="{% url 'kwadmin:index' %}">
+                Админка
+            </a>
+        </button>
+         {% endif %}
         <button type="button" class="nav-btn">
             <a href="{% url 'auth:logout' %}">
                 Выйти
@@ -43,6 +50,6 @@
                 Войти
             </a>
         </button>
-        {% endif%}
+        {% endif %}
     </nav>
 </div>
