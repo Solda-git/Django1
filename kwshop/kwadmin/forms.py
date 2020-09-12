@@ -10,12 +10,11 @@ from kwauth.models import KWUser
 class KWAdminUserCreateForm (UserCreationForm):
     class Meta:
         model = get_user_model()
-        # fields = (
-        #     'username', 'first_name', 'last_name', 'age', 'sex', 'avatar'
-        #     # 'email', 'password1', 'password2', 'is_staff', 'is_superuser'
-        # )
+        fields = (
+             'username', 'first_name', 'last_name', 'age', 'sex', 'avatar',
+              'email', 'password1', 'password2', 'is_staff', 'is_superuser'
+        )
 
-        fields = ['username', 'first_name', 'last_name']
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():

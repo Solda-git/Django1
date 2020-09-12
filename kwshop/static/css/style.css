@@ -641,3 +641,29 @@ header.admin {
 .nav-btn a:hover {
     color: #2f2a2d;
 }
+.admin-add-user {
+    width: 1000px;
+    display: flex;
+    justify-content: center;
+}
+
+.form-control{
+    width: 100%
+}
+
+.form-btn{
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.save-btn, .back-btn {
+    width: 150px;
+    margin: 0 auto;
+}
+
+.add-user-btn
+{
+    margin-top: 20px;
+}

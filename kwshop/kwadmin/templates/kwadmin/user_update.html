@@ -3,17 +3,18 @@
 
 {% block main %}
 <div class="admin-container">
-    Создание/редактирование
-    <div class="admin-content">
-        <form method="post" enctype="multipart/form-data">
-            форма
+    <div class="admin-add-user">
+        <form class="add-user-form" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ user_form.as_p }}
-            <input class="nav-btn" type="submit" value="Cохранить">
+            <div class="form-btn">
+                <input class="nav-btn save-btn" type="submit" value="Cохранить">
+                <button type="button" class="nav-btn back-btn">
+                    <a href="{% url 'kwadmin:index' %}"> Назад </a>
+                </button>
+            </div>
         </form>
-        <button type="button" class="nav-btn">
-            <a href="{% url 'kwadmin:index' %}"> Назад </a>
-        </button>
+
     </div>
 </div>
 {% endblock %}

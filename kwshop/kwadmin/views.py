@@ -25,8 +25,8 @@ def user_create(request):
         if user_form.is_valid():
             user_form.save()
             return HttpResponseRedirect(reverse('kwadmin:index'))
-        else:
-            user_form = KWAdminUserCreateForm()
+    else:
+        user_form = KWAdminUserCreateForm()
     context = {
         'title': 'новый пользователь',
         'user_form': user_form,
