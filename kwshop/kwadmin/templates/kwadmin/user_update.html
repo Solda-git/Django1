@@ -1,0 +1,19 @@
+{% extends 'kwadmin/base.html' %}
+{% block title %} {{ block.super }}{{ title|default:"пользователи"|title }} {% endblock %}
+
+{% block main %}
+<div class="admin-container">
+    Создание/редактирование
+    <div class="admin-content">
+        <form method="post" enctype="multipart/form-data">
+            форма
+            {% csrf_token %}
+            {{ user_form.as_p }}
+            <input class="nav-btn" type="submit" value="Cохранить">
+        </form>
+        <button type="button" class="nav-btn">
+            <a href="{% url 'kwadmin:index' %}"> Назад </a>
+        </button>
+    </div>
+</div>
+{% endblock %}
