@@ -1,5 +1,5 @@
 """kwshop URL Configuration
-    main application
+    authentication application
 """
 
 from django.urls import path

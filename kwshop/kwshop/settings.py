@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'main',
     'kwauth',
     'cart',
+    'kwadmin',
 ]
 
 MIDDLEWARE = [

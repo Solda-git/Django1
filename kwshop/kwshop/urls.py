@@ -21,12 +21,14 @@ import main.views as main
 from kwshop import settings
 
 urlpatterns = [
-    path('', include('main.urls', namespace='main')),
-    path('auth/', include('kwauth.urls', namespace='auth')),
-    path('cartbox/', include('cart.urls', namespace='cart')),
-    path('admin/', admin.site.urls)
+    path ('', include ('main.urls', namespace='main')),
+    path ('auth/', include ('kwauth.urls', namespace='auth')),
+    path ('cartbox/', include ('cart.urls', namespace='cart')),
+    path ('kwadmin/', include ('kwadmin.urls', namespace='kwadmin')),
+
+    path ('admin/', admin.site.urls)
 ]
 
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL,
-                          document_root=settings.MEDIA_ROOT)
+    urlpatterns += static (settings.MEDIA_URL,
+                           document_root=settings.MEDIA_ROOT)

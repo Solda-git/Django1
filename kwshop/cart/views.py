@@ -19,11 +19,9 @@ def load_cart(user):
     )
 
 
-
 @login_required
 def add_item(request, pk):
-
-    if 'login' in request.META.get('HTTP_REFERER'):
+    if 'login' in request.META.get ('HTTP_REFERER'):
         return HttpResponseRedirect (
             reverse (
                 'main:product',
@@ -39,33 +37,23 @@ def add_item(request, pk):
     return HttpResponseRedirect (request.META.get ('HTTP_REFERER'))
 
 
-# def delete_item(request, cartitem_pk):  # decrement - to be added further
-#     pass
-
 @login_required
 def edit_items(request, pk, quantity):
-    print('is_ajax:', request.is_ajax())
-    if request.is_ajax():
-        item = CartItem.objects.get(pk=pk)
-
+    if request.is_ajax ():
+        item = CartItem.objects.get (pk=pk)
         if quantity == 0:
-            item.delete()
+            item.delete ()
         else:
             item.quantity = quantity
-            item.save()
-
-        cart = load_cart(request.user)
-
+            item.save ()
+        cart = load_cart (request.user)
         context = {
             'cart': cart,
-            'cart_cost': request.user.cartItemsAmount(),
-            'cart_quantity': request.user.cartCost(),
+            'cart_cost': request.user.cartItemsAmount (),
+            'cart_quantity': request.user.cartCost (),
         }
-        data = render_to_string('main/includes/inc__cart_body.html', context)
-        return HttpResponse(data)
-        # return JsonResponse('result': data)
-
-
+        data = render_to_string ('main/includes/inc__cart_body.html', context=context, request=request)
+        return HttpResponse (data)
 
 
 @login_required
