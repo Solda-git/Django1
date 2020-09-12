@@ -1,0 +1,63 @@
+{% extends 'kwadmin/base.html' %}
+{% block title %} {{ block.super }}{{ title|default:"пользователи"|title }} {% endblock %}
+
+{% block main %}
+<div class="admin-container">
+    <div class="admin-content">
+        <table class="admin-table">
+            {% for kwuser in object_list %}
+            <tr>
+                <td><img src="/media/{{ kwuser.avatar }}" alt="{{ kwuser.name }}"></td>
+                <td>
+                    <p>{{ kwuser.name }}</p>
+                    <p>
+                        {% if kwuser.firstname %}
+                        {{ kwuser.firstname }}
+                        {% endif %}
+                        {% if kwuser.firstname %}
+                        {{ kwuser.firstname }}
+                        {% endif %}
+                    </p>
+                </td>
+                <td><strong>Тип пользователя:</strong>
+                    <p>
+                        {% if kwuser.is_superuser %}
+                        администратор
+                        {% else %}
+                        пользователь
+                        {% endif %}
+                </td>
+                <td><strong>Возраст:</strong>
+                    <p> {{ kwuser.age }} лет</td>
+                <td><strong>Пол:</strong>
+                    <p> {{ kwuser.sex }}</td>
+                <td><strong> email: </strong> {{ kwuser.email }}</td>
+                <td><strong>Последний вход:</strong>
+                    <p> {{ kwuser.last_login}}</td>
+                <td>
+                    <div class="admin-conf">
+                        <button type="button" class="nav-btn">
+                            <a href="#">
+                                Редактировать
+                            </a>
+                        </button>
+                        <button type="button" class="nav-btn">
+                            <a href="#">
+                                Удалить
+                            </a>
+                        </button>
+                    </div>
+                </td>
+            <tr>
+                {% endfor %}
+        </table>
+    </div>
+    <div class="add-user">
+        <button type="button" class="nav-btn">
+            <a href="#">
+                Добавить пользователя
+            </a>
+        </button>
+    </div>
+</div>
+{% endblock %}

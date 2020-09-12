@@ -1,0 +1,20 @@
+<div class="nav2">
+    <nav>
+        <button type="button" class="nav-btn">
+            <a href="{% url 'main:index' %}">
+                На сайт
+            </a>
+        </button>
+        <button type="button" class="nav-btn">
+            <a href="#">
+<!--               class="{% if request.resolver_match.url_name == 'catalog'  or request.resolver_match.url_name == 'category' %} active {% endif %}">-->
+                Пользователи
+            </a>
+        </button>
+        <button type="button" class="buy-btn">
+            <a href="#">
+                Каталог
+            </a>
+        </button>
+    </nav>
+</div>
