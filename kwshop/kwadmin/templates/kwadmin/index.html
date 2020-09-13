@@ -42,11 +42,13 @@
                                 Редактировать
                             </a>
                         </button>
+                        {% if kwuser.is_active %}
                         <button type="button" class="nav-btn">
                             <a href="{% url 'kwadmin:user_delete' pk=kwuser.pk %}">
                                 Удалить
                             </a>
                         </button>
+                        {% endif %}
                     </div>
                 </td>
             <tr>
