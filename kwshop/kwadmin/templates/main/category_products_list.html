@@ -1,0 +1,52 @@
+{% extends 'kwadmin/base.html' %}
+{% block title %} {{ block.super }}{{ title|default:"Продукты категории"|title }} {% endblock %}
+
+{% block main %}
+<div class="admin-container">
+    <div class="admin-content">
+        <table class="admin-table">
+            {% for product in object_list %}
+            <tr class="{% if not product.is_active %} inactive {% endif %}">
+                <td><img src="/media/{{ product.img }}" alt="{{ product.name|title }}"> </td>
+                <td>
+                    <p><strong>{{ product.name|title }}</strong></p>
+                </td>
+                <td> {{ product.price|floatformat:"0" }}_руб. </td>
+                <td> {{ product.size }} </td>
+                <td> {{ product.description }} </td>
+                <td>
+                    <div class="admin-conf">
+<!--                        <button type="button" class="nav-btn">-->
+<!--                            <a href="{% url 'kwadmin:category_products' product.pk %}">-->
+<!--                                Товары-->
+<!--                            </a>-->
+<!--                        </button>-->
+                        <button type="button" class="nav-btn">
+<!--                            <a href="{# % url 'kwadmin:category_update' product.pk % #}">-->
+                            <a href="#">
+                                Редактировать
+                            </a>
+                        </button>
+                        {% if product.is_active %}
+                        <button type="button" class="nav-btn">
+<!--                            <a href="{# % url 'kwadmin:category_delete'product.pk % #}">-->
+                            <a href="#">
+                                Удалить
+                            </a>
+                        </button>
+                        {% endif %}
+                    </div>
+                </td>
+            <tr>
+                {% endfor %}
+        </table>
+    </div>
+    <div class="add-user">
+        <button type="button" class="nav-btn add-user-btn">
+            <a href="{% url 'kwadmin:product_create' category.pk %}">
+                Новый продукт
+            </a>
+        </button>
+    </div>
+</div>
+{% endblock %}

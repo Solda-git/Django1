@@ -4,10 +4,11 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.utils.decorators import method_decorator
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 
-from kwadmin.forms import KWAdminUserCreateForm, KWAdminUserUpdateForm, KWAdminCatCreateForm
-from main.models import ProductCat
+from kwadmin.forms import KWAdminUserCreateForm, KWAdminUserUpdateForm, KWAdminCatCreateForm, KWAdminProductUpdateForm
+from main.models import ProductCat, Product
+
 
 #
 # @user_passes_test (lambda u: u.is_superuser)
@@ -132,11 +133,46 @@ class CategoryDelete(SuperUserCheckMixin, HTMLTitleMixin, DeleteView):
         return HttpResponseRedirect(self.get_success_url())
 
 
-#
-# @user_passes_test(lambda u: u.is_superuser)
-# def ProductCreate(request, cat_pk):
-#
-# class ProductDetail(DetailView):
-#     # page_title = 'удаление категории'
-#     model = Product
-#     pk_url_kwarg = 'product_pk'
+@user_passes_test(lambda u: u.is_superuser)
+def category_products (request, cat_pk):
+    category = get_object_or_404 (ProductCat, pk=cat_pk)
+    object_list = category.product_set.all()
+    print(object_list);
+    context = {
+        'title': f'категория {category.title}: продукты',
+        'category': category,
+        'object_list': object_list,
+    }
+    return render (request, 'main/category_products_list.html', context)
+
+@user_passes_test(lambda u: u.is_superuser)
+def product_create(request, cat_pk):
+    category = get_object_or_404(ProductCat, pk=cat_pk)
+    if request.method == 'POST':
+        form = KWAdminProductUpdateForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse(
+                'kwadmin:cat_products',
+                kwargs = {
+                    'pk': category.pk
+                }
+            ))
+        else:
+            KWAdminProductUpdateForm (
+                initial = {
+                    'category': category,
+                }
+            )
+        context = {
+            'title': 'создание продукта',
+            'form': form,
+            'category': category,
+        }
+        return render(request, 'kwadmin/product_update.html', context)
+
+
+class ProductDetail(DetailView):
+    # page_title = 'удаление категории'
+    model = Product
+    pk_url_kwarg = 'product_pk'

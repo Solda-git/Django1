@@ -13,8 +13,13 @@ urlpatterns = [
     path ('user/create/', kwadmin.user_create, name='user_create'),
     path ('user/<int:pk>/update/', kwadmin.user_update, name='user_update'),
     path ('user/<int:pk>/delete/', kwadmin.user_delete, name='user_delete'),
+
     path ('categories/', kwadmin.CategoryList.as_view(), name='category_list'),
     path ('categories/create/', kwadmin.CategoryCreate.as_view(), name='category_create'),
     path ('category/<int:cat_pk>/update/', kwadmin.CategoryUpdate.as_view(), name='category_update'),
     path ('category/<int:cat_pk>/delete/', kwadmin.CategoryDelete.as_view(), name='category_delete'),
+
+
+    path ('category/<int:cat_pk>/producs/', kwadmin.category_products, name='category_products'),
+    path ('category/<int:cat_pk>/product/create/', kwadmin.product_create, name='product_create'),
 ]
