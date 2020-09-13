@@ -1,0 +1,48 @@
+{% extends 'kwadmin/base.html' %}
+{% block title %} {{ block.super }}{{ title|default:"пользователи"|title }} {% endblock %}
+
+{% block main %}
+<div class="admin-container">
+    <div class="admin-content">
+        <table class="admin-table">
+            {% for cat in object_list %}
+            <tr class="{% if not cat.is_active %} inactive {% endif %}">
+                <td>
+                    <p><strong>{{ cat.title|title }}</strong></p>
+                </td>
+                <td><strong>{{ cat.description }}</strong>
+                </td>
+                <td>
+                    <div class="admin-conf">
+                        <button type="button" class="nav-btn">
+                            <a href="#">
+                                Товары
+                            </a>
+                        </button>
+                        <button type="button" class="nav-btn">
+                            <a href="#">
+                                Редактировать
+                            </a>
+                        </button>
+                        {% if kwuser.is_active %}
+                        <button type="button" class="nav-btn">
+                            <a href="#">
+                                Удалить
+                            </a>
+                        </button>
+                        {% endif %}
+                    </div>
+                </td>
+            <tr>
+                {% endfor %}
+        </table>
+    </div>
+    <div class="add-user">
+        <button type="button" class="nav-btn add-user-btn">
+            <a href="#">
+                Новая категория
+            </a>
+        </button>
+    </div>
+</div>
+{% endblock %}

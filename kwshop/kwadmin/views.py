@@ -5,6 +5,7 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 
 from kwadmin.forms import KWAdminUserCreateForm, KWAdminUserUpdateForm
+from main.models import ProductCat
 
 
 @user_passes_test (lambda u: u.is_superuser)
@@ -64,3 +65,13 @@ def user_delete(request, pk):
         'user': user,
     }
     return render(request, 'kwadmin/user_delete.html', context)
+
+
+@user_passes_test (lambda u: u.is_superuser)
+def get_categories (request):
+
+    context = {
+        'title': 'админка/категории',
+        'object_list': ProductCat.objects.all(),
+    }
+    return render (request, 'kwadmin/categories.html', context)
