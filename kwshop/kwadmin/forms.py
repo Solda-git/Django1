@@ -5,6 +5,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
 from kwauth.models import KWUser
+from main.models import ProductCat
 
 
 class KWAdminUserCreateForm (UserCreationForm):
@@ -61,4 +62,20 @@ class KWAdminUserUpdateForm (UserChangeForm):
         if data not in ['м', 'М', 'ж', 'Ж', 'm', 'M', 'f', 'F']:
             raise forms.ValidationError('Допустимые значения: "м" или "ж".')
         return data
+
+#######################################
+#############category##################
+#######################################
+
+class KWAdminCatCreateForm (forms.ModelForm):
+
+    class Meta:
+        model = ProductCat
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = f'form-control {field_name}'
+
 

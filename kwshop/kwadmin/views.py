@@ -6,7 +6,7 @@ from django.urls import reverse, reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView, CreateView
 
-from kwadmin.forms import KWAdminUserCreateForm, KWAdminUserUpdateForm
+from kwadmin.forms import KWAdminUserCreateForm, KWAdminUserUpdateForm, KWAdminCatCreateForm
 from main.models import ProductCat
 
 #
@@ -107,6 +107,6 @@ class CategoryCreate(SuperUserCheckMixin, HTMLTitleMixin, CreateView):
     page_title = 'создание категории'
     model = ProductCat
     success_url = reverse_lazy('kwadmin:index')
-    fields = '__all__'
-
+    # fields = '__all__'
+    form_class = KWAdminCatCreateForm
 
