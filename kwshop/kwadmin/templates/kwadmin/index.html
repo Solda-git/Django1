@@ -9,13 +9,14 @@
             <tr>
                 <td><img src="/media/{{ kwuser.avatar }}" alt="{{ kwuser.name }}"></td>
                 <td>
-                    <p>{{ kwuser.name }}</p>
+                    <p><strong>Пользователь</strong></p>
+                    <p>{{ kwuser.username }}</p>
                     <p>
-                        {% if kwuser.firstname %}
-                        {{ kwuser.firstname }}
+                        {% if kwuser.first_name %}
+                        {{ kwuser.first_name }}
                         {% endif %}
-                        {% if kwuser.firstname %}
-                        {{ kwuser.firstname }}
+                        {% if kwuser.last_name %}
+                        {{ kwuser.last_name }}
                         {% endif %}
                     </p>
                 </td>
@@ -37,7 +38,7 @@
                 <td>
                     <div class="admin-conf">
                         <button type="button" class="nav-btn">
-                            <a href="#">
+                            <a href="{% url 'kwadmin:user_update' pk=kwuser.pk %}">
                                 Редактировать
                             </a>
                         </button>

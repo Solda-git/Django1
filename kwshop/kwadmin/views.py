@@ -1,10 +1,10 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import user_passes_test
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 
-from kwadmin.forms import KWAdminUserCreateForm
+from kwadmin.forms import KWAdminUserCreateForm, KWAdminUserUpdateForm
 
 
 @user_passes_test (lambda u: u.is_superuser)
@@ -29,6 +29,23 @@ def user_create(request):
         user_form = KWAdminUserCreateForm()
     context = {
         'title': 'новый пользователь',
+        'user_form': user_form,
+    }
+    return render(request, 'kwadmin/user_update.html', context=context)
+
+
+@user_passes_test (lambda u: u.is_superuser)
+def user_update(request, pk):
+    user = get_object_or_404(get_user_model(), pk=pk)
+    if request.method == 'POST':
+        user_form = KWAdminUserUpdateForm (request.POST, request.FILES, instance=user)
+        if user_form.is_valid():
+            user_form.save()
+            return HttpResponseRedirect(reverse('kwadmin:index'))
+    else:
+        user_form = KWAdminUserUpdateForm (instance=user)
+    context = {
+        'title': 'редактирование',
         'user_form': user_form,
     }
     return render(request, 'kwadmin/user_update.html', context=context)
