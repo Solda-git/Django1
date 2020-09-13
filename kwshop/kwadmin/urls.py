@@ -8,11 +8,11 @@ import kwadmin.views as kwadmin
 app_name = 'kwadmin'
 
 urlpatterns = [
-    path ('', kwadmin.index, name='index'),
+    # path ('', kwadmin.index, name='index'),
+    path ('', kwadmin.UserList.as_view(), name='index'),
     path ('user/create/', kwadmin.user_create, name='user_create'),
     path ('user/<int:pk>/update/', kwadmin.user_update, name='user_update'),
     path ('user/<int:pk>/delete/', kwadmin.user_delete, name='user_delete'),
-    # path ('categories/', kwadmin.get_categories, name='get_categories'),
-    path ('categories/', kwadmin.GetCategories.as_view(), name='get_categories'),
+    path ('categories/', kwadmin.CategoryList.as_view(), name='get_categories'),
 
 ]
