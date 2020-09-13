@@ -12,6 +12,9 @@ class KWUser (AbstractUser):
     def cartItemsAmount(self):
         return sum(item.quantity for item in self.user_cart.all())
 
-
     def cartCost(self):
         return sum (item.product.price * item.quantity for item in self.user_cart.all ())
+
+    class Meta:
+        # ordering = ['-is_active', '-is_superuser', '-is_staff', 'username']
+        ordering = ['is_active', '-is_superuser', '-is_staff', 'username']

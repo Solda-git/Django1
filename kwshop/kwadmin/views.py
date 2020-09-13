@@ -2,9 +2,9 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import user_passes_test
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.utils.decorators import method_decorator
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView
 
 from kwadmin.forms import KWAdminUserCreateForm, KWAdminUserUpdateForm
 from main.models import ProductCat
@@ -25,9 +25,16 @@ class SuperUserCheckMixin:
     def dispatch(self, request, *args, **kwargs):
         return super ().dispatch (request, *args, **kwargs)
 
+class HTMLTitleMixin:
+    def get_context_data(self, *, object_list=None, **kwargs):
+        data = super().get_context_data(object_list=None, **kwargs)
+        data['title'] = self.page_title
+        return data
 
-class UserList(SuperUserCheckMixin, ListView):
+class UserList(SuperUserCheckMixin, HTMLTitleMixin, ListView):
+    page_title = 'пользователи'
     model = get_user_model()
+
 
 
 @user_passes_test (lambda u: u.is_superuser)
@@ -89,11 +96,17 @@ def user_delete(request, pk):
 #     return render (request, 'kwadmin/productcat_list.html', context)
 
 
-class CategoryList (SuperUserCheckMixin, ListView):
+class CategoryList (SuperUserCheckMixin, HTMLTitleMixin, ListView):
+    page_title = 'категории'
     model = ProductCat
     # template_name = 'kwadmin/productcat_list.html' - ищем сдесь шаблон
     # context_object_name = '...'               - рендерим другую переменную списка
 
 
+class CategoryCreate(SuperUserCheckMixin, HTMLTitleMixin, CreateView):
+    page_title = 'создание категории'
+    model = ProductCat
+    success_url = reverse_lazy('kwadmin:index')
+    fields = '__all__'
 
 

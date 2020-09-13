@@ -13,6 +13,6 @@ urlpatterns = [
     path ('user/create/', kwadmin.user_create, name='user_create'),
     path ('user/<int:pk>/update/', kwadmin.user_update, name='user_update'),
     path ('user/<int:pk>/delete/', kwadmin.user_delete, name='user_delete'),
-    path ('categories/', kwadmin.CategoryList.as_view(), name='get_categories'),
-
+    path ('categories/', kwadmin.CategoryList.as_view(), name='category_list'),
+    path ('categories/create/', kwadmin.CategoryCreate.as_view(), name='category_create'),
 ]
