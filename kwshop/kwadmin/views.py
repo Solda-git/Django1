@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.utils.decorators import method_decorator
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 from kwadmin.forms import KWAdminUserCreateForm, KWAdminUserUpdateForm, KWAdminCatCreateForm
 from main.models import ProductCat
@@ -117,3 +117,16 @@ class CategoryUpdate(SuperUserCheckMixin, HTMLTitleMixin, UpdateView):
     success_url = reverse_lazy('kwadmin:category_list')
     form_class = KWAdminCatCreateForm
     pk_url_kwarg = 'cat_pk'
+
+
+class CategoryDelete(SuperUserCheckMixin, HTMLTitleMixin, DeleteView):
+    page_title = 'удаление категории'
+    model = ProductCat
+    success_url = reverse_lazy('kwadmin:category_list')
+    pk_url_kwarg = 'cat_pk'
+
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        self.object.is_active = False
+        self.object.save()
+        return HttpResponseRedirect(self.get_success_url())

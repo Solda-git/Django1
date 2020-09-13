@@ -16,4 +16,5 @@ urlpatterns = [
     path ('categories/', kwadmin.CategoryList.as_view(), name='category_list'),
     path ('categories/create/', kwadmin.CategoryCreate.as_view(), name='category_create'),
     path ('category/<int:cat_pk>/update/', kwadmin.CategoryUpdate.as_view(), name='category_update'),
+    path ('category/<int:cat_pk>/delete/', kwadmin.CategoryDelete.as_view(), name='category_delete'),
 ]
