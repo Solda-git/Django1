@@ -4,6 +4,7 @@ from django.db import models
 class ProductCat(models.Model):
     title = models.CharField(max_length=100, verbose_name='Категория')
     description = models.TextField(verbose_name='Описание', blank=True)
+    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return f'{self.title}({self.description})'
