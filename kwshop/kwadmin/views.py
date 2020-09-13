@@ -49,3 +49,18 @@ def user_update(request, pk):
         'user_form': user_form,
     }
     return render(request, 'kwadmin/user_update.html', context=context)
+
+
+
+@user_passes_test (lambda u: u.is_superuser)
+def user_delete(request, pk):
+    user = get_object_or_404(get_user_model(), pk=pk)
+    if request.method == 'POST':
+        user.is_active = False
+        user.save()
+        return HttpResponseRedirect (reverse ('kwadmin:index'))
+    context = {
+        'title': 'удаление пользоателя',
+        'user': user,
+    }
+    return render(request, 'kwadmin/user_delete.html', context)

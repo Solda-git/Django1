@@ -667,3 +667,9 @@ header.admin {
 {
     margin-top: 20px;
 }
+
+.inactive {
+    color: #474747;
+    background-color:#BBBBBB;
+
+}

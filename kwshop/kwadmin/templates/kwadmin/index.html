@@ -6,7 +6,7 @@
     <div class="admin-content">
         <table class="admin-table">
             {% for kwuser in object_list %}
-            <tr>
+            <tr class="{% if not kwuser.is_active %} inactive {% endif %}">
                 <td><img src="/media/{{ kwuser.avatar }}" alt="{{ kwuser.name }}"></td>
                 <td>
                     <p><strong>Пользователь</strong></p>
@@ -43,7 +43,7 @@
                             </a>
                         </button>
                         <button type="button" class="nav-btn">
-                            <a href="#">
+                            <a href="{% url 'kwadmin:user_delete' pk=kwuser.pk %}">
                                 Удалить
                             </a>
                         </button>
