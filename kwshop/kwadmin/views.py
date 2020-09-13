@@ -130,3 +130,13 @@ class CategoryDelete(SuperUserCheckMixin, HTMLTitleMixin, DeleteView):
         self.object.is_active = False
         self.object.save()
         return HttpResponseRedirect(self.get_success_url())
+
+
+#
+# @user_passes_test(lambda u: u.is_superuser)
+# def ProductCreate(request, cat_pk):
+#
+# class ProductDetail(DetailView):
+#     # page_title = 'удаление категории'
+#     model = Product
+#     pk_url_kwarg = 'product_pk'
