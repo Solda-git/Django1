@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import user_passes_test
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
+from django.utils.decorators import method_decorator
 from django.views.generic import ListView
 
 from kwadmin.forms import KWAdminUserCreateForm, KWAdminUserUpdateForm
@@ -18,7 +19,14 @@ from main.models import ProductCat
 #     }
 #     return render(request, 'kwadmin/templates/kwauth/kwuser_list.html', context)
 
-class UserList(ListView):
+
+class SuperUserCheckMixin:
+    @method_decorator (user_passes_test (lambda u: u.is_superuser))
+    def dispatch(self, request, *args, **kwargs):
+        return super ().dispatch (request, *args, **kwargs)
+
+
+class UserList(SuperUserCheckMixin, ListView):
     model = get_user_model()
 
 
@@ -81,7 +89,7 @@ def user_delete(request, pk):
 #     return render (request, 'kwadmin/productcat_list.html', context)
 
 
-class CategoryList (ListView):
+class CategoryList (SuperUserCheckMixin, ListView):
     model = ProductCat
     # template_name = 'kwadmin/productcat_list.html' - ищем сдесь шаблон
     # context_object_name = '...'               - рендерим другую переменную списка
