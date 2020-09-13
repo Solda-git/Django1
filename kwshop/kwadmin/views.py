@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.utils.decorators import method_decorator
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, UpdateView
 
 from kwadmin.forms import KWAdminUserCreateForm, KWAdminUserUpdateForm, KWAdminCatCreateForm
 from main.models import ProductCat
@@ -106,7 +106,14 @@ class CategoryList (SuperUserCheckMixin, HTMLTitleMixin, ListView):
 class CategoryCreate(SuperUserCheckMixin, HTMLTitleMixin, CreateView):
     page_title = 'создание категории'
     model = ProductCat
-    success_url = reverse_lazy('kwadmin:index')
+    success_url = reverse_lazy('kwadmin:category_list')
     # fields = '__all__'
     form_class = KWAdminCatCreateForm
 
+
+class CategoryUpdate(SuperUserCheckMixin, HTMLTitleMixin, UpdateView):
+    page_title = 'редактирование категории'
+    model = ProductCat
+    success_url = reverse_lazy('kwadmin:category_list')
+    form_class = KWAdminCatCreateForm
+    pk_url_kwarg = 'cat_pk'
