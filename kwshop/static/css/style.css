@@ -673,3 +673,8 @@ header.admin {
     background-color:#BBBBBB;
 
 }
+
+.admin-conf {
+    display: flex;
+    flex-direction: column;
+}

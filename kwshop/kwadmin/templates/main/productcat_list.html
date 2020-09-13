@@ -1,5 +1,5 @@
 {% extends 'kwadmin/base.html' %}
-{% block title %} {{ block.super }}{{ title|default:"пользователи"|title }} {% endblock %}
+{% block title %} {{ block.super }}{{ title|default:"категории(default)"|title }} {% endblock %}
 
 {% block main %}
 <div class="admin-container">
@@ -10,8 +10,7 @@
                 <td>
                     <p><strong>{{ cat.title|title }}</strong></p>
                 </td>
-                <td><strong>{{ cat.description }}</strong>
-                </td>
+                <td> {{ cat.description }} </td>
                 <td>
                     <div class="admin-conf">
                         <button type="button" class="nav-btn">
@@ -24,7 +23,7 @@
                                 Редактировать
                             </a>
                         </button>
-                        {% if kwuser.is_active %}
+                        {% if cat.is_active %}
                         <button type="button" class="nav-btn">
                             <a href="#">
                                 Удалить
