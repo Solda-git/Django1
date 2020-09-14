@@ -8,7 +8,14 @@ from kwauth.models import KWUser
 from main.models import ProductCat, Product
 
 
-class KWAdminUserCreateForm (UserCreationForm):
+class FormControlMixin:
+    def __init__(self, *args, **kwargs):
+        super ().__init__ (*args, **kwargs)
+        for field_name, field in self.fields.items ():
+            field.widget.attrs['class'] = f'form-control {field_name}'
+            field.help_text = ''
+
+class KWAdminUserCreateForm (FormControlMixin, UserCreationForm):
     class Meta:
         model = get_user_model()
         fields = (
@@ -16,11 +23,6 @@ class KWAdminUserCreateForm (UserCreationForm):
               'email', 'password1', 'password2', 'is_staff', 'is_superuser'
         )
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        for field_name, field in self.fields.items():
-            field.widget.attrs['class'] = f'form-control {field_name}'
-            field.help_text = ''
 
     def clean_age(self):
         data = self.cleaned_data['age']
@@ -67,26 +69,16 @@ class KWAdminUserUpdateForm (UserChangeForm):
 #############category##################
 #######################################
 
-class KWAdminCatCreateForm (forms.ModelForm):
+class KWAdminCatCreateForm (FormControlMixin, forms.ModelForm):
 
     class Meta:
         model = ProductCat
         fields = '__all__'
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        for field_name, field in self.fields.items():
-            field.widget.attrs['class'] = f'form-control {field_name}'
 
-
-class KWAdminProductUpdateForm (forms.ModelForm):
+class KWAdminProductUpdateForm (FormControlMixin, forms.ModelForm):
     class Meta:
         model = Product
         fields = '__all__'
-
-        def __init__(self, *args, **kwargs):
-            super ().__init__ (*args, **kwargs)
-            for field_name, field in self.fields.items ():
-                field.widget.attrs['class'] = f'form-control {field_name}'
 
 

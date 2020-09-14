@@ -137,13 +137,12 @@ class CategoryDelete(SuperUserCheckMixin, HTMLTitleMixin, DeleteView):
 def category_products (request, cat_pk):
     category = get_object_or_404 (ProductCat, pk=cat_pk)
     object_list = category.product_set.all()
-    print(object_list);
     context = {
         'title': f'категория {category.title}: продукты',
         'category': category,
         'object_list': object_list,
     }
-    return render (request, 'main/category_products_list.html', context)
+    return render (request, 'kwadmin/category_products_list.html', context)
 
 @user_passes_test(lambda u: u.is_superuser)
 def product_create(request, cat_pk):
@@ -158,12 +157,12 @@ def product_create(request, cat_pk):
                     'pk': category.pk
                 }
             ))
-        else:
-            KWAdminProductUpdateForm (
-                initial = {
-                    'category': category,
-                }
-            )
+    else:
+        form = KWAdminProductUpdateForm (
+            initial = {
+                'category': category,
+            }
+        )
         context = {
             'title': 'создание продукта',
             'form': form,
