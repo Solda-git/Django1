@@ -148,14 +148,12 @@ def category_products (request, cat_pk):
 def product_create(request, cat_pk):
     category = get_object_or_404(ProductCat, pk=cat_pk)
     if request.method == 'POST':
-        form = KWAdminProductUpdateForm(request.POST, request.FILES)
+        form = KWAdminProductUpdateForm (request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse(
-                'kwadmin:cat_products',
-                kwargs = {
-                    'pk': category.pk
-                }
+                'kwadmin:category_products',
+                kwargs={'cat_pk': category.pk}
             ))
     else:
         form = KWAdminProductUpdateForm (

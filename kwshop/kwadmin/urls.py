@@ -20,6 +20,6 @@ urlpatterns = [
     path ('category/<int:cat_pk>/delete/', kwadmin.CategoryDelete.as_view(), name='category_delete'),
 
 
-    path ('category/<int:cat_pk>/producs/', kwadmin.category_products, name='category_products'),
+    path ('category/<int:cat_pk>/products/', kwadmin.category_products, name='category_products'),
     path ('category/<int:cat_pk>/product/create/', kwadmin.product_create, name='product_create'),
 ]

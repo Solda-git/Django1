@@ -77,6 +77,7 @@ class KWAdminCatCreateForm (FormControlMixin, forms.ModelForm):
 
 
 class KWAdminProductUpdateForm (FormControlMixin, forms.ModelForm):
+
     class Meta:
         model = Product
         fields = '__all__'
