@@ -12,7 +12,12 @@
         </button>
         <button type="button" class="buy-btn">
             <a href=" {% url 'kwadmin:category_list' %}">
+                {% if category %}
+                    Категория: {{ category.title }}
+                {% else %}
                 Каталог
+                {% endif %}
+
             </a>
         </button>
     </nav>
