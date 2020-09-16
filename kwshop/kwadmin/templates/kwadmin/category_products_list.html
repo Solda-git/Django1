@@ -30,7 +30,7 @@
                         {% if product.is_active %}
                         <button type="button" class="nav-btn">
 <!--                            <a href="{# % url 'kwadmin:category_delete'product.pk % #}">-->
-                            <a href="#">
+                            <a href="{% url 'kwadmin:product_delete' product.pk %}">
                                 Удалить
                             </a>
                         </button>

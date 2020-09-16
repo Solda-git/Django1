@@ -191,7 +191,6 @@ def product_update (request, pk):
                     'cat_pk': product.category.pk
                 }
             ))
-
     else:
         form = KWAdminProductUpdateForm (instance=product)
         context = {
@@ -200,3 +199,22 @@ def product_update (request, pk):
             'category': product.category
         }
         return render(request, 'kwadmin/product_update.html', context)
+
+
+def product_delete (request, pk):
+    title = 'продукт/удаление'
+    product = get_object_or_404(Product, pk=pk)
+    if request.method == 'POST':
+        product.is_active = False
+        product.save()
+        return HttpResponseRedirect (reverse (
+                'kwadmin:category_products',
+                kwargs={
+                    'cat_pk': product.category.pk
+                }
+            ))
+    content = {
+        'title': title,
+        'product': product
+    }
+    return render(request, 'kwadmin/product_delete.html' , content)

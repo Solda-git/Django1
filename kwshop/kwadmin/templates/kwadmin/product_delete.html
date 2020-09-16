@@ -1,0 +1,19 @@
+{% extends 'kwadmin/base.html' %}
+{% block title %} {{ block.super }}{{ title|default:"продукты"|title }} {% endblock %}
+
+{% block main %}
+<div class="admin-container">
+    <div class="admin-del-user">
+        <h3>Подтвердите удаление продукта: {{ product.name }}:</h3>
+        <form class="del-user-form" method="post">
+            {% csrf_token %}
+            <div class="form-btn">
+                <input class="nav-btn save-btn" type="submit" value="Удалить">
+                <button type="button" class="nav-btn back-btn">
+                    <a href="{% url 'kwadmin:category_products' product.category.id %}"> Отмена </a>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
