@@ -153,7 +153,10 @@ def product_create(request, cat_pk):
             form.save()
             return HttpResponseRedirect(reverse(
                 'kwadmin:category_products',
-                kwargs={'cat_pk': category.pk}
+                kwargs={
+                    'cat_pk': category.pk
+                }
+                # args=[cat_pk]
             ))
     else:
         form = KWAdminProductUpdateForm (
@@ -169,7 +172,31 @@ def product_create(request, cat_pk):
         return render(request, 'kwadmin/product_update.html', context)
 
 
-class ProductDetail(DetailView):
-    # page_title = 'удаление категории'
-    model = Product
-    pk_url_kwarg = 'product_pk'
+# class ProductDetail(DetailView):
+#     # page_title = 'удаление категории'
+#     model = Product
+#     pk_url_kwarg = 'product_pk'
+
+
+def product_update (request, pk):
+    title = 'продукт/редактирование'
+    product = get_object_or_404(Product, pk=pk)
+    if request.method == 'POST':
+        form = KWAdminProductUpdateForm (request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect (reverse (
+                'kwadmin:category_products',
+                kwargs={
+                    'cat_pk': product.category.pk
+                }
+            ))
+
+    else:
+        form = KWAdminProductUpdateForm (instance=product)
+        context = {
+            'title': title,
+            'form': form,
+            'category': product.category
+        }
+        return render(request, 'kwadmin/product_update.html', context)

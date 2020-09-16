@@ -22,4 +22,5 @@ urlpatterns = [
 
     path ('category/<int:cat_pk>/products/', kwadmin.category_products, name='category_products'),
     path ('category/<int:cat_pk>/product/create/', kwadmin.product_create, name='product_create'),
+    path ('/product/<int:pk>/update/', kwadmin.product_update, name='product_update'),
 ]
