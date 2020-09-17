@@ -55,7 +55,7 @@ def catalog(request, page=1):
         'products': product_paginator,
         'cart': cartItems,
         'categories': get_menu2(),
-        'category': None,
+        'category': {'pk': 0},
         'hot_product': get_hot_product(),
     }
     return render(request, 'main/catalog.html', context=context)
@@ -65,13 +65,15 @@ def category(request, pk, page=1):
     cartItems = None
     if pk == 0:
         products = Product.objects.all()
-        cat = 0
+        cat = {
+            'pk': 0,
+        }
     else:
         cat = get_object_or_404(ProductCat, pk=pk)
         products = Product.objects.filter(category=cat)
     if request.user.is_authenticated:
         cartItems = load_cart(request.user)
-    paginator = Paginator(products, 3)
+    paginator = Paginator(products, 4)
     try:
         product_paginator = paginator.page (int(page))
     except PageNotAnInteger:
