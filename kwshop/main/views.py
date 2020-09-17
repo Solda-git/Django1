@@ -1,6 +1,7 @@
 import random
 
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render, get_object_or_404
 from json import loads
 
@@ -33,14 +34,25 @@ def index(request):
     return render(request, 'main/index.html', context=context)
 
 
-def catalog(request):
+def catalog(request, page=1):
     cartItems = None
     products = Product.objects.all()
     if request.user.is_authenticated:
         cartItems = load_cart(request.user)
+
+#################
+    paginator = Paginator (products, 4)
+    try:
+        product_paginator = paginator.page (page)
+    except PageNotAnInteger:
+        product_paginator = paginator.page (1)
+    except EmptyPage:
+        product_paginator = paginator.page (paginator.num_pages)
+#################
+
     context = {
         'page_title': 'каталог',
-        'products': products,
+        'products': product_paginator,
         'cart': cartItems,
         'categories': get_menu2(),
         'category': None,
@@ -49,7 +61,7 @@ def catalog(request):
     return render(request, 'main/catalog.html', context=context)
 
 
-def category(request, pk):
+def category(request, pk, page=1):
     cartItems = None
     if pk == 0:
         products = Product.objects.all()
@@ -59,11 +71,18 @@ def category(request, pk):
         products = Product.objects.filter(category=cat)
     if request.user.is_authenticated:
         cartItems = load_cart(request.user)
+    paginator = Paginator(products, 3)
+    try:
+        product_paginator = paginator.page (int(page))
+    except PageNotAnInteger:
+        product_paginator  = paginator.page (0)
+    except EmptyPage:
+        product_paginator = paginator.page (paginator.num_pages)
     context = {
         'page_title': 'каталог',
         'categories': get_menu2(),
         'category': cat,
-        'products': products,
+        'products': product_paginator,
         'cart': cartItems,
     }
     return render(request, 'main/catalog.html', context=context)

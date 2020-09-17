@@ -7,6 +7,16 @@
 <div class="catalog-container">
     <div class="catalog">
         <h1 class="products-title">Каталог игрушек</h1>
+        <div class="paginator">
+            {% if products.has_previous %}
+                <a href="{% url 'main:catalog_page' pk=category.pk page=products.previous_page_number %}"> < </a>
+            {% endif %}
+            <span class="current"> страница {{ products.number }} из {{ products.paginator.num_pages }}
+            {% if products.has_next %}
+                <a href="{% url 'main:catalog_page' pk=category.pk page=products.next_page_number %}"> > </a>
+            {% endif %}
+        </div>
+
         <div class="products">
                 {% for item in products %}
                     <div class="product-item">
@@ -14,7 +24,7 @@
                             <img src="/media/{{item.img}}" class="product-item-img" alt="Some img">
                         </a>
                         <div class="desc">
-                            <h3>{{item.product_name}}</h3>
+                            <h3>{{item.name}}</h3>
                             <p><strong>Цена: </strong>{{item.price}}₽</p>
                             <a href="{% url 'cart:add_item' item.pk %}" class="buy-btn catalog-btn">
                                 <i class="fas fa-shopping-cart"></i>
