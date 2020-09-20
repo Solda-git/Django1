@@ -10,17 +10,6 @@ from kwadmin.forms import KWAdminUserCreateForm, KWAdminUserUpdateForm, KWAdminC
 from main.models import ProductCat, Product
 
 
-#
-# @user_passes_test (lambda u: u.is_superuser)
-# def index(request):
-#     object_list = get_user_model().objects.all().order_by('-is_active', '-is_superuser', '-is_staff', 'username')
-#     context = {
-#         'title': 'пользователи',
-#         'object_list': object_list,
-#     }
-#     return render(request, 'kwadmin/templates/kwauth/kwuser_list.html', context)
-
-
 class SuperUserCheckMixin:
     @method_decorator (user_passes_test (lambda u: u.is_superuser))
     def dispatch(self, request, *args, **kwargs):
@@ -29,13 +18,13 @@ class SuperUserCheckMixin:
 class HTMLTitleMixin:
     def get_context_data(self, *, object_list=None, **kwargs):
         data = super().get_context_data(object_list=None, **kwargs)
-        data['title'] = self.page_title
+        if hasattr(self, 'page_title'):
+            data['title'] = self.page_title
         return data
 
 class UserList(SuperUserCheckMixin, HTMLTitleMixin, ListView):
     page_title = 'пользователи'
     model = get_user_model()
-
 
 
 @user_passes_test (lambda u: u.is_superuser)
@@ -87,20 +76,11 @@ def user_delete(request, pk):
     return render(request, 'kwadmin/user_delete.html', context)
 
 
-# @user_passes_test (lambda u: u.is_superuser)
-# def get_categories (request):
-#
-#     context = {
-#         'title': 'категории',
-#         'object_list': ProductCat.objects.all(),
-#     }
-#     return render (request, 'kwadmin/productcat_list.html', context)
-
 
 class CategoryList (SuperUserCheckMixin, HTMLTitleMixin, ListView):
     page_title = 'категории'
     model = ProductCat
-    # template_name = 'kwadmin/productcat_list.html' - ищем сдесь шаблон
+    # template_name = 'kwadmin/productcat_list.html' - ищем здесь шаблон
     # context_object_name = '...'               - рендерим другую переменную списка
 
 

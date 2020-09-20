@@ -1,0 +1,17 @@
+{% extends 'main/base.html' %}
+{% block title %} {{ block.super }}{{ title|default:"пользователи"|title }} {% endblock %}
+
+{% block main %}
+<div class="admin-container">
+    <div class="admin-del-user">
+        <h3>Добро пожаловать в <strong>"Вязаный мир"!</strong> </h3>
+        <br>
+        <h3>Регистрация пользователя {{ user.username }} успешно завершена. </h3>
+
+        <a href="{% url 'main:index' %}" class="buy-btn form-control center">
+            На главную
+        </a>
+
+    </div>
+</div>
+{% endblock %}

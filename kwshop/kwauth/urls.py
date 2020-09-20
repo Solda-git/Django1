@@ -12,5 +12,7 @@ urlpatterns = [
     path('logout/', kwauth.logout, name='logout'),
     path('register/', kwauth.register, name='register'),
     path('profile/', kwauth.profile, name='profile'),
+    path('user/verify/<str:email>/<str:activation_key>', kwauth.user_verify, name='user_verify'),
+
 ]
 
