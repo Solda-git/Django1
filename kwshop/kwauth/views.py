@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
 from django.urls import reverse
+from django.views.generic import TemplateView
 
 from kwadmin.views import HTMLTitleMixin
 from kwauth.forms import KWAuthenticationForm, KWProfileForm, KWRegisterForm
@@ -47,7 +48,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             user.send_verify_mail()
-            return HttpResponseRedirect(reverse('auth:login'))
+            return HttpResponseRedirect(reverse('kwauth:user_alert',kwargs={'email': user.email}))
     else:
         form = KWRegisterForm()
     context = {
@@ -56,11 +57,16 @@ def register(request):
     }
     return render(request, 'kwauth/register.html', context)
 
-#
-# class UserInform(HTMLTitleMixin):
-#     page_title =  f'Уведомление'
 
+class UserInform(HTMLTitleMixin, TemplateView):
+    page_title = f'Уведомление'
+    template_name = 'kwauth/mail_alert.html'
+    pk_url_kwarg = 'email'
 
+    def get_context_data(self, email, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['user'] = KWUser.objects.get(email=email)
+        return context
 
 
 def profile(request):
