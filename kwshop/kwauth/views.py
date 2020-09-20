@@ -15,6 +15,7 @@ def login(request):
     form = None
     if request.method == 'POST':
         form = KWAuthenticationForm(data=request.POST)
+        print('form is valid:', form.is_valid())
         if form.is_valid():
             username = request.POST["username"]
             password = request.POST["password"]
@@ -24,7 +25,7 @@ def login(request):
                 auth.login(request, user)
                 if next_url:
                     return HttpResponseRedirect(next_url)
-                return HttpResponseRedirect(reverse("main:index"))
+            return HttpResponseRedirect(reverse("main:index"))
     elif request.method == 'GET':
         form = KWAuthenticationForm()
         context = {
@@ -48,7 +49,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             user.send_verify_mail()
-            return HttpResponseRedirect(reverse('kwauth:user_alert',kwargs={'email': user.email}))
+            return HttpResponseRedirect(reverse('kwauth:user_alert', kwargs={'email': user.email}))
     else:
         form = KWRegisterForm()
     context = {
