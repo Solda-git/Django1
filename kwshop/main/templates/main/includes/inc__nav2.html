@@ -6,7 +6,7 @@
                 Все категории
             </a>
         </button>
-        {% for cat in categories %}
+        {% for cat in catalog_menu %}
         <button type="button" class="nav-btn">
             <a href="{% url 'main:category' pk=cat.pk %}"
                 class="{% if request.resolver_match.kwargs.pk == cat.pk %} active {% endif %}">

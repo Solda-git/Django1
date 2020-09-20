@@ -9,9 +9,9 @@ from cart.views import load_cart
 from kwshop import settings
 from main.models import ProductCat, Product
 
-
-def get_menu2():
-    return ProductCat.objects.all()
+#
+# def get_menu2():
+#     return ProductCat.objects.all()
 
 
 def get_hot_product():
@@ -28,7 +28,7 @@ def index(request):
     context = {
         'page_title': 'главная',
         'products': products,
-        'categories': get_menu2(),
+        # 'categories': get_menu2(),
         'cart': cartItems,
     }
     return render(request, 'main/index.html', context=context)
@@ -54,7 +54,7 @@ def catalog(request, page=1):
         'page_title': 'каталог',
         'products': product_paginator,
         'cart': cartItems,
-        'categories': get_menu2(),
+        # 'categories': get_menu2(),
         'category': {'pk': 0},
         'hot_product': get_hot_product(),
     }
@@ -82,7 +82,7 @@ def category(request, pk, page=1):
         product_paginator = paginator.page (paginator.num_pages)
     context = {
         'page_title': 'каталог',
-        'categories': get_menu2(),
+        # 'categories': get_menu2(),
         'category': cat,
         'products': product_paginator,
         'cart': cartItems,
@@ -98,7 +98,7 @@ def cart(request):
         'page_title': 'корзина',
         'cart': cart_items,
         'products': products,
-        'categories': get_menu2(),
+        # 'categories': get_menu2(),
     }
     return render(request, 'main/cart.html', context=context)
 
