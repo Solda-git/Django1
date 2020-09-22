@@ -15,6 +15,12 @@
         <a href="{% url 'auth:register' %}" class="buy-btn form-control center">
             Регистрация
         </a>
+
+        <a href="{% url 'social:begin' 'vk-oauth2' %}?next=/" class="buy-btn form-control center">
+            Вход через "В контакте"
+        </a>
+
+
     {% endif %}
 
     {% if title == 'регистрация' %}

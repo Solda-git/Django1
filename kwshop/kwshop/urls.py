@@ -25,7 +25,7 @@ urlpatterns = [
     path ('auth/', include ('kwauth.urls', namespace='auth')),
     path ('cartbox/', include ('cart.urls', namespace='cart')),
     path ('kwadmin/', include ('kwadmin.urls', namespace='kwadmin')),
-
+    path( '' , include('social_django.urls' , namespace='social')),
     path ('admin/', admin.site.urls)
 ]
 
