@@ -10,5 +10,6 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         for user in KWUser.objects.filter(kwuserprofile__gender__isnull=True):
-            user.kwuserprofile = KWUserProfile.objects.create(user=user)
-            user.save()
+            KWUserProfile.objects.create(user=user)
+            # user.kwuserprofile = KWUserProfile.objects.create(user=user)
+            # user.save()

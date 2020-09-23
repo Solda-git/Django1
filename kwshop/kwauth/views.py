@@ -1,4 +1,6 @@
 from django.contrib import auth
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
@@ -7,7 +9,7 @@ from django.views.generic import TemplateView
 
 from kwadmin.views import HTMLTitleMixin
 from kwauth.forms import KWAuthenticationForm, KWProfileForm, KWRegisterForm
-from kwauth.models import KWUser
+from kwauth.models import KWUser, KWUserProfile
 
 
 def login(request):
@@ -99,3 +101,10 @@ def user_verify(request, email, activation_key):
         print(f'error activation user : {e.args}')
         return HttpResponseRedirect(reverse('main:index'))
 
+
+@receiver(post_save, sender=KWUser)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        KWUserProfile.objects.create(user=instance)
+    else:
+        instance.kwuserprofile.save()
