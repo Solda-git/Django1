@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'kwauth',
     'cart',
     'kwadmin',
-    'social_django' ,
+    'social_django',
 ]
 
 MIDDLEWARE = [
