@@ -9,6 +9,7 @@
 <form method="post" enctype = "multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
+    {{ extended_form.as_p }}
     <input class="buy-btn form-control center" type="submit" value="сохранить">
     <a href="{% url 'main:index' %}" class="buy-btn form-control center">
             Отмена

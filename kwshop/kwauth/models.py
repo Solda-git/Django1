@@ -49,7 +49,7 @@ class KWUser (AbstractUser):
 
     class Meta:
         # ordering = ['-is_active', '-is_superuser', '-is_staff', 'username']
-        ordering = ['is_active', '-is_superuser', '-is_staff', 'username']
+        ordering = ['-is_active', '-is_superuser', '-is_staff', 'username']
 
 class KWUserProfile(models.Model):
     MALE = 'M'

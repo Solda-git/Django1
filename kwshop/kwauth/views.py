@@ -8,7 +8,7 @@ from django.urls import reverse
 from django.views.generic import TemplateView
 
 from kwadmin.views import HTMLTitleMixin
-from kwauth.forms import KWAuthenticationForm, KWProfileForm, KWRegisterForm
+from kwauth.forms import KWAuthenticationForm, KWProfileForm, KWRegisterForm, KWUserExtendedProfileForm
 from kwauth.models import KWUser, KWUserProfile
 
 
@@ -75,14 +75,23 @@ class UserInform(HTMLTitleMixin, TemplateView):
 def profile(request):
     if request.method == 'POST':
         form = KWProfileForm(request.POST, request.FILES, instance=request.user)
-        if form.is_valid():
+        extended_form = KWUserExtendedProfileForm(
+            request.POST,
+            request.FILES,
+            isinstance=request.user.kwuserprofile
+        )
+        if form.is_valid() and extended_form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse("main:index"))
     else:
         form = KWProfileForm(instance=request.user)
+        extended_form = KWUserExtendedProfileForm(
+            isinstance=request.user.kwuserprofile
+        )
     context = {
         'title': 'профиль',
-        'form': form
+        'form': form,
+        'extended_form': extended_form,
     }
     return render(request, 'kwauth/profile.html', context)
 
@@ -105,6 +114,8 @@ def user_verify(request, email, activation_key):
 @receiver(post_save, sender=KWUser)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
+        print('@receiver:created')
         KWUserProfile.objects.create(user=instance)
     else:
+        print('@receiver:updated')
         instance.kwuserprofile.save()
