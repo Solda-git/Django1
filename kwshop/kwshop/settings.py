@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
-
+import json
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'kwauth',
     'cart',
     'kwadmin',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -153,6 +154,23 @@ EMAIL_HOST_PASSWORD = None
 # # testing via backend:
 # EMAIL_BACKEND = 'django.core.backends.filebased.EmailBackend'
 # EMAIL_FILE_PATH = 'tmp/emails'
-
-
 USER_EXPIRATION_PERIOD = timedelta(hours=24)
+
+###########################################
+################# SOCIAL_AUTH #############
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'social_core.backends.vk.VKOAuth2',
+)
+
+# loading secrets from json
+
+SOCIAL_VK_SECRET_JSON = 'kwshop/VK.json'
+VK = {}
+if os.path.exists(SOCIAL_VK_SECRET_JSON):
+    with open(SOCIAL_VK_SECRET_JSON, 'r') as f:
+        VK = json.load(f)
+SOCIAL_AUTH_VK_OAUTH2_KEY = VK['SOCIAL_AUTH_VK_OAUTH2_KEY']
+SOCIAL_AUTH_VK_OAUTH2_SECRET = VK['SOCIAL_AUTH_VK_OAUTH2_SECRET']
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+

@@ -1,4 +1,6 @@
 from django.contrib import auth
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
@@ -6,8 +8,8 @@ from django.urls import reverse
 from django.views.generic import TemplateView
 
 from kwadmin.views import HTMLTitleMixin
-from kwauth.forms import KWAuthenticationForm, KWProfileForm, KWRegisterForm
-from kwauth.models import KWUser
+from kwauth.forms import KWAuthenticationForm, KWProfileForm, KWRegisterForm, KWUserExtendedProfileForm
+from kwauth.models import KWUser, KWUserProfile
 
 
 def login(request):
@@ -73,14 +75,23 @@ class UserInform(HTMLTitleMixin, TemplateView):
 def profile(request):
     if request.method == 'POST':
         form = KWProfileForm(request.POST, request.FILES, instance=request.user)
-        if form.is_valid():
+        extended_form = KWUserExtendedProfileForm(
+            request.POST,
+            request.FILES,
+            isinstance=request.user.kwuserprofile
+        )
+        if form.is_valid() and extended_form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse("main:index"))
     else:
         form = KWProfileForm(instance=request.user)
+        extended_form = KWUserExtendedProfileForm(
+            isinstance=request.user.kwuserprofile
+        )
     context = {
         'title': 'профиль',
-        'form': form
+        'form': form,
+        'extended_form': extended_form,
     }
     return render(request, 'kwauth/profile.html', context)
 
@@ -91,7 +102,7 @@ def user_verify(request, email, activation_key):
         if user.activation_key == activation_key and not user.is_activation_key_expired():
             user.is_active = True
             user.save()
-            auth.login(request, user)
+            auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
         else:
             print(f'error activation user: {user} ')
         return render(request, 'kwauth/verification.html')
@@ -99,3 +110,12 @@ def user_verify(request, email, activation_key):
         print(f'error activation user : {e.args}')
         return HttpResponseRedirect(reverse('main:index'))
 
+
+@receiver(post_save, sender=KWUser)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        print('@receiver:created')
+        KWUserProfile.objects.create(user=instance)
+    else:
+        print('@receiver:updated')
+        instance.kwuserprofile.save()

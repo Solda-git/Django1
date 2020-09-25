@@ -49,4 +49,19 @@ class KWUser (AbstractUser):
 
     class Meta:
         # ordering = ['-is_active', '-is_superuser', '-is_staff', 'username']
-        ordering = ['is_active', '-is_superuser', '-is_staff', 'username']
+        ordering = ['-is_active', '-is_superuser', '-is_staff', 'username']
+
+class KWUserProfile(models.Model):
+    MALE = 'M'
+    FEMALE = 'F'
+
+    GENDER_CHOISES = (
+        (MALE, 'M'),
+        (FEMALE, 'F'),
+    )
+
+    user = models.OneToOneField(KWUser, primary_key=True, on_delete=models.CASCADE)
+    tagline = models.CharField(verbose_name='теги', max_length=128, blank=True)
+    aboutMe = models.TextField(verbose_name='о себе', max_length=512, blank=True)
+    gender = models.CharField(verbose_name='пол', max_length=1, choices=GENDER_CHOISES, blank=True)
+
