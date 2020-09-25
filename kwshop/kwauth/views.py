@@ -78,7 +78,7 @@ def profile(request):
         extended_form = KWUserExtendedProfileForm(
             request.POST,
             request.FILES,
-            isinstance=request.user.kwuserprofile
+            instance=request.user.kwuserprofile
         )
         if form.is_valid() and extended_form.is_valid():
             form.save()
@@ -86,7 +86,7 @@ def profile(request):
     else:
         form = KWProfileForm(instance=request.user)
         extended_form = KWUserExtendedProfileForm(
-            isinstance=request.user.kwuserprofile
+            instance=request.user.kwuserprofile
         )
     context = {
         'title': 'профиль',
