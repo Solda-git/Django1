@@ -1,7 +1,8 @@
 # -*- coding utf-8 -*-
+import hashlib
+import random
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
-
 from kwauth.models import KWUser
 
 
@@ -40,6 +41,14 @@ class KWRegisterForm(UserCreationForm):
             raise forms.ValidationError('Допустимые значения: "м" или "ж".')
         return data
 
+    def save(self, commit = True):
+        user = super().save(commit)
+        user.is_active = False
+        salt = hashlib.sha1(str(random.random()).encode('utf8')).hexdigest()[:6]
+        user.activation_key = hashlib.sha1((user.email + salt).encode('utf8')).hexdigest()
+        user.save()
+        return user
+
 
 class KWProfileForm(UserChangeForm):
     class Meta:
@@ -54,13 +63,11 @@ class KWProfileForm(UserChangeForm):
             if field_name == 'password':
                 field.widget = forms.HiddenInput()
 
-
     def clean_age(self):
         data = self.cleaned_data['age']
         if data < 10:
             raise forms.ValidationError("В таком возрасте слишком рано сидеть за комьютером!")
         return data
-
 
     def clean_sex(self):
         data = self.cleaned_data['sex']

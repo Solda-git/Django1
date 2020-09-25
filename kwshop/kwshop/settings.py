@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from datetime import timedelta
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -66,6 +68,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'main.context_processors.catalog_menu',
             ],
         },
     },
@@ -135,3 +138,21 @@ JSON_PATH = 'main/JSON'
 
 LOGIN_URL = '/auth/login/'
 
+# work with email
+
+DOMAIN_NAME = 'http://localhost:8000'
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = '25'
+EMAIL_HOST_USER = 'django@geekshop.local'
+EMAIL_HOST_PASSWORD = 'geekshop'
+EMAIL_USE_SSL = False
+# EMAIL_USE_TLS = True - for real project in prod
+# testing email via smtpd:
+EMAIL_HOST_USER = None
+EMAIL_HOST_PASSWORD = None
+# # testing via backend:
+# EMAIL_BACKEND = 'django.core.backends.filebased.EmailBackend'
+# EMAIL_FILE_PATH = 'tmp/emails'
+
+
+USER_EXPIRATION_PERIOD = timedelta(hours=24)
