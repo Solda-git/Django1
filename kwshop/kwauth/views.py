@@ -30,12 +30,12 @@ def login(request):
             return HttpResponseRedirect(reverse("main:index"))
     elif request.method == 'GET':
         form = KWAuthenticationForm()
-        context = {
-            'title': 'аутентификация',
-            'form': form,
-            'next': next_url,
-        }
-        return render(request, 'kwauth/login.html', context)
+    context = {
+        'title': 'аутентификация',
+        'form': form,
+        'next': next_url,
+    }
+    return render(request, 'kwauth/login.html', context)
 
 
 def logout(request):
