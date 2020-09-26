@@ -1,0 +1,72 @@
+< class="navigation">
+    <nav>
+        <button type="button" class="nav-btn" >
+            <a href="{% url 'main:index' %}"
+               class="{% if request.resolver_match.url_name == 'index' %} active {% endif %} ">
+                Главная
+            </a>
+        </button>
+        <button type="button" class="nav-btn">
+            <a href="{% url 'main:catalog' %}"
+               class="{% if request.resolver_match.url_name == 'catalog'  or request.resolver_match.url_name == 'category' %} active {% endif %}">
+                Каталог
+            </a>
+        </button>
+        {% if user.is_authenticated %}
+        <button type="button" class="nav-btn">
+            <a href="{% url 'main:cart' %}"
+               class="{% if request.resolver_match.url_name == 'cart' %} active {% endif %}">
+                Корзина
+            </a>
+        </button>
+
+        {% endif %}
+        <button type="button" class="nav-btn">
+            <a href="{% url 'main:contact' %}"
+               class="{% if request.resolver_match.url_name == 'contact' %} active {% endif %}">
+                Контакты
+            </a>
+        </button>
+        {% if user.is_authenticated %}
+        <button type="button" class="nav-btn">
+            <a href="{% url 'auth:profile' %}">
+                Профиль
+            </a>
+        </button>
+        <div class="dropdown">
+            <button type="button" class="nav-btn dropdown-toggle" data-toggle="dropdown">
+                {{ user.first_name|default:'User' }}
+                <span class="carret"></span>
+            </button>
+            <button type="button" class="nav-btn dropdown-menu" >
+                <a href="auth:profile">
+                    Профиль
+                </a>
+            </button>
+            <button type="button" class="nav-btn dropdown-menu" >
+                <a href="orders:index">
+                    Профиль
+                </a>
+            </button>
+        </div>
+        {% if user.is_superuser %}
+        <button type="button" class="nav-btn">
+            <a href="{% url 'kwadmin:index' %}">
+                Админка
+            </a>
+        </button>
+         {% endif %}
+        <button type="button" class="nav-btn">
+            <a href="{% url 'auth:logout' %}">
+                Выйти
+            </a>
+        </button>
+        {% else %}
+        <button type="button" class="nav-btn">
+            <a href="{% url 'auth:login' %}">
+                Войти
+            </a>
+        </button>
+        {% endif %}
+    </nav>
+</div>

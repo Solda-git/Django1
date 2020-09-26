@@ -621,7 +621,7 @@ a.del-btn {
 }
 
 .admin-content {
-   width: 80%;
+    width: 80%;
     align-items: center;
     justify-content: center;
 }
@@ -677,4 +677,12 @@ header.admin {
 .admin-conf {
     display: flex;
     flex-direction: column;
+}
+
+.main-menu {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-left: 10px;
+
 }

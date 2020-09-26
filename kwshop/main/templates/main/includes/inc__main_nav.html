@@ -1,55 +1,77 @@
-<div class="navigation">
-    <nav>
-        <button type="button" class="nav-btn">
+< class="navigation">
+    <ul class="main-menu">
+        <li class="main-menu">
             <a href="{% url 'main:index' %}"
-               class="{% if request.resolver_match.url_name == 'index' %} active {% endif %}">
+               class="nav-btn {% if request.resolver_match.url_name == 'index' %} active {% endif %} ">
                 Главная
             </a>
-        </button>
-        <button type="button" class="nav-btn">
+        </li>
+        <li class="main-menu">
             <a href="{% url 'main:catalog' %}"
-               class="{% if request.resolver_match.url_name == 'catalog'  or request.resolver_match.url_name == 'category' %} active {% endif %}">
+               class="nav-btn {% if request.resolver_match.url_name == 'catalog'  or request.resolver_match.url_name == 'category' %} active {% endif %}">
                 Каталог
             </a>
-        </button>
+        </li>
         {% if user.is_authenticated %}
-        <button type="button" class="nav-btn">
+        <li class="main-menu">
             <a href="{% url 'main:cart' %}"
-               class="{% if request.resolver_match.url_name == 'cart' %} active {% endif %}">
+               class="nav-btn {% if request.resolver_match.url_name == 'cart' %} active {% endif %}">
                 Корзина
             </a>
-        </button>
+        </li>
         {% endif %}
-        <button type="button" class="nav-btn">
+        <li class="main-menu">
             <a href="{% url 'main:contact' %}"
-               class="{% if request.resolver_match.url_name == 'contact' %} active {% endif %}">
+               class="nav-btn {% if request.resolver_match.url_name == 'contact' %} active {% endif %}">
                 Контакты
             </a>
-        </button>
+        </li>
         {% if user.is_authenticated %}
-        <button type="button" class="nav-btn">
-            <a href="{% url 'auth:profile' %}">
-                Профиль
-            </a>
-        </button>
+{#        <li class="main-menu">#}
+{#            <a href="{% url 'auth:profile' %}" class="nav-btn">#}
+{#                Профиль#}
+{#            </a>#}
+{#        </li>#}
+        <li class="main-menu">
+            <div class="dropdown">
+                <a class="dropdown-toggle nav-btn" data-toggle="dropdown">
+                    {{ user.first_name|default:'User' }}
+                    <span class="carret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="main-menu">
+                        <a href="{% url 'auth:profile' %}" class="nav-btn">
+                            Профиль
+                        </a>
+                    </li>
+                    <li class="main-menu">
+                        <a href="{% url 'orders:index' %}" class="nav-btn">
+                            Заказы
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        {% endif %}
         {% if user.is_superuser %}
-        <button type="button" class="nav-btn">
-            <a href="{% url 'kwadmin:index' %}">
+        <li class="main-menu">
+            <a href="{% url 'kwadmin:index' %}" class="nav-btn">
                 Админка
             </a>
-        </button>
-         {% endif %}
-        <button type="button" class="nav-btn">
-            <a href="{% url 'auth:logout' %}">
+        </li>
+        {% endif %}
+        {% if user.is_authenticated %}
+        <li class="main-menu">
+            <a href="{% url 'auth:logout' %}" class="nav-btn">
                 Выйти
             </a>
-        </button>
+        </li>
         {% else %}
-        <button type="button" class="nav-btn">
-            <a href="{% url 'auth:login' %}">
+        <li class="main-menu">
+            <a href="{% url 'auth:login' %}" class="nav-btn">
                 Войти
             </a>
-        </button>
+        </li>
         {% endif %}
-    </nav>
+    </ul>
 </div>
