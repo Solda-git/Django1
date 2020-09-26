@@ -70,7 +70,7 @@ class KWProfileForm(UserChangeForm):
         if data < 10:
             raise forms.ValidationError("В таком возрасте слишком рано сидеть за комьютером!")
         return data
-    #
+    # now implemented in KWUserExtendedProfileForm
     # def clean_sex(self):
     #     data = self.cleaned_data['sex']
     #     if data not in ['м', 'М', 'ж', 'Ж', 'm', 'M', 'f', 'F']:
