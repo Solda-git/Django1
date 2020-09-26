@@ -67,7 +67,7 @@ class KWProfileForm(UserChangeForm):
 
     def clean_age(self):
         data = self.cleaned_data['age']
-        if data < 10:
+        if data < 18:
             raise forms.ValidationError("В таком возрасте слишком рано сидеть за комьютером!")
         return data
     # now implemented in KWUserExtendedProfileForm
