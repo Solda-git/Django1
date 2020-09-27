@@ -38,6 +38,10 @@ class Order(models.Model):
     def __str__(self):
         return f'Текущий заказ: {self.id}'
 
+    @property
+    def is_forming(self):
+        return self.status == self.FORMING
+
     # def get_total_quantity(self):
     #     items = self.orderitems.select_related()
     #     return sum(list(map(lambda x: x.quantity, items)))
