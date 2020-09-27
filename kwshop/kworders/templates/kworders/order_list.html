@@ -53,11 +53,13 @@
             {% endfor %}
             </tbody>
         </table>
-        <a href="{% url 'main:index' %}" class="nav-btn">
-            на главную
-        </a>
-        <a href="{% url 'kworders:order_create' %}" class="nav-btn">
-            новый
-        </a>
+        <div class="button_block">
+            <a href="{% url 'main:index' %}" class="nav-btn order-btn">
+                на главную
+            </a>
+            <a href="{% url 'kworders:order_create' %}" class="nav-btn order-btn">
+                новый
+            </a>
+        </div>
     </div>
 {% endblock %}

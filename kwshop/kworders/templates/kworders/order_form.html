@@ -2,10 +2,18 @@
 {% block title %} {{ block.super }}{{ title|default:"user"|title }} {% endblock %}
 
 {% block main %}
+    <h3>Заказчик:
+        {% if user.first_name %}
+            {{ user.first_name|title }}
+        {% else %}
+            Пользователь
+        {% endif %}
+    </h3>
     <div class= "order_form">
         <form action="" method= "post">
             {% csrf_token %}
             {{ form.as_p }}
+{#            <p>Статус заказа: {{ orderitems.order.status }}</p> display status needed#}
             <table class= "table">
                 {{ orderitems.management_form }}
                 {% for form in orderitems.forms %}
@@ -35,9 +43,11 @@
                     </tr>
                 {% endfor %}
             </table>
-            <button type="submit" value= "сохранить" class="buy-btn">
+            <button type="submit" value= "сохранить" class="buy-btn order-btn">
                 сохранить
             </button>
         </form>
+
     </div>
+    {% include 'kworders/includes/inc__order_actions.html' %}
 {% endblock %}
