@@ -3,7 +3,7 @@
 
 {% block main %}
 
-    <div class="admin-content">
+    <div class="order-content">
         <h3>
             Заказы пользователя
             {% if user.first_name %}
@@ -30,7 +30,7 @@
                         <td>{{ item.updated|date:"Y-m-d H:i:s" }}</td>
                         <td>{{ item.get_status_display }}</td>
                         <td>
-                            <a href="{#% url 'ordersapp:order_read' item.pk %#}"
+                            <a href="{% url 'orders:order_read' item.pk %}"
                                 class="order_refs">
                                 посмотреть
                             </a>
@@ -45,7 +45,7 @@
                         </td>
                         <td>
                             {% if item.is_forming %}
-                                <a href="{#% url 'ordersapp:order_delete' item.pk %#}"
+                                <a href="{% url 'orders:order_delete' item.pk %}"
                                    class="order_refs">
                                     удалить
                                 </a>

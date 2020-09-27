@@ -2,7 +2,7 @@ from django.db import transaction
 from django.forms import inlineformset_factory
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import ListView, CreateView, UpdateView, DetailView, DeleteView
 
 from kworders.forms import OrderForm, OrderItemForm
 from kworders.models import Order, OrderItem
@@ -89,3 +89,12 @@ class OrderUpdate (UpdateView):
 #         if self.object.get_total_cost() ==  0  :
 #             self.reqest.user.user_cart.all().delete()
         return super().form_valid(form)
+
+
+class OrderDetail(DetailView):
+    model = Order
+
+
+class OrderDelete(DeleteView):
+    model = Order
+    success_url = reverse_lazy('orders:index')

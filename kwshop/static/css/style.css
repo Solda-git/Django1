@@ -743,4 +743,8 @@ header.admin, header.orders  {
 table.table {
     border-spacing: 15px;
 }
+
+.order-detailed {
+    width: 150px;
+}
 /* end of order styles*/

@@ -1,0 +1,21 @@
+{% extends 'kworders/base.html' %}
+{% block title %} {{ block.super }}{{ title|default:"user"|title }} {% endblock %}
+
+{% block main %}
+    <div class="order-content">
+        <div class= "category_delete">
+            <div class= "h1">Подтвердите удаление заказа</div>
+{#        {% include 'ordersapp/includes/inc_order_summary.html' %}#}
+            <form action= "{% url 'orders:order_delete' object.pk %}" method= "post">
+                {% csrf_token %}
+                <input class= "nav-btn order-btn" type= "submit" value= "удалить">
+            </form>
+            <div class="button_block">
+                <a href= "{% url 'orders:index' %}" class="nav-btn order-btn">
+                    отмена
+                </a>
+            </div>
+        </div>
+    </div>
+    {% include 'kworders/includes/inc__order_actions.html' %}
+{% endblock %}
