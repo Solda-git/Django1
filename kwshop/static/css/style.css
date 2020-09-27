@@ -702,20 +702,20 @@ header.admin, header.orders  {
 }
 
 .td1.order.formset_td {
-    /*width: 70%;*/
+    width: 70%;
 }
 
 .td2.order.formset_td {
-    /*width: 50px;*/
+    width: 50px;
 }
 
 .td3.order.formset_td {
-    /*width: 50px;*/
+    width: 50px;
     text-align: center;
 }
 
 .td4.order.formset_td {
-    /*width: 50px;*/
+    width: 50px;
     text-align: center;
 }
 
@@ -732,4 +732,15 @@ header.admin, header.orders  {
     margin-top: 20px;
 }
 
+.order_refs {
+    color: #003366;
+}
+
+.order_refs:hover {
+    color: #5897fb;
+}
+
+table.table {
+    border-spacing: 15px;
+}
 /* end of order styles*/

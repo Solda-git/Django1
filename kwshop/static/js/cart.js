@@ -23,21 +23,23 @@
         });
 }*/
 
-666
 window.onload = () => {
     console.log("DOM loaded");
-    document.querySelectorAll('.minus')
+    document.querySelectorAll('.minus, .plus')
         .forEach(item =>
             item.addEventListener("click", eventHandler)
             );
 }
 
 function eventHandler(event) {
+    console.log("event handler called")
     let newQuantity = 0
     if (event.currentTarget.className == 'minus') {
+        console.log("event handler class minus")
         newQuantity = parseInt(event.currentTarget.getAttribute('quantity')) - 1
     }
     if (event.currentTarget.className == 'plus') {
+        console.log("event handler class plus")
         newQuantity = parseInt(event.currentTarget.getAttribute('quantity')) + 1
     }
 
