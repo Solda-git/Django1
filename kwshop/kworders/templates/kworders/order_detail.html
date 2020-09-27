@@ -3,7 +3,8 @@
 
 {% block main %}
     <div class="order-content">
-       <div class="basket_list">
+       {% include 'kworders/includes/inc__order_summary.html' %}
+       <div class="cart_list">
             {% for item in object.orderitems.all %}
                 <div class="cart_record">
                     <img src="/media/{{item.product.img}}"

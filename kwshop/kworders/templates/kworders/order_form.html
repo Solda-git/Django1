@@ -2,18 +2,11 @@
 {% block title %} {{ block.super }}{{ title|default:"user"|title }} {% endblock %}
 
 {% block main %}
-    <h3>Заказчик:
-        {% if user.first_name %}
-            {{ user.first_name|title }}
-        {% else %}
-            Пользователь
-        {% endif %}
-    </h3>
     <div class= "order_form">
         <form action="" method= "post">
             {% csrf_token %}
             {{ form.as_p }}
-            <p>Формирование заказа</p>
+            {% include 'kworders/includes/inc__order_summary.html' %}
             <table class= "table">
                 {{ orderitems.management_form }}
                 {% for form in orderitems.forms %}
