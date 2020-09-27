@@ -13,7 +13,7 @@
         <form action="" method= "post">
             {% csrf_token %}
             {{ form.as_p }}
-{#            <p>Статус заказа: {{ orderitems.order.status }}</p> display status needed#}
+{#            <p>Статус заказа: {{ object.order.status }}</p> display status needed#}
             <table class= "table">
                 {{ orderitems.management_form }}
                 {% for form in orderitems.forms %}
