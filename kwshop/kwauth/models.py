@@ -17,10 +17,8 @@ class KWUser (AbstractUser):
     activation_key = models.CharField(max_length=128, blank=True)
     activation_key_expires = models.DateTimeField(default=get_activation_key_expired)
 
-
     def is_activation_key_expired(self):
         return  now() > self.activation_key_expires
-
 
     def cartItemsAmount(self):
         return sum(item.quantity for item in self.user_cart.all())

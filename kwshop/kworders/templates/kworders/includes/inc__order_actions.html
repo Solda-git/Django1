@@ -1,14 +1,14 @@
-{% if object.status == 'F' %}
-    <a href="{#% url 'orders:order_forming_complete' object.pk %#}"
-       class="nav-btn  order-btn">
-        соверишть покупку
-    </a>
-    <a href="{#% url 'orders:order_delete' object.pk %#}"
-       class="nav-btn  order-btn">
-        удалить
-    </a>
-{% endif %}
 <div class="button_block">
+    {% if object.status and object.status == object.FORMING %}
+        <a href="{#% url 'orders:order_forming_complete' object.pk %#}"
+           class="nav-btn  order-btn">
+            соверишть покупку
+        </a>
+        <a href="{% url 'orders:order_delete' pk=object.pk %}"
+           class="nav-btn  order-btn">
+            удалить
+        </a>
+    {% endif %}
     <a href="{% url 'orders:index' %}"
        class="nav-btn  order-btn">
         к списку заказов

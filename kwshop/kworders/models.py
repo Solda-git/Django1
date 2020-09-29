@@ -42,17 +42,19 @@ class Order(models.Model):
     def is_forming(self):
         return self.status == self.FORMING
 
-    # def get_total_quantity(self):
-    #     items = self.orderitems.select_related()
-    #     return sum(list(map(lambda x: x.quantity, items)))
-    #
+    @property
+    def total_quantity(self):
+        items = self.orderitems.select_related()
+        return sum(list(map(lambda x: x.quantity, items)))
+
     # def get_product_type_quantity(self):
     #     items = self.orderitems.select_related()
-    #     returnlen(items)
+    #     return len(items)
     #
-    # def get_total_cost(self):
-    #     items = self.orderitems.select_related()
-    #     return sum(list(map(lambda x: x.quantity * x.product.price, items)))
+    @property
+    def total_cost(self):
+        items = self.orderitems.select_related()
+        return sum(list(map(lambda x: x.quantity * x.product.price, items)))
 # переопределяем метод, удаляющий объект
 # def delete(self):
 # foritem inself.orderitems.select_related():
@@ -65,6 +67,7 @@ class OrderItem(models.Model):
     product = models.ForeignKey(Product, verbose_name='продукт', on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(verbose_name='количество', default=0)
 
-    # @property
-    # def get_product_cost(self):
-    #     return self.product.price * self.quantity
+    @property
+    def product_cost(self):
+        return self.product.price * self.quantity
+

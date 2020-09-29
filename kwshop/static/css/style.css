@@ -723,6 +723,9 @@ header.admin, header.orders  {
     display: flex;
     flex-direction: row;
     margin-left: 10px;
+    align-items: center;
+    align-content: center;
+    text-align: center;
 }
 
 .button_block {
