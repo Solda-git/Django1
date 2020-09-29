@@ -55,7 +55,10 @@
         <td class="t-amount t-footer">{{ user.cartItemsAmount }}</td>
         <td class="t-total t-footer">{{ user.cartCost|floatformat:2 }} ₽</td>
         <td class="t-delete t-footer">
-            <button type="button" class="buy-btn">Оформить</button>
+{#            <button type="button" class="buy-btn">Оформить</button>#}
+             <a href="{% url 'kworders:order_create' %}" class="nav-btn order-btn">
+                 Оформить
+             </a>
         </td>
     </tr>
 </table>
