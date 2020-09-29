@@ -1,8 +1,8 @@
 <div class="button_block">
-    {% if object.status and object.status == object.FORMING %}
-        <a href="{#% url 'orders:order_forming_complete' object.pk %#}"
+    {% if object.is_forming%}
+        <a href="{% url 'orders:order_complete' object.pk %}"
            class="nav-btn  order-btn">
-            соверишть покупку
+            совершить покупку
         </a>
         <a href="{% url 'orders:order_delete' pk=object.pk %}"
            class="nav-btn  order-btn">
