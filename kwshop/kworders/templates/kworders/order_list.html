@@ -1,0 +1,67 @@
+{% extends 'kworders/base.html' %}
+{% block title %} {{ block.super }}{{ title|default:"user"|title }} {% endblock %}
+
+{% block main %}
+    <div class="order-content">
+        <h3>
+            Заказы пользователя
+            {% if user.first_name %}
+                {{ user.first_name|title }}
+            {% else %}
+                Пользователь
+            {% endif %}
+        </h3>
+        <table class="table orders_list">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Создан</th>
+                <th>Обновлен</th>
+                <th>Статус</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in object_list %}
+                {% if item.is_active %}
+                    <tr>
+                        <td class="td1 orders_list">{{ item.pk }}</td>
+                        <td>{{ item.created|date:"Y-m-d H:i:s" }}</td>
+                        <td>{{ item.updated|date:"Y-m-d H:i:s" }}</td>
+                        <td>{{ item.get_status_display }}</td>
+                        <td>
+                            <a href="{% url 'orders:order_read' item.pk %}"
+                                class="order_refs">
+                                посмотреть
+                            </a>
+                        </td>
+                        <td>
+                            {% if item.is_forming %}
+                                <a href="{% url 'orders:order_update' pk=item.pk %}"
+                                   class="order_refs">
+                                    редактировать
+                                </a>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if item.is_forming %}
+                                <a href="{% url 'orders:order_delete' item.pk %}"
+                                   class="order_refs">
+                                    удалить
+                                </a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="button_block">
+            <a href="{% url 'main:index' %}" class="nav-btn order-btn">
+                на главную
+            </a>
+            <a href="{% url 'kworders:order_create' %}" class="nav-btn order-btn">
+                новый
+            </a>
+        </div>
+    </div>
+{% endblock %}

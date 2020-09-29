@@ -56,8 +56,8 @@ class KWUserProfile(models.Model):
     FEMALE = 'F'
 
     GENDER_CHOISES = (
-        (MALE, 'M'),
-        (FEMALE, 'F'),
+        (MALE, 'мужской'),
+        (FEMALE, 'женский'),
     )
 
     user = models.OneToOneField(KWUser, primary_key=True, on_delete=models.CASCADE)

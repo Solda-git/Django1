@@ -54,7 +54,7 @@ class KWProfileForm(UserChangeForm):
     class Meta:
         model = KWUser
         fields = ('username', 'first_name', 'last_name',
-                  #'age', 'sex',
+                  'age', #'sex',
                   'avatar', 'email', 'password')
 
     def __init__(self, *args, **kwargs):
@@ -65,12 +65,12 @@ class KWProfileForm(UserChangeForm):
             if field_name == 'password':
                 field.widget = forms.HiddenInput()
 
-    # def clean_age(self):
-    #     data = self.cleaned_data['age']
-    #     if data < 10:
-    #         raise forms.ValidationError("В таком возрасте слишком рано сидеть за комьютером!")
-    #     return data
-    #
+    def clean_age(self):
+        data = self.cleaned_data['age']
+        if data < 18:
+            raise forms.ValidationError("В таком возрасте слишком рано сидеть за комьютером!")
+        return data
+    # now implemented in KWUserExtendedProfileForm
     # def clean_sex(self):
     #     data = self.cleaned_data['sex']
     #     if data not in ['м', 'М', 'ж', 'Ж', 'm', 'M', 'f', 'F']:

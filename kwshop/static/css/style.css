@@ -559,7 +559,7 @@ nav a {
 }
 
 .container {
-    width: 80%
+    width: 80%;
     background-image: url(../img/background4.jpg);
 }
 
@@ -603,7 +603,7 @@ a.del-btn {
     color: red;
 }
 
-.admin-title {
+.admin-title, .orders-title {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -611,7 +611,7 @@ a.del-btn {
     color: #4a4568;
 }
 
-.admin-container{
+.admin-container, .orders-container{
     padding: 40px;
     background-color: #C0BED0;
     display: flex;
@@ -620,13 +620,13 @@ a.del-btn {
     flex-direction: column;
 }
 
-.admin-content {
-   width: 80%;
+.admin-content, .orders-content, .order_form{
+    width: 80%;
     align-items: center;
     justify-content: center;
 }
 
-header.admin {
+header.admin, header.orders  {
     justify-content: center;
 }
 
@@ -678,3 +678,73 @@ header.admin {
     display: flex;
     flex-direction: column;
 }
+
+.main-menu {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-left: 10px;
+
+}
+
+/*order styles*/
+
+.table.orders_list {
+    min-width: 600px;
+}
+
+.td1.orders_list {
+    width: 40px;
+}
+
+.table.order.formset {
+    min-width: 400px;
+}
+
+.td1.order.formset_td {
+    width: 70%;
+}
+
+.td2.order.formset_td {
+    width: 50px;
+}
+
+.td3.order.formset_td {
+    width: 50px;
+    text-align: center;
+}
+
+.td4.order.formset_td {
+    width: 50px;
+    text-align: center;
+}
+
+.order-btn {
+    display: flex;
+    flex-direction: row;
+    margin-left: 10px;
+}
+
+.button_block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.order_refs {
+    color: #003366;
+}
+
+.order_refs:hover {
+    color: #5897fb;
+}
+
+table.table {
+    border-spacing: 15px;
+}
+
+.order-detailed {
+    width: 150px;
+}
+/* end of order styles*/
