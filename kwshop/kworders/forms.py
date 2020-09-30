@@ -18,6 +18,8 @@ class  OrderForm (FormControlMixin, forms.ModelForm):
 
 
 class  OrderItemForm (FormControlMixin, forms.ModelForm):
+    price = forms.CharField(label='цена', required=False)
+
     class  Meta:
         model = OrderItem
         fields = ('__all__')

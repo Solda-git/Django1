@@ -71,9 +71,6 @@ def delete_items(request, pk):
         super.delete(using=None, keep_parent=False)
 
 
-class Cart(object):
-    pass
-
 
 @receiver(pre_save, sender=OrderItem)
 @receiver(pre_save, sender=CartItem)

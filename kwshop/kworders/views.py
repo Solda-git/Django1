@@ -35,6 +35,7 @@ class OrderCreate (CreateView):
                 for form, cart_item  in zip(formset.forms, cart_items):
                     form.initial['product'] = cart_item.product
                     form.initial['quantity'] = cart_item.quantity
+                    form.initial['price'] = cart_item.product.price
             else:
                 formset = OrderFormSet()
         data['orderitems'] = formset
@@ -74,6 +75,9 @@ class OrderUpdate (UpdateView):
             )
         else:
             formset = OrderFormSet(instance=self.object)
+            for form in formset.forms:
+                if form.instance.pk:
+                    form.initial['price'] = form.instance.product.price
         data['orderitems'] = formset
         return data
 
