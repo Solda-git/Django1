@@ -56,12 +56,8 @@ class Order(models.Model):
         items = self.orderitems.select_related()
         return sum(list(map(lambda x: x.quantity * x.product.price, items)))
 # переопределяем метод, удаляющий объект
-# def delete(self):
-# foritem inself.orderitems.select_related():
-# item.product.quantity += item.quantity
-# item.product.save()
-# self.is_active = False
-# self.save()
+
+
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name="orderitems", on_delete=models.CASCADE)
     product = models.ForeignKey(Product, verbose_name='продукт', on_delete=models.CASCADE)
@@ -71,3 +67,11 @@ class OrderItem(models.Model):
     def product_cost(self):
         return self.product.price * self.quantity
 
+    # def delete(self, using=None, keep_parent=False):
+    #     self.product.quantity += self.total_quantity
+    #     self.product.save()
+    #     super.delete(using=None, keep_parent=False)
+
+    @classmethod
+    def get_item(cls, pk):
+        return cls.objects.filter(pk=pk).first()

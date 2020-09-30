@@ -1,11 +1,14 @@
 from django.contrib.auth.decorators import login_required
 from django.db.models import ExpressionWrapper, F, DecimalField
+from django.db.models.signals import pre_save, pre_delete
+from django.dispatch import receiver
 from django.http import HttpResponseRedirect, JsonResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.template.loader import render_to_string
 from django.urls import reverse
 
 from cart.models import CartItem
+from kworders.models import OrderItem
 from main.models import Product
 
 
@@ -60,3 +63,32 @@ def edit_items(request, pk, quantity):
 def delete_items(request, pk):
     get_object_or_404 (CartItem, pk=int (pk)).delete ()
     return HttpResponseRedirect (request.META.get ('HTTP_REFERER'))
+
+
+    def delete(self, using=None, keep_parent=False):
+        self.product.quantity += self.total_quantity
+        self.product.save()
+        super.delete(using=None, keep_parent=False)
+
+
+class Cart(object):
+    pass
+
+
+@receiver(pre_save, sender=OrderItem)
+@receiver(pre_save, sender=CartItem)
+def product_quantity_update_save(sender, update_fields, instance, **kwargs):
+   print(type(sender), 'pre_save')
+   if instance.pk:
+       instance.product.quantity -= instance.quantity - sender.get_item(instance.pk).quantity
+   else:
+       instance.product.quantity -= instance.quantity
+   instance.product.save()
+
+
+@receiver(pre_delete, sender=OrderItem)
+@receiver(pre_delete, sender=CartItem)
+def product_quantity_update_delete(sender, instance, **kwargs):
+    print(type(sender), 'pre_delete')
+    instance.product.quantity += instance.quantity
+    instance.product.save()
