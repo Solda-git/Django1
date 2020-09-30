@@ -25,6 +25,7 @@ class Product(models.Model):
     stuff = models.CharField(max_length=100, verbose_name='Материал', default='акриловые нитки, холофайбер')
     description = models.TextField(verbose_name='Описание', blank=True)
     is_active = models.BooleanField (default=True)
+    quantity = models.PositiveIntegerField(default=10)
 
     def __str__(self):
         return f'{self.name}, категория: {self.category.title}'
