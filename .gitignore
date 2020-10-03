@@ -1,5 +1,6 @@
 /.idea/
 /venv/
+.solda_virt
 __pycache__/
 *.py[cod]
 *.pot
