@@ -1,6 +1,8 @@
 from django import forms
 
 from kworders.models import Order, OrderItem
+from main.models import Product
+
 
 class FormControlMixin:
     ## to be optimized!!! extract Mixin from this form and from other project forms
@@ -19,6 +21,10 @@ class  OrderForm (FormControlMixin, forms.ModelForm):
 
 class  OrderItemForm (FormControlMixin, forms.ModelForm):
     price = forms.CharField(label='цена', required=False)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs);
+        self.fields["product"].queryset = Product.get_items()
 
     class  Meta:
         model = OrderItem
