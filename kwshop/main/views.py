@@ -9,6 +9,7 @@ from cart.views import load_cart
 from kwshop import settings
 from main.models import ProductCat, Product
 
+
 #
 # def get_menu2():
 #     return ProductCat.objects.all()
@@ -22,7 +23,7 @@ def get_hot_product():
 
 def index(request):
     cartItems = None
-    products = Product.objects.all()
+    products = Product.objects.filter(is_active=True)
     if request.user.is_authenticated:
         cartItems = load_cart(request.user)
     context = {
@@ -36,19 +37,19 @@ def index(request):
 
 def catalog(request, page=1):
     cartItems = None
-    products = Product.objects.all()
+    products = Product.objects.filter(is_active=True)
     if request.user.is_authenticated:
         cartItems = load_cart(request.user)
 
-#################
-    paginator = Paginator (products, 4)
+    #################
+    paginator = Paginator(products, 4)
     try:
-        product_paginator = paginator.page (page)
+        product_paginator = paginator.page(page)
     except PageNotAnInteger:
-        product_paginator = paginator.page (1)
+        product_paginator = paginator.page(1)
     except EmptyPage:
-        product_paginator = paginator.page (paginator.num_pages)
-#################
+        product_paginator = paginator.page(paginator.num_pages)
+    #################
 
     context = {
         'page_title': 'каталог',
@@ -64,22 +65,22 @@ def catalog(request, page=1):
 def category(request, pk, page=1):
     cartItems = None
     if pk == 0:
-        products = Product.objects.all()
+        products = Product.objects.filter(is_active=True)
         cat = {
             'pk': 0,
         }
     else:
         cat = get_object_or_404(ProductCat, pk=pk)
-        products = Product.objects.filter(category=cat)
+        products = Product.objects.filter(category=cat, is_active=True)
     if request.user.is_authenticated:
         cartItems = load_cart(request.user)
     paginator = Paginator(products, 4)
     try:
-        product_paginator = paginator.page (int(page))
+        product_paginator = paginator.page(int(page))
     except PageNotAnInteger:
-        product_paginator  = paginator.page (0)
+        product_paginator = paginator.page(0)
     except EmptyPage:
-        product_paginator = paginator.page (paginator.num_pages)
+        product_paginator = paginator.page(paginator.num_pages)
     context = {
         'page_title': 'каталог',
         # 'categories': get_menu2(),
@@ -92,7 +93,7 @@ def category(request, pk, page=1):
 
 @login_required
 def cart(request):
-    products = Product.objects.all()
+    products = Product.objects.filter(is_active=True)
     cart_items = load_cart(request.user)
     context = {
         'page_title': 'корзина',
@@ -114,10 +115,10 @@ def contact(request):
     return render(request, 'main/contact.html', context=context)
 
 
-def product (request, pk):
+def product(request, pk):
     cart_items = None
     if request.user.is_authenticated:
-        cart_items = load_cart (request.user)
+        cart_items = load_cart(request.user)
     productItem = get_object_or_404(Product, pk=pk)
     context = {
         'page_title': productItem.name,
@@ -125,4 +126,3 @@ def product (request, pk):
         'product': productItem,
     }
     return render(request, 'main/product.html', context=context)
-
