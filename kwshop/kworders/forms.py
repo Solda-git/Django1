@@ -28,5 +28,4 @@ class  OrderItemForm (FormControlMixin, forms.ModelForm):
 
     class  Meta:
         model = OrderItem
-        fields = ('__all__')
-        #exclude = ()
+        fields = '__all__'
