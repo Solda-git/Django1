@@ -6,3 +6,4 @@ __pycache__/
 *.log
 *.sqlite3
 /solda_virt/
+/solda_virt2/
