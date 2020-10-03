@@ -1,8 +1,8 @@
 /.idea/
 /venv/
-.solda_virt
 __pycache__/
 *.py[cod]
 *.pot
 *.log
 *.sqlite3
+/solda_virt/
