@@ -52,7 +52,7 @@ def edit_items(request, pk, quantity):
         cart = load_cart (request.user)
         context = {
             'cart': cart,
-            'cart_cost': request.user.cartItemsAmount (),
+            'cart_cost': request.user.cartitems_amount (),
             'cart_quantity': request.user.cartCost (),
         }
         data = render_to_string ('main/includes/inc__cart_body.html', context=context, request=request)
@@ -65,7 +65,7 @@ def delete_items(request, pk):
     return HttpResponseRedirect (request.META.get ('HTTP_REFERER'))
 
 
-    def delete(self, using=None, keep_parent=False):
+    def delete(self):
         self.product.quantity += self.total_quantity
         self.product.save()
         super.delete(using=None, keep_parent=False)

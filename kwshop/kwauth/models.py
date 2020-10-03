@@ -20,7 +20,7 @@ class KWUser (AbstractUser):
     def is_activation_key_expired(self):
         return  now() > self.activation_key_expires
 
-    def cartItemsAmount(self):
+    def cartitems_amount(self):
         return sum(item.quantity for item in self.user_cart.all())
 
     def cartCost(self):
