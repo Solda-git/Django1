@@ -22,13 +22,25 @@ def get_hot_product():
 
 
 def index(request):
+    page = 1
     cartItems = None
     products = Product.objects.filter(is_active=True)
     if request.user.is_authenticated:
         cartItems = load_cart(request.user)
+
+    #################
+    paginator = Paginator(products, 4)
+    try:
+        product_paginator = paginator.page(page)
+    except PageNotAnInteger:
+        product_paginator = paginator.page(1)
+    except EmptyPage:
+        product_paginator = paginator.page(paginator.num_pages)
+    #################
+
     context = {
         'page_title': 'главная',
-        'products': products,
+        'products': product_paginator,
         # 'categories': get_menu2(),
         'cart': cartItems,
     }
@@ -62,7 +74,7 @@ def catalog(request, page=1):
     return render(request, 'main/catalog.html', context=context)
 
 
-def category(request, pk, page=1):
+def category(request, pk=0, page=1):
     cartItems = None
     if pk == 0:
         products = Product.objects.filter(is_active=True)

@@ -22,14 +22,12 @@
 <!--                            </a>-->
 <!--                        </button>-->
                         <button type="button" class="nav-btn">
-<!--                            <a href="{# % url 'kwadmin:category_update' product.pk % #}">-->
                             <a href="{% url 'kwadmin:product_update' product.pk %}">
                                 Редактировать
                             </a>
                         </button>
                         {% if product.is_active %}
                         <button type="button" class="nav-btn">
-<!--                            <a href="{# % url 'kwadmin:category_delete'product.pk % #}">-->
                             <a href="{% url 'kwadmin:product_delete' product.pk %}">
                                 Удалить
                             </a>

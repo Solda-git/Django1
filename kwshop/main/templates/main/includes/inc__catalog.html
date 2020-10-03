@@ -13,7 +13,11 @@
             {% endif %}
             <span class="current"> страница {{ products.number }} из {{ products.paginator.num_pages }}
             {% if products.has_next %}
-                <a href="{% url 'main:catalog_page' pk=category.pk page=products.next_page_number %}"> > </a>
+                {% if category %}
+                    <a href="{% url 'main:catalog_page' pk=category.pk page=products.next_page_number %}"> > </a>
+                {% else %}
+                    <a href="{% url 'main:catalog_page' pk=0 page=products.next_page_number %}"> > </a>
+                {% endif %}
             {% endif %}
         </div>
 
