@@ -64,12 +64,10 @@ def delete_items(request, pk):
     get_object_or_404 (CartItem, pk=int (pk)).delete ()
     return HttpResponseRedirect (request.META.get ('HTTP_REFERER'))
 
-
     def delete(self):
         self.product.quantity += self.total_quantity
         self.product.save()
         super.delete(using=None, keep_parent=False)
-
 
 
 @receiver(pre_save, sender=OrderItem)

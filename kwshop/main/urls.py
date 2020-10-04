@@ -18,5 +18,7 @@ urlpatterns = [
     path('cart/', main.cart, name='cart'),
     path('contact/', main.contact, name='contact'),
     path('product/<int:pk>/', main.product, name='product'),
+
+    path('product/<int:pk>/price/', main.product_price),
 ]
 

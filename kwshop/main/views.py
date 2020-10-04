@@ -2,6 +2,7 @@ import random
 
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
 from json import loads
 
@@ -138,3 +139,9 @@ def product(request, pk):
         'product': productItem,
     }
     return render(request, 'main/product.html', context=context)
+
+
+def product_price(request, pk):
+    if request.is_ajax():
+        product = Product.objects.filter(pk=int(pk)).first()
+        return JsonResponse({"price": product and product.price or 0})
