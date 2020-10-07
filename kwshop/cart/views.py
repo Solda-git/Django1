@@ -17,52 +17,52 @@ def index(request):
 
 
 def load_cart(user):
-    return user.user_cart.all ().annotate (
-        cost=ExpressionWrapper (F ('quantity') * F ('product__price'), output_field=DecimalField ())
+    return user.user_cart.select_related().all().annotate(
+        cost=ExpressionWrapper(F('quantity') * F('product__price'), output_field=DecimalField())
     )
 
 
 @login_required
 def add_item(request, pk):
-    if 'login' in request.META.get ('HTTP_REFERER'):
-        return HttpResponseRedirect (
-            reverse (
+    if 'login' in request.META.get('HTTP_REFERER'):
+        return HttpResponseRedirect(
+            reverse(
                 'main:product',
                 kwargs={'pk': pk}
             )
         )
-    product = get_object_or_404 (Product, pk=pk)
-    cart = CartItem.objects.filter (user=request.user, product=product).first ()
+    product = get_object_or_404(Product, pk=pk)
+    cart = CartItem.objects.filter(user=request.user, product=product).first()
     if not cart:
-        cart = CartItem (user=request.user, product=product)
+        cart = CartItem(user=request.user, product=product)
     cart.quantity += 1
-    cart.save ()
-    return HttpResponseRedirect (request.META.get ('HTTP_REFERER'))
+    cart.save()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
 @login_required
 def edit_items(request, pk, quantity):
-    if request.is_ajax ():
-        item = CartItem.objects.get (pk=pk)
+    if request.is_ajax():
+        item = CartItem.objects.get(pk=pk)
         if quantity == 0:
-            item.delete ()
+            item.delete()
         else:
             item.quantity = quantity
-            item.save ()
-        cart = load_cart (request.user)
+            item.save()
+        cart = load_cart(request.user)
         context = {
             'cart': cart,
-            'cart_cost': request.user.cartitems_amount (),
-            'cart_quantity': request.user.cart_cost (),
+            'cart_cost': request.user.cartitems_amount(),
+            'cart_quantity': request.user.cart_cost(),
         }
-        data = render_to_string ('main/includes/inc__cart_body.html', context=context, request=request)
-        return HttpResponse (data)
+        data = render_to_string('main/includes/inc__cart_body.html', context=context, request=request)
+        return HttpResponse(data)
 
 
 @login_required
 def delete_items(request, pk):
-    get_object_or_404 (CartItem, pk=int (pk)).delete ()
-    return HttpResponseRedirect (request.META.get ('HTTP_REFERER'))
+    get_object_or_404(CartItem, pk=int(pk)).delete()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
     def delete(self):
         self.product.quantity += self.total_quantity
@@ -73,12 +73,12 @@ def delete_items(request, pk):
 @receiver(pre_save, sender=OrderItem)
 @receiver(pre_save, sender=CartItem)
 def product_quantity_update_save(sender, update_fields, instance, **kwargs):
-   print(type(sender), 'pre_save')
-   if instance.pk:
-       instance.product.quantity -= instance.quantity - sender.get_item(instance.pk).quantity
-   else:
-       instance.product.quantity -= instance.quantity
-   instance.product.save()
+    print(type(sender), 'pre_save')
+    if instance.pk:
+        instance.product.quantity -= instance.quantity - sender.get_item(instance.pk).quantity
+    else:
+        instance.product.quantity -= instance.quantity
+    instance.product.save()
 
 
 @receiver(pre_delete, sender=OrderItem)
