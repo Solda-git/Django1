@@ -53,7 +53,7 @@
         <td class="t-pr-size t-footer"></td>
         <td class="t-price t-footer"></td>
         <td class="t-amount t-footer">{{ user.cartitems_amount }}</td>
-        <td class="t-total t-footer">{{ user.cartCost|floatformat:2 }} ₽</td>
+        <td class="t-total t-footer">{{ user.cart_cost|floatformat:2 }} ₽</td>
         <td class="t-delete t-footer">
 {#            <button type="button" class="buy-btn">Оформить</button>#}
              <a href="{% url 'kworders:order_create' %}" class="nav-btn order-btn">

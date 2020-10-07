@@ -53,7 +53,7 @@ def edit_items(request, pk, quantity):
         context = {
             'cart': cart,
             'cart_cost': request.user.cartitems_amount (),
-            'cart_quantity': request.user.cartCost (),
+            'cart_quantity': request.user.cart_cost (),
         }
         data = render_to_string ('main/includes/inc__cart_body.html', context=context, request=request)
         return HttpResponse (data)

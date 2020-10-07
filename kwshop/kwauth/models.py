@@ -29,7 +29,7 @@ class KWUser(AbstractUser):
     def cartitems_amount(self):
         return sum(item.quantity for item in self.cart_items)
 
-    def cartCost(self):
+    def cart_cost(self):
         return sum(item.product.price * item.quantity for item in self.cart_items)
 
     def send_verify_mail(self):
