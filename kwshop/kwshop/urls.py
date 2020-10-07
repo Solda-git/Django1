@@ -21,18 +21,18 @@ import main.views as main
 from kwshop import settings
 
 urlpatterns = [
-    path ('', include ('main.urls', namespace='main')),
-    path ('auth/', include ('kwauth.urls', namespace='auth')),
-    path ('cartbox/', include ('cart.urls', namespace='cart')),
-    path ('orders/', include ('kworders.urls', namespace='orders')),
-    path ('kwadmin/', include ('kwadmin.urls', namespace='kwadmin')),
-    path( '' , include('social_django.urls' , namespace='social')),
-    path ('admin/', admin.site.urls)
+    path('', include('main.urls', namespace='main')),
+    path('auth/', include('kwauth.urls', namespace='auth')),
+    path('cartbox/', include('cart.urls', namespace='cart')),
+    path('orders/', include('kworders.urls', namespace='orders')),
+    path('kwadmin/', include('kwadmin.urls', namespace='kwadmin')),
+    path('', include('social_django.urls', namespace='social')),
+    path('admin/', admin.site.urls)
 ]
 
 if settings.DEBUG:
     import debug_toolbar
 
-    urlpatterns += static (settings.MEDIA_URL,
-                           document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
     urlpatterns += [path('__debug__/', include(debug_toolbar.urls))]
