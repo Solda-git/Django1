@@ -47,8 +47,6 @@ INSTALLED_APPS = [
     'kworders.apps.KwordersConfig',
 ]
 
-
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -64,6 +62,7 @@ if DEBUG:
     INSTALLED_APPS.extend([
         'debug_toolbar',
         'template_profiler_panel',
+         'django_extensions',
     ])
 
     MIDDLEWARE.append('debug_toolbar.middleware.DebugToolbarMiddleware')
