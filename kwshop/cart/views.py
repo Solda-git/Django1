@@ -17,7 +17,7 @@ def index(request):
 
 
 def load_cart(user):
-    return user.user_cart.select_related().all().annotate(
+    return user.user_cart.select_related('product', 'product__category').all().annotate(
         cost=ExpressionWrapper(F('quantity') * F('product__price'), output_field=DecimalField())
     )
 

@@ -21,12 +21,6 @@ class CartItem (models.Model):
     quantity = models.PositiveIntegerField (default=0)
     time_added = models.DateTimeField (auto_now_add=True)
 
-    # def delete(self, using=None, keep_parent=False):
-    #     self.product.quantity += self.total_quantity
-    #     self.product.save()
-    #     super.delete(using=None, keep_parent=False)
-    #
-
     @classmethod
     def get_item(cls, pk):
         return cls.objects.filter(pk=pk).first()

@@ -28,7 +28,7 @@ class OrderCreate (CreateView):
         if self.request.POST:
             formset = OrderFormSet(self.request.POST, self.request.FILES)
         else:
-            cart_items = self.request.user.user_cart.all()
+            cart_items = self.request.user.user_cart.select_related().all()
             if cart_items and len(cart_items):
                 OrderFormSet = inlineformset_factory(
                     Order, OrderItem, form=OrderItemForm, extra=len(cart_items)
