@@ -11,9 +11,10 @@ from main.models import ProductCat, Product
 
 
 class SuperUserCheckMixin:
-    @method_decorator (user_passes_test (lambda u: u.is_superuser))
+    @method_decorator(user_passes_test(lambda u: u.is_superuser))
     def dispatch(self, request, *args, **kwargs):
-        return super ().dispatch (request, *args, **kwargs)
+        return super().dispatch(request, *args, **kwargs)
+
 
 class HTMLTitleMixin:
     def get_context_data(self, *, object_list=None, **kwargs):
@@ -21,6 +22,7 @@ class HTMLTitleMixin:
         if hasattr(self, 'page_title'):
             data['title'] = self.page_title
         return data
+
 
 class UserList(SuperUserCheckMixin, HTMLTitleMixin, ListView):
     page_title = 'пользователи'
@@ -59,7 +61,6 @@ def user_update(request, pk):
         'user_form': user_form,
     }
     return render(request, 'kwadmin/user_update.html', context=context)
-
 
 
 @user_passes_test (lambda u: u.is_superuser)
@@ -123,6 +124,7 @@ def category_products (request, cat_pk):
         'object_list': object_list,
     }
     return render (request, 'kwadmin/category_products_list.html', context)
+
 
 @user_passes_test(lambda u: u.is_superuser)
 def product_create(request, cat_pk):
@@ -198,3 +200,4 @@ def product_delete (request, pk):
         'product': product
     }
     return render(request, 'kwadmin/product_delete.html' , content)
+

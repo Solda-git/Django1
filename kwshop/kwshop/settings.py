@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 's-#ds@x#wlr##6fm$okfio6qt2#ghm_m1+d&u5z_$hyqz4sbc='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -87,6 +87,14 @@ if DEBUG:
         'debug_toolbar.panels.profiling.ProfilingPanel',
         'template_profiler_panel.panels.template.TemplateProfilerPanel',
    ]
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+else:
+    MIDDLEWARE.append('django.middleware.csrf.CsrfViewMiddleware')
 
     DATABASES = {
         'default': {
@@ -95,14 +103,6 @@ if DEBUG:
             'USER': 'django',
             'PASSWORD': 'geekbrains',
             'HOST': 'localhost'
-            }
-    }
-else:
-    MIDDLEWARE.append('django.middleware.csrf.CsrfViewMiddleware')
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
 
