@@ -16,15 +16,21 @@ class LoggedUserCheckMixin:
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
+class TitleMixin:
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = self.request.user.username
+        return context
 
-class OrderList(LoggedUserCheckMixin, ListView):
+
+class OrderList(TitleMixin, LoggedUserCheckMixin, ListView):
     model = Order
 
     def get_queryset(self):
         return Order.objects.filter(user=self.request.user)
 
 
-class OrderCreate(LoggedUserCheckMixin, CreateView):
+class OrderCreate(TitleMixin, LoggedUserCheckMixin, CreateView):
     model = Order
     form_class = OrderForm
     success_url = reverse_lazy('orders:index')
@@ -68,7 +74,7 @@ class OrderCreate(LoggedUserCheckMixin, CreateView):
         return super().form_valid(form)
 
 
-class OrderUpdate(LoggedUserCheckMixin, UpdateView):
+class OrderUpdate(TitleMixin, LoggedUserCheckMixin, UpdateView):
     model = Order
     form_class = OrderForm
     success_url = reverse_lazy('orders:index')
@@ -107,11 +113,11 @@ class OrderUpdate(LoggedUserCheckMixin, UpdateView):
         return super().form_valid(form)
 
 
-class OrderDetail(LoggedUserCheckMixin, DetailView):
+class OrderDetail(TitleMixin, LoggedUserCheckMixin, DetailView):
     model = Order
 
 
-class OrderDelete(LoggedUserCheckMixin, DeleteView):
+class OrderDelete(TitleMixin, LoggedUserCheckMixin, DeleteView):
     model = Order
     success_url = reverse_lazy('orders:index')
 
