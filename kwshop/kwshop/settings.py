@@ -25,10 +25,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 's-#ds@x#wlr##6fm$okfio6qt2#ghm_m1+d&u5z_$hyqz4sbc='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 
@@ -51,7 +50,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware', # отключить, когда будем тестировать
+    #'django.middleware.csrf.CsrfViewMiddleware', # отключить, когда будем тестировать
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -62,7 +61,7 @@ if DEBUG:
     INSTALLED_APPS.extend([
         'debug_toolbar',
         'template_profiler_panel',
-         'django_extensions',
+        'django_extensions',
     ])
 
     MIDDLEWARE.append('debug_toolbar.middleware.DebugToolbarMiddleware')
@@ -95,7 +94,6 @@ if DEBUG:
     }
 else:
     MIDDLEWARE.append('django.middleware.csrf.CsrfViewMiddleware')
-
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
