@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.utils.functional import cached_property
 
 from main.models import Product
 
@@ -42,19 +43,21 @@ class Order(models.Model):
     def is_forming(self):
         return self.status == self.FORMING
 
-    @property
+    @cached_property
+    def order_items(self):
+        return self.orderitems.select_related().all()
+
+    @cached_property
     def total_quantity(self):
-        items = self.orderitems.select_related()
-        return sum(list(map(lambda x: x.quantity, items)))
+        return sum(list(map(lambda x: x.quantity, self.order_items)))
 
     # def get_product_type_quantity(self):
     #     items = self.orderitems.select_related()
     #     return len(items)
     #
-    @property
+    @cached_property
     def total_cost(self):
-        items = self.orderitems.select_related()
-        return sum(list(map(lambda x: x.quantity * x.product.price, items)))
+        return sum(list(map(lambda x: x.quantity * x.product.price, self.order_items)))
 # переопределяем метод, удаляющий объект
 
 
@@ -63,7 +66,7 @@ class OrderItem(models.Model):
     product = models.ForeignKey(Product, verbose_name='продукт', on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(verbose_name='количество', default=0)
 
-    @property
+    @cached_property
     def product_cost(self):
         return self.product.price * self.quantity
 
