@@ -7,6 +7,8 @@ from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
 from json import loads
 
+from django.views.decorators.cache import cache_page
+
 from cart.views import load_cart
 from kwshop import settings
 from kwshop.settings import PRODUCTS_ON_PAGE_NUMBER
@@ -61,6 +63,7 @@ def index(request):
     return render(request, 'main/index.html', context=context)
 
 
+# @cache_page(3600)
 def catalog(request, page=1):
     cart_items= None
     products = get_products()
