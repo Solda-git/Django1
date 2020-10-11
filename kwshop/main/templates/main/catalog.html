@@ -3,12 +3,12 @@
 
 {% block main %}
 <main>
-    {% if  category is None %}
+    {% if category.pk == 0 %}
     <div class="hot-product-container">
         <div class="hot-product">
-        <h1 class="hot-title"> Горячее предложение </h1>
+            <h1 class="hot-title"> Горячее предложение </h1>
             <div class="product-item">
-                <a href="{% url 'main:product' hot_product.pk %}" class="">
+                <a href="{% url 'main:product' pk=hot_product.pk %}" class="">
                     <img src="/media/{{ hot_product.img }}" class="product-item-img" alt="Some img">
                 </a>
                 <div class="desc">

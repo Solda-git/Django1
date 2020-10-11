@@ -26,7 +26,7 @@ class KWUser(AbstractUser):
     def cart_items(self):
         return self.user_cart.all()
 
-    def cartitems_amount(self):
+    def cart_items_amount(self):
         return sum(item.quantity for item in self.cart_items)
 
     def cart_cost(self):

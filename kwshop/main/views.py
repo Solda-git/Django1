@@ -8,6 +8,7 @@ from json import loads
 
 from cart.views import load_cart
 from kwshop import settings
+from kwshop.settings import PRODUCTS_ON_PAGE_NUMBER
 from main.models import ProductCat, Product
 
 
@@ -24,13 +25,13 @@ def get_hot_product():
 
 def index(request):
     page = 1
-    cartItems = None
-    products = Product.objects.select_related('category').filter(is_active=True)
+    cart_items= None
+    products = Product.objects.select_related('category').filter(is_active=True, category__is_active=True)
     if request.user.is_authenticated:
-        cartItems = load_cart(request.user)
+        cart_items= load_cart(request.user)
 
     #################
-    paginator = Paginator(products, 4)
+    paginator = Paginator(products, PRODUCTS_ON_PAGE_NUMBER)
     try:
         product_paginator = paginator.page(page)
     except PageNotAnInteger:
@@ -43,19 +44,19 @@ def index(request):
         'page_title': 'главная',
         'products': product_paginator,
         # 'categories': get_menu2(),
-        'cart': cartItems,
+        'cart': cart_items,
     }
     return render(request, 'main/index.html', context=context)
 
 
 def catalog(request, page=1):
-    cartItems = None
-    products = Product.objects.filter(is_active=True)
+    cart_items= None
+    products = Product.objects.select_related('category').filter(is_active=True, category__is_active=True)
     if request.user.is_authenticated:
-        cartItems = load_cart(request.user)
+        cart_items= load_cart(request.user)
 
     #################
-    paginator = Paginator(products, 4)
+    paginator = Paginator(products, PRODUCTS_ON_PAGE_NUMBER)
     try:
         product_paginator = paginator.page(page)
     except PageNotAnInteger:
@@ -67,7 +68,7 @@ def catalog(request, page=1):
     context = {
         'page_title': 'каталог',
         'products': product_paginator,
-        'cart': cartItems,
+        'cart': cart_items,
         # 'categories': get_menu2(),
         'category': {'pk': 0},
         'hot_product': get_hot_product(),
@@ -76,17 +77,18 @@ def catalog(request, page=1):
 
 
 def category(request, pk=0, page=1):
-    cartItems = None
-    if pk == 0:
-        products = Product.objects.filter(is_active=True)
+    print(pk)
+    cart_items = None
+    if int(pk) == 0:
+        products = Product.objects.filter(is_active=True, category__is_active=True)
         cat = {
             'pk': 0,
         }
     else:
-        cat = get_object_or_404(ProductCat, pk=pk)
+        cat = get_object_or_404(ProductCat, pk=int(pk))
         products = Product.objects.filter(category=cat, is_active=True)
     if request.user.is_authenticated:
-        cartItems = load_cart(request.user)
+        cart_items= load_cart(request.user)
     paginator = Paginator(products, 4)
     try:
         product_paginator = paginator.page(int(page))
@@ -99,7 +101,8 @@ def category(request, pk=0, page=1):
         # 'categories': get_menu2(),
         'category': cat,
         'products': product_paginator,
-        'cart': cartItems,
+        'cart': cart_items,
+        'hot_product': get_hot_product(),
     }
     return render(request, 'main/catalog.html', context=context)
 

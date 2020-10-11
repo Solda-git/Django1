@@ -29,7 +29,7 @@ class UserList(SuperUserCheckMixin, HTMLTitleMixin, ListView):
     model = get_user_model()
 
 
-@user_passes_test (lambda u: u.is_superuser)
+@user_passes_test(lambda u: u.is_superuser)
 def user_create(request):
     user_form = None
     if request.method == 'POST':
@@ -46,16 +46,16 @@ def user_create(request):
     return render(request, 'kwadmin/user_update.html', context=context)
 
 
-@user_passes_test (lambda u: u.is_superuser)
+@user_passes_test(lambda u: u.is_superuser)
 def user_update(request, pk):
     user = get_object_or_404(get_user_model(), pk=pk)
     if request.method == 'POST':
-        user_form = KWAdminUserUpdateForm (request.POST, request.FILES, instance=user)
+        user_form = KWAdminUserUpdateForm(request.POST, request.FILES, instance=user)
         if user_form.is_valid():
             user_form.save()
             return HttpResponseRedirect(reverse('kwadmin:index'))
     else:
-        user_form = KWAdminUserUpdateForm (instance=user)
+        user_form = KWAdminUserUpdateForm(instance=user)
     context = {
         'title': 'редактирование',
         'user_form': user_form,
@@ -63,13 +63,13 @@ def user_update(request, pk):
     return render(request, 'kwadmin/user_update.html', context=context)
 
 
-@user_passes_test (lambda u: u.is_superuser)
+@user_passes_test(lambda u: u.is_superuser)
 def user_delete(request, pk):
     user = get_object_or_404(get_user_model(), pk=pk)
     if request.method == 'POST':
         user.is_active = False
         user.save()
-        return HttpResponseRedirect (reverse ('kwadmin:index'))
+        return HttpResponseRedirect(reverse('kwadmin:index'))
     context = {
         'title': 'удаление пользоателя',
         'user': user,
@@ -77,8 +77,7 @@ def user_delete(request, pk):
     return render(request, 'kwadmin/user_delete.html', context)
 
 
-
-class CategoryList (SuperUserCheckMixin, HTMLTitleMixin, ListView):
+class CategoryList(SuperUserCheckMixin, HTMLTitleMixin, ListView):
     page_title = 'категории'
     model = ProductCat
     # template_name = 'kwadmin/productcat_list.html' - ищем здесь шаблон
@@ -115,34 +114,33 @@ class CategoryDelete(SuperUserCheckMixin, HTMLTitleMixin, DeleteView):
 
 
 @user_passes_test(lambda u: u.is_superuser)
-def category_products (request, cat_pk):
-    category = get_object_or_404 (ProductCat, pk=cat_pk)
+def category_products(request, cat_pk):
+    category = get_object_or_404(ProductCat, pk=cat_pk)
     object_list = category.product_set.all()
     context = {
         'title': f'категория {category.title}: продукты',
         'category': category,
         'object_list': object_list,
     }
-    return render (request, 'kwadmin/category_products_list.html', context)
+    return render(request, 'kwadmin/category_products_list.html', context)
 
 
 @user_passes_test(lambda u: u.is_superuser)
 def product_create(request, cat_pk):
     category = get_object_or_404(ProductCat, pk=cat_pk)
     if request.method == 'POST':
-        form = KWAdminProductUpdateForm (request.POST, request.FILES)
+        form = KWAdminProductUpdateForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse(
                 'kwadmin:category_products',
                 kwargs={
-                    'cat_pk': category.pk
+                    'cat_pk': category.pk # args=[cat_pk]
                 }
-                # args=[cat_pk]
             ))
     else:
-        form = KWAdminProductUpdateForm (
-            initial = {
+        form = KWAdminProductUpdateForm(
+            initial={
                 'category': category,
             }
         )
@@ -160,21 +158,21 @@ def product_create(request, cat_pk):
 #     pk_url_kwarg = 'product_pk'
 
 
-def product_update (request, pk):
+def product_update(request, pk):
     title = 'продукт/редактирование'
     product = get_object_or_404(Product, pk=pk)
     if request.method == 'POST':
-        form = KWAdminProductUpdateForm (request.POST, request.FILES, instance=product)
+        form = KWAdminProductUpdateForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect (reverse (
+            return HttpResponseRedirect(reverse(
                 'kwadmin:category_products',
                 kwargs={
                     'cat_pk': product.category.pk
                 }
             ))
     else:
-        form = KWAdminProductUpdateForm (instance=product)
+        form = KWAdminProductUpdateForm(instance=product)
         context = {
             'title': title,
             'form': form,
@@ -183,21 +181,20 @@ def product_update (request, pk):
         return render(request, 'kwadmin/product_update.html', context)
 
 
-def product_delete (request, pk):
+def product_delete(request, pk):
     title = 'продукт/удаление'
     product = get_object_or_404(Product, pk=pk)
     if request.method == 'POST':
         product.is_active = False
         product.save()
-        return HttpResponseRedirect (reverse (
-                'kwadmin:category_products',
-                kwargs={
-                    'cat_pk': product.category.pk
-                }
-            ))
+        return HttpResponseRedirect(reverse(
+            'kwadmin:category_products',
+            kwargs={
+                'cat_pk': product.category.pk
+            }
+        ))
     content = {
         'title': title,
         'product': product
     }
-    return render(request, 'kwadmin/product_delete.html' , content)
-
+    return render(request, 'kwadmin/product_delete.html', content)

@@ -17,7 +17,7 @@
     <div class="h4">заказчик: {{ user.last_name }} {{ user.first_name }} </div>
     {% if user.cart_cost %}
         <div class="h4">
-            общее количество товаров: <span class="order_total_quantity">{{ user.cartitems_amount }}</span>
+            общее количество товаров: <span class="order_total_quantity">{{ user.cart_items_amount }}</span>
         </div>
         <div class="h3">
             общая стоимость: <span class="order_total_cost">{{ user.cart_cost }}</span> руб

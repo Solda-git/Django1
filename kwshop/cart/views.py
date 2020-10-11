@@ -52,7 +52,7 @@ def edit_items(request, pk, quantity):
         cart = load_cart(request.user)
         context = {
             'cart': cart,
-            'cart_cost': request.user.cartitems_amount(),
+            'cart_cost': request.user.cart_items_amount(),
             'cart_quantity': request.user.cart_cost(),
         }
         data = render_to_string('main/includes/inc__cart_body.html', context=context, request=request)
