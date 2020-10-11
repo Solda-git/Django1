@@ -1,6 +1,7 @@
 import random
 
 from django.contrib.auth.decorators import login_required
+from django.core.cache import cache
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
@@ -17,16 +18,27 @@ from main.models import ProductCat, Product
 #     return ProductCat.objects.all()
 
 
+def get_products():
+    if settings.LOW_CACHE:
+        key = 'products'
+        products = cache.get(key)
+        if products is None:
+            products = Product.objects.select_related('category').filter(is_active=True, category__is_active=True)
+            cache.set(key, products)
+        return products
+    else:
+        return Product.objects.select_related('category').filter(is_active=True, category__is_active=True)
+
+
+
 def get_hot_product():
-    products_id = Product.objects.values_list(flat=True)
-    hot_product_id = random.choice(products_id)
-    return Product.objects.select_related('category').get(pk=hot_product_id)
+    return random.choice(get_products())
 
 
 def index(request):
     page = 1
     cart_items= None
-    products = Product.objects.select_related('category').filter(is_active=True, category__is_active=True)
+    products = get_products()
     if request.user.is_authenticated:
         cart_items= load_cart(request.user)
 
@@ -51,7 +63,7 @@ def index(request):
 
 def catalog(request, page=1):
     cart_items= None
-    products = Product.objects.select_related('category').filter(is_active=True, category__is_active=True)
+    products = get_products()
     if request.user.is_authenticated:
         cart_items= load_cart(request.user)
 
@@ -80,7 +92,7 @@ def category(request, pk=0, page=1):
     print(pk)
     cart_items = None
     if int(pk) == 0:
-        products = Product.objects.filter(is_active=True, category__is_active=True)
+        products = get_products()
         cat = {
             'pk': 0,
         }
@@ -98,7 +110,6 @@ def category(request, pk=0, page=1):
         product_paginator = paginator.page(paginator.num_pages)
     context = {
         'page_title': 'каталог',
-        # 'categories': get_menu2(),
         'category': cat,
         'products': product_paginator,
         'cart': cart_items,
@@ -109,7 +120,7 @@ def category(request, pk=0, page=1):
 
 @login_required
 def cart(request):
-    products = Product.objects.filter(is_active=True)
+    products = get_products()
     cart_items = load_cart(request.user)
     context = {
         'page_title': 'корзина',
