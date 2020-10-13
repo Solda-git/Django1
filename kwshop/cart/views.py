@@ -40,7 +40,7 @@ def add_item(request, pk):
     if cart.pk:
         cart.quantity = F('quantity') + 1
     cart.save()
-    db_profile_by_type(cart, 'UPDATE', connection.queries)
+    # db_profile_by_type(cart, 'UPDATE', connection.queries)
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
@@ -99,12 +99,11 @@ def db_profile_by_type(instance, query_type, queries):
    [print(query['sql']) for query in update_queries]
 
 
-# @receiver(pre_save, sender=ProductCat)
-# def product_is_active_update_productcat_save(sender, instance, **kwargs):
-#    if instance.pk:
-#        if instance.is_active:
-#            instance.product_set.update(is_active=True)
-#        else:
-#            instance.product_set.update(is_active=False)
-#
-#        db_profile_by_type(sender, 'UPDATE', connection.queries)
+@receiver(pre_save, sender=ProductCat)
+def product_is_active_update_productcat_save(sender, instance, **kwargs):
+   if instance.pk:
+       if instance.is_active:
+           instance.product_set.update(is_active=True)
+       else:
+           instance.product_set.update(is_active=False)
+       db_profile_by_type(sender, 'UPDATE', connection.queries)

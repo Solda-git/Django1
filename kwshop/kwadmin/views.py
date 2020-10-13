@@ -1,11 +1,14 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import user_passes_test
+from django.db import connection
+from django.db.models import F
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 
+from cart.views import db_profile_by_type
 from kwadmin.forms import KWAdminUserCreateForm, KWAdminUserUpdateForm, KWAdminCatCreateForm, KWAdminProductUpdateForm
 from main.models import ProductCat, Product
 
@@ -104,7 +107,7 @@ class CategoryUpdate(SuperUserCheckMixin, HTMLTitleMixin, UpdateView):
             discount = form.cleaned_data['discount']
             if discount:
                 self.object.product_set.update(price=F('price')*(1 - discount / 100))
-                # db_profile_by_type(self.__class__, 'UPDATE', connection.queries)
+                db_profile_by_type(self.__class__, 'UPDATE', connection.queries)
         return super().form_valid(form)
 
 
