@@ -35,9 +35,10 @@ def add_item(request, pk):
     product = get_object_or_404(Product, pk=pk)
     cart = CartItem.objects.filter(user=request.user, product=product).first()
     if not cart:
-        cart = CartItem(user=request.user, product=product)
+        cart = CartItem(user=request.user, product=product, quantity=1)
     # cart.quantity += 1
-    cart.quantity = F('quantity') + 1
+    if cart.pk:
+        cart.quantity = F('quantity') + 1
     cart.save()
     db_profile_by_type(cart, 'UPDATE', connection.queries)
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
