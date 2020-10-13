@@ -170,6 +170,7 @@ def product_create(request, cat_pk):
 #     pk_url_kwarg = 'product_pk'
 
 
+@user_passes_test(lambda u: u.is_superuser)
 def product_update(request, pk):
     title = 'продукт/редактирование'
     product = get_object_or_404(Product, pk=pk)
@@ -193,6 +194,7 @@ def product_update(request, pk):
         return render(request, 'kwadmin/product_update.html', context)
 
 
+@user_passes_test(lambda u: u.is_superuser)
 def product_delete(request, pk):
     title = 'продукт/удаление'
     product = get_object_or_404(Product, pk=pk)
