@@ -76,6 +76,14 @@ class KWAdminCatCreateForm (FormControlMixin, forms.ModelForm):
         fields = '__all__'
 
 
+class KWAdminCatCreateForm (FormControlMixin, forms.ModelForm):
+    discount = forms.FloatField(label='скидка', required=False, min_value=0, max_value=90, initial=0)
+
+    class Meta:
+        model = ProductCat
+        fields = '__all__'
+
+
 class KWAdminProductUpdateForm (FormControlMixin, forms.ModelForm):
 
     class Meta:

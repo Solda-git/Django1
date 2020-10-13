@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.db import connection
 from django.db.models import ExpressionWrapper, F, DecimalField
 from django.db.models.signals import pre_save, pre_delete
 from django.dispatch import receiver
@@ -9,7 +10,7 @@ from django.urls import reverse
 
 from cart.models import CartItem
 from kworders.models import OrderItem
-from main.models import Product
+from main.models import Product, ProductCat
 
 
 def index(request):
@@ -35,8 +36,10 @@ def add_item(request, pk):
     cart = CartItem.objects.filter(user=request.user, product=product).first()
     if not cart:
         cart = CartItem(user=request.user, product=product)
-    cart.quantity += 1
+    # cart.quantity += 1
+    cart.quantity = F('quantity') + 1
     cart.save()
+    db_profile_by_type(cart, 'UPDATE', connection.queries)
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
@@ -87,3 +90,20 @@ def product_quantity_update_delete(sender, instance, **kwargs):
     print(type(sender), 'pre_delete')
     instance.product.quantity += instance.quantity
     instance.product.save()
+
+
+def db_profile_by_type(instance, query_type, queries):
+   update_queries = list(filter(lambda x: query_type in x['sql'], queries))
+   print(f'db_profile {query_type} for {instance}:')
+   [print(query['sql']) for query in update_queries]
+
+
+# @receiver(pre_save, sender=ProductCat)
+# def product_is_active_update_productcat_save(sender, instance, **kwargs):
+#    if instance.pk:
+#        if instance.is_active:
+#            instance.product_set.update(is_active=True)
+#        else:
+#            instance.product_set.update(is_active=False)
+#
+#        db_profile_by_type(sender, 'UPDATE', connection.queries)

@@ -99,6 +99,15 @@ class CategoryUpdate(SuperUserCheckMixin, HTMLTitleMixin, UpdateView):
     form_class = KWAdminCatCreateForm
     pk_url_kwarg = 'cat_pk'
 
+    def form_valid(self, form):
+        if 'discount' in form.cleaned_data:
+            discount = form.cleaned_data['discount']
+            if discount:
+                self.object.product_set.update(price=F('price')*(1 - discount / 100))
+                # db_profile_by_type(self.__class__, 'UPDATE', connection.queries)
+        return super().form_valid(form)
+
+
 
 class CategoryDelete(SuperUserCheckMixin, HTMLTitleMixin, DeleteView):
     page_title = 'удаление категории'
