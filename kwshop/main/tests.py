@@ -8,3 +8,4 @@ class TestMainappSmoke(TestCase):
         call_command('flush', '--noinput')
         call_command('loaddata', 'test_db.json')
         self.client = Client()
+
